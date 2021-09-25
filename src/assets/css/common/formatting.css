@@ -11,7 +11,7 @@
 }
 
 .height-100 {
-  height: 100% !important;
+  height: 100vh !important;
 }
 
 .height-min-100 {
@@ -19,7 +19,7 @@
 }
 
 .width-100 {
-  width: 100% !important;
+  width: 100vw !important;
 }
 
 .width-min-100 {

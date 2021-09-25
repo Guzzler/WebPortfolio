@@ -1,0 +1,17 @@
+.pi-logo-image {
+    width: 50;
+    height: 50px;
+}
+
+.pi-logo-entire {
+    border-radius: 50%;
+    border: 1px dashed #fff;
+    height: 120px;
+    width: 120px;
+    padding-top: 10px;
+    margin: 20px auto;
+}
+
+.left-column {
+    text-align: center;
+}
