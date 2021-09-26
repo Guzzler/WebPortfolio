@@ -1,17 +1,122 @@
 .pi-logo-image {
-    width: 50;
-    height: 50px;
+  width: 50;
+  height: 50px;
 }
 
 .pi-logo-entire {
-    border-radius: 50%;
-    border: 1px dashed #fff;
-    height: 120px;
-    width: 120px;
-    padding-top: 10px;
-    margin: 20px auto;
+  border-radius: 50%;
+  border: 1px dashed #fff;
+  height: 120px;
+  width: 120px;
+  padding-top: 10px;
+  margin: 20px auto;
 }
 
 .left-column {
-    text-align: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.connect-button-container {
+    position: relative;
+    margin-top: 48px;
+}
+
+.cv-text-details {
+  padding-top: 24px;
+  padding-left: 48px;
+  width: 90%;
+}
+
+.cv-caption {
+    margin-top: 16px;
+}
+
+.cv-copyright {
+    margin: auto 0px 12px 0px;
+    color: #D3E3FC;
+}
+
+.cv-copyright:hover {
+    color: #FFF;
+}
+
+.connect-buttons {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.connect-buttons .connect-button {
+  list-style: none;
+  margin: 0 15px;
+}
+
+.connect-buttons .connect-button .connect-link {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  background: #171515;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #666;
+  transition: 0.5s;
+}
+
+.connect-buttons .connect-button .connect-link:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #D3E3FC;
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+
+.connect-buttons .connect-button .connect-link:hover:before {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #D3E3FC;
+  filter: blur(3px);
+}
+
+.connect-buttons .connect-button .connect-link:hover {
+  color: #00887A ;
+  box-shadow: 0 0 15px #D3E3FC;
+  text-shadow: 0 0 15px #D3E3FC;
+}
+
+
+.mailtolink {
+text-decoration: none;
+position: relative;
+}
+
+.mailtolink:after {    
+background: none repeat scroll 0 0 transparent;
+bottom: 0;
+content: "";
+display: block;
+height: 2px;
+left: 50%;
+position: absolute;
+background: #00887A ;
+transition: width 0.3s ease 0s, left 0.3s ease 0s;
+width: 0;
+}
+
+.mailtolink:hover:after { 
+width: 100%; 
+left: 0; 
 }

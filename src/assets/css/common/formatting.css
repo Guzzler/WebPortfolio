@@ -2,8 +2,16 @@
   text-align: center !important;
 }
 
+.text-left {
+  text-align: left !important;
+}
+
 .strong {
   font-weight: bold !important;
+}
+
+.caption {
+  text-transform: uppercase;
 }
 
 .display-block {
@@ -28,4 +36,8 @@
 
 .overflow-auto {
   overflow: auto !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
 }
