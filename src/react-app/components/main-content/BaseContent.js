@@ -7,14 +7,17 @@ import CircleType from "circletype";
 import piImage from "../../../assets/images/pi-image.jpg";
 import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
+import { isSmallDevice } from '../../../common/utils/index';
 
 const BaseContent = () => {
   React.useEffect(() => {
     const circleType = new CircleType(document.getElementById("test-ele"));
     circleType.radius(130);
   });
+
+  const smallDevice = isSmallDevice();
   return (
-    <Row className="width-100 height-100 background-white">
+    <Row className="width-100 height-min-100 background-white">
       <Col
         span={4}
         md={4}
@@ -83,7 +86,7 @@ const BaseContent = () => {
 
         <div className="cv-copyright"> @ 2021 - By Sharang Pai</div>
       </Col>
-      <Col md={20} sm={24} xs={24} className="resume-main-content roboto-font">
+      <Col md={20} sm={24} xs={24} className="resume-main-content roboto-font" style={smallDevice ? {minHeight: '100vh' } : { height: '100vh'}}>
         <Row>
           <Col md={16} sm={24} xs={24} className="resume-first-col">
             <div className="caption f24 text-green resume-caption">About </div>
