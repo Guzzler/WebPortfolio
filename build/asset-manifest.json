@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.3f78182a.chunk.css",
-    "main.js": "/static/js/main.90719a27.chunk.js",
-    "main.js.map": "/static/js/main.90719a27.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.ce89729d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.ce89729d.js.map",
-    "static/css/2.9edc93b8.chunk.css": "/static/css/2.9edc93b8.chunk.css",
-    "static/js/2.3adde08c.chunk.js": "/static/js/2.3adde08c.chunk.js",
-    "static/js/2.3adde08c.chunk.js.map": "/static/js/2.3adde08c.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.9ff8e33ceb24398793f42b7facadc182.js": "/precache-manifest.9ff8e33ceb24398793f42b7facadc182.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.9edc93b8.chunk.css.map": "/static/css/2.9edc93b8.chunk.css.map",
-    "static/css/main.3f78182a.chunk.css.map": "/static/css/main.3f78182a.chunk.css.map",
-    "static/js/2.3adde08c.chunk.js.LICENSE.txt": "/static/js/2.3adde08c.chunk.js.LICENSE.txt",
-    "static/media/pi-image.jpg": "/static/media/pi-image.f352e454.jpg"
+    "main.css": "./static/css/main.3f78182a.chunk.css",
+    "main.js": "./static/js/main.c3c0325b.chunk.js",
+    "main.js.map": "./static/js/main.c3c0325b.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.be9ee3f7.js",
+    "runtime-main.js.map": "./static/js/runtime-main.be9ee3f7.js.map",
+    "static/css/2.9edc93b8.chunk.css": "./static/css/2.9edc93b8.chunk.css",
+    "static/js/2.3adde08c.chunk.js": "./static/js/2.3adde08c.chunk.js",
+    "static/js/2.3adde08c.chunk.js.map": "./static/js/2.3adde08c.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.4f33071a872d7510768c407473bb0cdc.js": "./precache-manifest.4f33071a872d7510768c407473bb0cdc.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.9edc93b8.chunk.css.map": "./static/css/2.9edc93b8.chunk.css.map",
+    "static/css/main.3f78182a.chunk.css.map": "./static/css/main.3f78182a.chunk.css.map",
+    "static/js/2.3adde08c.chunk.js.LICENSE.txt": "./static/js/2.3adde08c.chunk.js.LICENSE.txt",
+    "static/media/pi-image.jpg": "./static/media/pi-image.f352e454.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ce89729d.js",
+    "static/js/runtime-main.be9ee3f7.js",
     "static/css/2.9edc93b8.chunk.css",
     "static/js/2.3adde08c.chunk.js",
     "static/css/main.3f78182a.chunk.css",
-    "static/js/main.90719a27.chunk.js"
+    "static/js/main.c3c0325b.chunk.js"
   ]
 }
