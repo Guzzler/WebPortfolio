@@ -6,6 +6,10 @@
   text-align: left !important;
 }
 
+.italics {
+  font-style: italic !important;
+}
+
 .strong {
   font-weight: bold !important;
 }

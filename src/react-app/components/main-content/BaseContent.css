@@ -5,17 +5,23 @@
 
 .pi-logo-entire {
   border-radius: 50%;
-  border: 1px dashed #fff;
+  border: 1px dashed #808080;
   height: 120px;
   width: 120px;
   padding-top: 10px;
   margin: 20px auto;
 }
 
+.resume-main-content {
+    height: 100vh;
+    overflow: auto;
+}
+
 .left-column {
   text-align: center;
   display: flex;
   flex-direction: column;
+  min-height: 600px;
 }
 
 .connect-button-container {
@@ -35,11 +41,11 @@
 
 .cv-copyright {
     margin: auto 0px 12px 0px;
-    color: #D3E3FC;
+    color: #808080 !important;
 }
 
 .cv-copyright:hover {
-    color: #FFF;
+    color: #FFF !important;
 }
 
 .connect-buttons {
@@ -71,6 +77,10 @@
   transition: 0.5s;
 }
 
+.resume-second-col {
+    padding: 36px;
+}
+
 .connect-buttons .connect-button .connect-link:before {
   content: "";
   position: absolute;
@@ -87,14 +97,14 @@
 
 .connect-buttons .connect-button .connect-link:hover:before {
   transform: scale(1.2);
-  box-shadow: 0 0 15px #D3E3FC;
+  box-shadow: 0 0 15px #00887A;
   filter: blur(3px);
 }
 
 .connect-buttons .connect-button .connect-link:hover {
   color: #00887A ;
-  box-shadow: 0 0 15px #D3E3FC;
-  text-shadow: 0 0 15px #D3E3FC;
+  box-shadow: 0 0 15px #00887A;
+  text-shadow: 0 0 15px #00887A;
 }
 
 
@@ -114,6 +124,11 @@ position: absolute;
 background: #00887A ;
 transition: width 0.3s ease 0s, left 0.3s ease 0s;
 width: 0;
+}
+
+.resume-first-col {
+    padding: 36px;
+    padding-bottom: 0px;
 }
 
 .mailtolink:hover:after { 

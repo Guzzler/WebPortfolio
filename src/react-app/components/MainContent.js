@@ -9,7 +9,7 @@ function MainContent() {
   return (
     <Route
       render={({ location }) => (
-        <Row className="overflow-hidden display-block">
+        <Row className="display-block">
           <Switch location={location}>
             <Route path="/" component={BaseContent} key="base" />
             <Route render={() => <PageNotFound />} key="notFound" />
