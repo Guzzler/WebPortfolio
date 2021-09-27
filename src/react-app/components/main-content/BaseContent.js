@@ -20,9 +20,11 @@ const BaseContent = () => {
     <Row className="width-100 height-min-100 background-white">
       <Col
         span={4}
-        md={4}
+        md={8}
+        xl={6}
         sm={24}
         xs={24}
+        xxl={4}
         className="left-column background-blue roboto-font f18 text-white"
       >
         <div className="pi-logo-entire center">
@@ -86,7 +88,7 @@ const BaseContent = () => {
 
         <div className="cv-copyright"> @ 2021 - By Sharang Pai</div>
       </Col>
-      <Col md={20} sm={24} xs={24} className="resume-main-content roboto-font" style={smallDevice ? {minHeight: '100vh' } : { height: '100vh'}}>
+      <Col md={16} xl={18} xxl={20} sm={24} xs={24} className="resume-main-content roboto-font" style={smallDevice ? {minHeight: '100vh' } : { height: '100vh'}}>
         <Row>
           <Col md={16} sm={24} xs={24} className="resume-first-col">
             <div className="caption f24 text-green resume-caption">About </div>
