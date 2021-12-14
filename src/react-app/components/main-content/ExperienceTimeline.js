@@ -21,10 +21,10 @@ const ExperienceTimeline = (props) => {
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
-                  Senior Software Engineer, RedBrickAI
+                  Senior Software Engineer / Head of UI/UX Engineering, RedBrickAI
                 </h3>
                 <p>
-                  Leading a team of small engineers to build a training data
+                  Leading a small team of engineers to build a training data
                   platform to help accelerate and manage computer vision
                   labeling while enforcing high quality standards at reasonable
                   cost. My responsibility here includes heading the entire
