@@ -7,7 +7,7 @@ import CircleType from "circletype";
 import piImage from "../../../assets/images/pi-image.jpg";
 import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
-import { isSmallDevice } from '../../../common/utils/index';
+import { isSmallDevice } from "../../../common/utils/index";
 
 const BaseContent = () => {
   React.useEffect(() => {
@@ -37,7 +37,7 @@ const BaseContent = () => {
           <div className="caption f14 text-green cv-caption">Name</div>
           <div>Sharang Pai</div>
           <div className="caption f14 text-green cv-caption">Focus</div>
-          <div>Computer Science Engineer / Web Developer</div>
+          <div>Computer Science Engineering / Social Entrepreneurship</div>
           <div className="caption f14 text-green cv-caption">Say Hello</div>
           <div>
             <a
@@ -86,9 +86,17 @@ const BaseContent = () => {
           </div>
         </div>
 
-        <div className="cv-copyright"> @ 2021 - By Sharang Pai</div>
+        <div className="cv-copyright"> @ 2022 - Sharang Pai</div>
       </Col>
-      <Col md={16} xl={18} xxl={20} sm={24} xs={24} className="resume-main-content roboto-font" style={smallDevice ? {minHeight: '100vh' } : { height: '100vh'}}>
+      <Col
+        md={16}
+        xl={18}
+        xxl={20}
+        sm={24}
+        xs={24}
+        className="resume-main-content roboto-font"
+        style={smallDevice ? { minHeight: "100vh" } : { height: "100vh" }}
+      >
         <Row>
           <Col md={16} sm={24} xs={24} className="resume-first-col">
             <div className="caption f24 text-green resume-caption">About </div>
@@ -102,11 +110,13 @@ const BaseContent = () => {
               </div>
               <div className="padding-half--ends">
                 {" "}
+                I am currently a graduate student at Carnegie Mellon University
+                pursuing a masters in artificial intelligence and innovation.
                 I've spent the last few years working on various projects
                 including an open source educational initiative for underserved
-                students called OpenShiksha. My ultimate purpose is to become a socially relevant
-                technological entrepreneur, and use innovative technology to
-                bridge the socio-economic gap for the underserved.
+                students called OpenShiksha. My ultimate purpose is to become a
+                socially relevant technological entrepreneur, and use innovative
+                technology to bridge the socio-economic gap for the underserved.
               </div>
             </div>
             <div className="caption f24 text-green resume-caption">
@@ -120,6 +130,20 @@ const BaseContent = () => {
               EDUCATION{" "}
             </div>
             <div className="f14 text-black">
+              <div className="padding--ends">
+                {" "}
+                <strong>Ms. Artificial Intelligence and Innovation </strong> /
+                Carnegie Mellon University
+                <div className="text-light-grey">2022 - Current</div>
+                <div>
+                  <strong>Selected Coursework:</strong>{" "}
+                  <span className="italics">
+                    Machine Learning; Artificial Intelligence and Future
+                    Markets; Foundations of Computational Data Science; Law of
+                    Computer Technology; Coding Bootcamp.{" "}
+                  </span>
+                </div>
+              </div>
               <div className="padding--ends">
                 {" "}
                 <strong>
@@ -146,33 +170,48 @@ const BaseContent = () => {
                   over 2500 students. Received multiple scholars honours (given
                   for academic excellence) and was part of both the basketball
                   and football varsity teams, having captained the basketball
-                  team for a brief period. Qualified for the Indian National Informatics Olympiad (2012/2013)
-                  and also participated in Google Code-in (2013).
+                  team for a brief period. Qualified for the Indian National
+                  Informatics Olympiad (2012/2013) and also participated in
+                  Google Code-in (2013).
                 </div>
               </div>
             </div>
             <div className="caption f24 text-green resume-caption">
               Technical{" "}
             </div>
-            <div className='f16 text-black'>
-            <div className='padding--ends'>
-              <span className="strong">Programming Languages:</span><span className='italics'> Python,
-              C++, Java, SQL, HTML, CSS, Javascript, XML, Typescript, Golang </span>
-            </div>
-            <div className='padding--ends'>
-              <span className="strong">Tools:</span> <span className='italics'> React/Redux, Flask, Django,
-              OpenCV, NodeJS, Android, Socket.io, Keras, LibGdx, Godot </span>
-            </div>
+            <div className="f16 text-black">
+              <div className="padding--ends">
+                <span className="strong">Programming Languages:</span>
+                <span className="italics">
+                  {" "}
+                  Python, C++, Java, SQL, HTML, CSS, Javascript, XML,
+                  Typescript, Golang{" "}
+                </span>
+              </div>
+              <div className="padding--ends">
+                <span className="strong">Tools:</span>{" "}
+                <span className="italics">
+                  {" "}
+                  React/Redux, Flask, Django, OpenCV, NodeJS, Android,
+                  Socket.io, Keras, LibGdx, Godot, Unity{" "}
+                </span>
+              </div>
 
-            <div className='padding--ends'>
-              <span className="strong">Interests:</span> <span className='italics'>UI/UX Development, Human Computer Interaction, Low Resource System Design, Neural Networks, Artificial Intelligence </span>
-            </div>
+              <div className="padding--ends">
+                <span className="strong">Interests:</span>{" "}
+                <span className="italics">
+                  UI/UX Development, Human Computer Interaction, Low Resource
+                  System Design, Neural Networks, Artificial Intelligence, Social Entrepreneurship{" "}
+                </span>
+              </div>
             </div>
             <div className="caption f24 text-green resume-caption">
-              IN MY OFF TIME{" "}
+              IN MY DOWN TIME{" "}
             </div>
-            <div className='padding--ends f16 text-black'>
-            <span className="strong">Things I like:</span> League of Legends;Gaming on my PC;Building new games;Playing Football/Basketball;Watching Anime;
+            <div className="padding--ends f16 text-black">
+              <span className="strong">Hobbies:</span> Building new
+              games;Playing Football/Basketball;League of Legends;Gaming on my
+              PC;Watching Sports;Watching Anime;
             </div>
           </Col>
         </Row>

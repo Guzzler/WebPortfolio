@@ -16,12 +16,34 @@ const ExperienceTimeline = (props) => {
             </li>
             <li className="timeline-item">
               <div className="timeline-info">
-                <span>April 2021 - Current</span>
+                <span>April 2022 - Aug 2022</span>
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
-                  Senior Software Engineer / Head of UI/UX Engineering, RedBrickAI
+                  Software Engineer Consultant, StepChange
+                </h3>
+                <p>
+                  Worked on architecting various systems as part of the product
+                  team to empower individuals to make environmentally conscious
+                  decisions to reduce their overall carbon footprint on this
+                  planet.
+                </p>
+                <p>
+                  <strong>Technologies Used: </strong>Python, React.js, Jest,
+                  Java, Android, AWS Tech Stack (S3, Lambdas etc), Typescript.
+                </p>
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
+                <span>April 2021 - March 2022</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">
+                  Senior Software Engineer / Head of UI/UX Engineering,
+                  RedBrickAI
                 </h3>
                 <p>
                   Leading a small team of engineers to build a training data
@@ -206,28 +228,51 @@ const ExperienceTimeline = (props) => {
             </li>
             <li className="timeline-item">
               <div className="timeline-info">
-                <span>Jan 2016 - May 2018</span>
+                <span>Feb 2022</span>
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
-                  Developer/Event Lead , Cyberhawk
+                  Co-Creator , The Afterlife Party
                 </h3>
                 <p>
                   <a
-                    href="https://cyberhawk.iecsemanipal.com"
+                    href="https://dpsguzzler.itch.io/the-afterlife-party"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
                     {" "}
-                    Cyberhawk
+                    The Afterlife Party
                   </a>{" "}
-                  is a web based online cryptic hunt played by over 1000 players.
-                  My work included back-end(Flask/Go) development as well as
-                  front-end (Angular/React.js) scripting.
+                  is a puzzle platformer with the objective to cleanse an entire party of their undead spirits. Worked as a co-creator and lead programmer, responsible for ideation and implementation of the game within a one week period. 
                 </p>
                 <p>
-                  <strong>Technologies Used: </strong>Flask, Angular, React.js, Javascript, Golang
+                  <strong>Technologies Used: </strong>Unity
+                </p>
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
+                <span>July 2022</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">
+                  Co-Creator , InCUBE8
+                </h3>
+                <p>
+                  <a
+                    href="https://dpsguzzler.itch.io/incub"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {" "}
+                    InCUBE8
+                  </a>{" "}
+                  is a 3d puzzle game with the objective to roll a die in multiple directions using the arrow keys to activate the platforms by landing the die's face on the corresponding numbers. Worked as a co-creator and lead programmer, responsible for ideation and implementation of the game within a two day period. 
+                </p>
+                <p>
+                  <strong>Technologies Used: </strong>Unity
                 </p>
               </div>
             </li>
