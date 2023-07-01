@@ -3,18 +3,12 @@ import React from "react";
 import { Row, Col } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CircleType from "circletype";
-import piImage from "../../../assets/images/pi-image.jpg";
+import portrait from "../../../assets/images/portrait.png";
 import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
 
 const BaseContent = () => {
-  React.useEffect(() => {
-    const circleType = new CircleType(document.getElementById("test-ele"));
-    circleType.radius(130);
-  });
-
   const smallDevice = isSmallDevice();
   return (
     <Row className="width-100 height-min-100 background-white">
@@ -28,16 +22,13 @@ const BaseContent = () => {
         className="left-column background-blue roboto-font f18 text-white"
       >
         <div className="pi-logo-entire center">
-          <span id="test-ele" className="f18 source-code-font text-cool-grey">
-            Sharang{" "}
-          </span>
-          <img src={piImage} alt="pi" className="pi-logo-image" />
+          <img src={portrait} alt="pi" className="pi-logo-image" />
         </div>
         <div className="text-left cv-text-details">
           <div className="caption f14 text-green cv-caption">Name</div>
           <div>Sharang Pai</div>
           <div className="caption f14 text-green cv-caption">Focus</div>
-          <div>Computer Science Engineering / Social Entrepreneurship</div>
+          <div>Computer Science / Artificial Intelligence </div>
           <div className="caption f14 text-green cv-caption">Say Hello</div>
           <div>
             <a
@@ -85,8 +76,6 @@ const BaseContent = () => {
             </div>
           </div>
         </div>
-
-        <div className="cv-copyright"> @ 2022 - Sharang Pai</div>
       </Col>
       <Col
         md={16}
@@ -132,15 +121,16 @@ const BaseContent = () => {
             <div className="f14 text-black">
               <div className="padding--ends">
                 {" "}
-                <strong>Ms. Artificial Intelligence and Innovation </strong> /
+                <strong>MS. Artificial Intelligence and Innovation </strong> /
                 Carnegie Mellon University
                 <div className="text-light-grey">2022 - Current</div>
                 <div>
                   <strong>Selected Coursework:</strong>{" "}
                   <span className="italics">
                     Machine Learning; Artificial Intelligence and Future
-                    Markets; Foundations of Computational Data Science; Law of
-                    Computer Technology; Coding Bootcamp.{" "}
+                    Markets; Foundations of Computational Data Science; Software
+                    for Startups; Intro to Deep Learning; Advanced Natural
+                    Language Processing.{" "}
                   </span>
                 </div>
               </div>
@@ -192,16 +182,17 @@ const BaseContent = () => {
                 <span className="strong">Tools:</span>{" "}
                 <span className="italics">
                   {" "}
-                  React/Redux, Flask, Django, OpenCV, NodeJS, Android,
-                  Socket.io, Keras, LibGdx, Godot, Unity{" "}
+                  React/Redux, Flutter, Flask, Django, OpenCV, NodeJS, Android,
+                  Socket.io, Keras, LibGdx, Unity{" "}
                 </span>
               </div>
 
               <div className="padding--ends">
                 <span className="strong">Interests:</span>{" "}
                 <span className="italics">
-                  UI/UX Development, Human Computer Interaction, Low Resource
-                  System Design, Neural Networks, Artificial Intelligence, Social Entrepreneurship{" "}
+                  UI/UX development, Human Computer Interaction, Low Resource
+                  System Design, Deep Learning, Artificial Intelligence, Social
+                  Entrepreneurship{" "}
                 </span>
               </div>
             </div>

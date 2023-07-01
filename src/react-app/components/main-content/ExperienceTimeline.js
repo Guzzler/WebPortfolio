@@ -90,6 +90,26 @@ const ExperienceTimeline = (props) => {
             </li>
             <li className="timeline-item">
               <div className="timeline-info">
+                <span>May 2023 - Aug 2023</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">
+                  Senior Machine Learning Engineering Intern, UpDuo
+                </h3>
+                <p>
+                  Worked on building AI inferencing and fine-tuning pipelines as
+                  well as architecting a new system for the frontend development
+                  of the organization's core Ed-tech product.
+                </p>
+                <p>
+                  <strong>Technologies Used: </strong>Flutter, Rust, Python,
+                  Large Language models.
+                </p>
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
                 <span>May 2018 - July 2018</span>
               </div>
               <div className="timeline-marker"></div>
@@ -146,9 +166,7 @@ const ExperienceTimeline = (props) => {
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <h3 className="timeline-title">
-                  Co Founder and Developer, Openshiksha Initiative{" "}
-                </h3>
+                <h3 className="timeline-title">Openshiksha Initiative </h3>
                 <p>
                   <a
                     href="https://www.openshiksha.org"
@@ -177,7 +195,7 @@ const ExperienceTimeline = (props) => {
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <h3 className="timeline-title">Creator , Chess Kabaddi </h3>
+                <h3 className="timeline-title">Chess Kabaddi </h3>
                 <p>
                   <a
                     href="https://play.google.com/store/apps/details?id=com.chesskabaddi.game"
@@ -205,7 +223,7 @@ const ExperienceTimeline = (props) => {
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <h3 className="timeline-title">Co-Founder , VaccinePost</h3>
+                <h3 className="timeline-title">VaccinePost</h3>
                 <p>
                   <a
                     href="https://vaccinepost.co.in"
@@ -232,9 +250,7 @@ const ExperienceTimeline = (props) => {
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <h3 className="timeline-title">
-                  Co-Creator , The Afterlife Party
-                </h3>
+                <h3 className="timeline-title">The Afterlife Party</h3>
                 <p>
                   <a
                     href="https://dpsguzzler.itch.io/the-afterlife-party"
@@ -244,7 +260,10 @@ const ExperienceTimeline = (props) => {
                     {" "}
                     The Afterlife Party
                   </a>{" "}
-                  is a puzzle platformer with the objective to cleanse an entire party of their undead spirits. Worked as a co-creator and lead programmer, responsible for ideation and implementation of the game within a one week period. 
+                  is a puzzle platformer with the objective to cleanse an entire
+                  party of their undead spirits. Worked as a co-creator and lead
+                  programmer, responsible for ideation and implementation of the
+                  game within a one week period.
                 </p>
                 <p>
                   <strong>Technologies Used: </strong>Unity
@@ -257,9 +276,7 @@ const ExperienceTimeline = (props) => {
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <h3 className="timeline-title">
-                  Co-Creator , InCUBE8
-                </h3>
+                <h3 className="timeline-title">InCUBE8</h3>
                 <p>
                   <a
                     href="https://dpsguzzler.itch.io/incub"
@@ -269,7 +286,12 @@ const ExperienceTimeline = (props) => {
                     {" "}
                     InCUBE8
                   </a>{" "}
-                  is a 3d puzzle game with the objective to roll a die in multiple directions using the arrow keys to activate the platforms by landing the die's face on the corresponding numbers. Worked as a co-creator and lead programmer, responsible for ideation and implementation of the game within a two day period. 
+                  is a 3d puzzle game with the objective to roll a die in
+                  multiple directions using the arrow keys to activate the
+                  platforms by landing the die's face on the corresponding
+                  numbers. Worked as a co-creator and lead programmer,
+                  responsible for ideation and implementation of the game within
+                  a two day period.
                 </p>
                 <p>
                   <strong>Technologies Used: </strong>Unity
