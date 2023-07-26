@@ -3,7 +3,6 @@ import React from "react";
 import { Row, Col } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import portrait from "../../../assets/images/portrait.png";
 import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
@@ -21,8 +20,13 @@ const BaseContent = () => {
         xxl={4}
         className="left-column background-blue roboto-font f18 text-white"
       >
-        <div className="pi-logo-entire center">
-          <img src={portrait} alt="pi" className="pi-logo-image" />
+        <div className="loading-screen">
+          <div
+            className="portrait"
+            style={{
+              backgroundImage: `url('https://sharangpai.me/static/media/portrait.4f21b58b.png')`,
+            }}
+          />
         </div>
         <div className="text-left cv-text-details">
           <div className="caption f14 text-green cv-caption">Name</div>
