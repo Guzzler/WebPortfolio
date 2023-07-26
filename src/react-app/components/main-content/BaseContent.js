@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-import React from "react";
+//* eslint-disable jsx-a11y/anchor-has-content */
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -8,7 +8,26 @@ import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
 
 const BaseContent = () => {
+  const [loaded, setLoaded] = useState(false);
   const smallDevice = isSmallDevice();
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = "https://sharangpai.me/static/media/portrait.4f21b58b.png";
+    img.onload = () => setLoaded(true);
+  }, []);
+
+  if (!loaded) {
+    return (
+      <div className="loading-overlay">
+        <div className="loading-container">
+          <div className="joystick"></div>
+          <div className="loading-text">Loading profile</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Row className="width-100 height-min-100 background-white">
       <Col
