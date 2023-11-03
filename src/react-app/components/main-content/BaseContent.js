@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
+import portrait from "../../../assets/images/portrait.png";
 
 const BaseContent = () => {
   const [loaded, setLoaded] = useState(false);
@@ -13,7 +14,7 @@ const BaseContent = () => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = "https://sharangpai.me/static/media/portrait.4f21b58b.png";
+    img.src = portrait;
     img.onload = () => setLoaded(true);
   }, []);
 
@@ -43,7 +44,7 @@ const BaseContent = () => {
           <div
             className="portrait"
             style={{
-              backgroundImage: `url('https://sharangpai.me/static/media/portrait.4f21b58b.png')`,
+              backgroundImage: `url(${portrait})`,
             }}
           />
         </div>
@@ -123,12 +124,31 @@ const BaseContent = () => {
               <div className="padding-half--ends">
                 {" "}
                 I am currently a graduate student at Carnegie Mellon University
-                pursuing a masters in artificial intelligence and innovation.
-                I've spent the last few years working on various projects
-                including an open source educational initiative for underserved
-                students called OpenShiksha. My ultimate purpose is to become a
-                socially relevant technological entrepreneur, and use innovative
-                technology to bridge the socio-economic gap for the underserved.
+                pursuing a masters in artificial intelligence and innovation and
+                work as a research assistant at the
+                <a
+                  href="https://feifang.info/ai-for-social-good/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  AISOC
+                </a>{" "}
+                group under Dr.Fei Fang, on using large language models for
+                environment conservation efforts . I've spent the last few years
+                working on various projects including an open source educational
+                initiative for underserved students called
+                <a
+                  href="https://www.openshiksha.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  OpenShiksha
+                </a>
+                . My ultimate purpose is to become a socially relevant
+                technological entrepreneur, and use innovative technology to
+                bridge the socio-economic gap for the underserved.
               </div>
             </div>
             <div className="caption f24 text-green resume-caption">
