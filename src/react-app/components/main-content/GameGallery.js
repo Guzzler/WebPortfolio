@@ -31,6 +31,16 @@ const games = [
       embeddable: true,
     },
     {
+      title: "Love Farm",
+      thumbnail: "https://img.itch.zone/aW1nLzEwNjY0MTI3LnBuZw==/315x250%23c/gpQ%2BOf.png",
+      url: "https://mrmathur.itch.io/love-at-first-sight",
+      embedUrl: "https://itch.io/embed-upload/6928454?color=FFFFFF",
+      description: "The farm is in a Hollywood crisis! Our bunny has been binge-watching Ryan Gosling movies and now has unrealistic expectations of love! Can you help the bunny get home without falling in love?",
+      technologies: "Unity",
+      releaseDate: "December 2022",
+      embeddable: true
+    },
+    {
       title: "InCUBE8",
       thumbnail:
         "https://img.itch.zone/aW1nLzk1MzI2ODkuanBn/315x250%23c/iE%2B53Q.jpg",
@@ -55,6 +65,7 @@ const games = [
       embeddable: true,
     },
   ];
+
 
   const GameGallery = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
