@@ -7,6 +7,7 @@ import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
 import portrait from "../../../assets/images/portrait.png";
+import sharangPortrait from '../../../assets/images/sharang.jpeg'
 import GameGallery from "./GameGallery";
 
 const BaseContent = () => {
@@ -45,7 +46,7 @@ const BaseContent = () => {
           <div
             className="portrait"
             style={{
-              backgroundImage: `url(${portrait})`,
+              backgroundImage: `url(${sharangPortrait})`,
             }}
           />
         </div>
