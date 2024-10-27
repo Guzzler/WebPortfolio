@@ -16,6 +16,28 @@ const ExperienceTimeline = (props) => {
             </li>
             <li className="timeline-item">
               <div className="timeline-info">
+                <span>June 2024 - Current</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">
+                  Founding Engineer, Stealth Startup (BetternowAI)
+                </h3>
+                <p>
+                  Developing innovative systems as part of the product team to
+                  provide individuals with a personalized, 24/7 coach for
+                  managing stress and anxiety. This coach seamlessly integrates
+                  cutting-edge technologies with proven therapeutic practices
+                  and psychological insights to support a user's mental health.
+                </p>
+                <p>
+                  <strong>Technologies Used: </strong>Python, React.js, SwiftUI,
+                  Typescript, FastAPI, CosmosDB.
+                </p>
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
                 <span>April 2022 - Aug 2022</span>
               </div>
               <div className="timeline-marker"></div>
@@ -191,34 +213,6 @@ const ExperienceTimeline = (props) => {
             </li>
             <li className="timeline-item">
               <div className="timeline-info">
-                <span>May 2018</span>
-              </div>
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <h3 className="timeline-title">Chess Kabaddi </h3>
-                <p>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.chesskabaddi.game"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    {" "}
-                    ChessKabaddi
-                  </a>{" "}
-                  is a novel multiplayer cross-platform game built with a state
-                  of the art adversarial AI which is a fusion of the
-                  intellectual stimulation of Chess with the fun of the Indian
-                  sport Kabaddi. I build this from scratch using Java and LibGdx
-                  to and made basic gameAI using Minimax Algorithms and basic
-                  neural networks.
-                </p>
-                <p>
-                  <strong>Technologies Used: </strong>Java, Libgdx.
-                </p>
-              </div>
-            </li>
-            <li className="timeline-item">
-              <div className="timeline-info">
                 <span>May 2021</span>
               </div>
               <div className="timeline-marker"></div>
@@ -292,6 +286,61 @@ const ExperienceTimeline = (props) => {
                   numbers. Worked as a co-creator and lead programmer,
                   responsible for ideation and implementation of the game within
                   a two day period.
+                </p>
+                <p>
+                  <strong>Technologies Used: </strong>Unity
+                </p>
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
+                <span>July 2023</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">Divided Destiny</h3>
+                <p>
+                  <a
+                    href="https://dpsguzzler.itch.io/divided-destiny"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {" "}
+                    Divided Destiny
+                  </a>{" "}
+                  is a 2D puzzle platformer where players guide two distinct
+                  characters—a man with magnetic abilities and a woman with
+                  agility and strength—on intersecting journeys of
+                  self-discovery. Through innovative gameplay mechanics, players
+                  solve intricate puzzles and explore themes of personal
+                  identity, challenging societal norms, and embracing non-binary
+                  perspectives in an immersive, thought-provoking experience.
+                </p>
+                <p>
+                  <strong>Technologies Used: </strong>Unity
+                </p>
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
+                <span>Sept 2024</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">Zen Garden</h3>
+                <p>
+                  <a
+                    href="https://dpsguzzler.itch.io/zen-garden"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {" "}
+                    Zen Garden
+                  </a>{" "}
+                  is a 2D Top Down Survival game with the objective of surviving
+                  as a zen monk in a garden. Worked as a co-creator, responsible
+                  for ideation and implementation of the game within a one week
+                  period.
                 </p>
                 <p>
                   <strong>Technologies Used: </strong>Unity

@@ -122,32 +122,40 @@ const BaseContent = () => {
                 interested in my work or share common interests!
               </div>
               <div className="padding-half--ends">
-                {" "}
-                I am currently a graduate student at Carnegie Mellon University
-                pursuing a masters in artificial intelligence and innovation and
-                work as a research assistant at the
+                I recently graduated with a Master's degree in Artificial
+                Intelligence and Innovation from Carnegie Mellon University
+                (2022 - 2024). I am currently working as a founding engineer at
+                a stealth AI startup in the mental health space in San
+                Francisco, CA. Some of our early work can be found{" "}
+                <a
+                  href="https://betternow.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  here
+                </a>
+                . Previously, I worked as a research assistant at the{" "}
                 <a
                   href="https://feifang.info/ai-for-social-good/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {" "}
                   AISOC
                 </a>{" "}
-                group under Dr.Fei Fang, on using large language models for
-                environment conservation efforts . I've spent the last few years
-                working on various projects including an open source educational
-                initiative for underserved students called
+                group under Dr. Fei Fang, focusing on using large language
+                models for environmental conservation efforts. I've spent the
+                last few years working on various projects, including an
+                open-source educational initiative for underserved students
+                called{" "}
                 <a
                   href="https://www.openshiksha.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {" "}
                   OpenShiksha
                 </a>
                 . My ultimate purpose is to become a socially relevant
-                technological entrepreneur, and use innovative technology to
+                technological entrepreneur and use innovative technology to
                 bridge the socio-economic gap for the underserved.
               </div>
             </div>
@@ -166,14 +174,13 @@ const BaseContent = () => {
                 {" "}
                 <strong>MS. Artificial Intelligence and Innovation </strong> /
                 Carnegie Mellon University
-                <div className="text-light-grey">2022 - Current</div>
+                <div className="text-light-grey">2022 - 2024</div>
                 <div>
                   <strong>Selected Coursework:</strong>{" "}
                   <span className="italics">
                     Machine Learning; Artificial Intelligence and Future
-                    Markets; Foundations of Computational Data Science; Software
-                    for Startups; Intro to Deep Learning; Advanced Natural
-                    Language Processing.{" "}
+                    Markets; Software for Startups; Intro to Deep Learning;
+                    Advanced Natural Language Processing.{" "}
                   </span>
                 </div>
               </div>
