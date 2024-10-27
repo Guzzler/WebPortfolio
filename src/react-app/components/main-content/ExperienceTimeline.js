@@ -179,7 +179,7 @@ const ExperienceTimeline = (props) => {
               <div className="timeline-info"></div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
-                <h2 className="timeline-title">Projects</h2>
+                <h2 className="timeline-title">OpenSource Projects</h2>
               </div>
             </li>
             <li className="timeline-item">
@@ -235,115 +235,6 @@ const ExperienceTimeline = (props) => {
                 <p>
                   <strong>Technologies Used: </strong>Javascript, React,js, AWS
                   Lambdas.
-                </p>
-              </div>
-            </li>
-            <li className="timeline-item">
-              <div className="timeline-info">
-                <span>Feb 2022</span>
-              </div>
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <h3 className="timeline-title">The Afterlife Party</h3>
-                <p>
-                  <a
-                    href="https://dpsguzzler.itch.io/the-afterlife-party"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    {" "}
-                    The Afterlife Party
-                  </a>{" "}
-                  is a puzzle platformer with the objective to cleanse an entire
-                  party of their undead spirits. Worked as a co-creator and lead
-                  programmer, responsible for ideation and implementation of the
-                  game within a one week period.
-                </p>
-                <p>
-                  <strong>Technologies Used: </strong>Unity
-                </p>
-              </div>
-            </li>
-            <li className="timeline-item">
-              <div className="timeline-info">
-                <span>July 2022</span>
-              </div>
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <h3 className="timeline-title">InCUBE8</h3>
-                <p>
-                  <a
-                    href="https://dpsguzzler.itch.io/incub"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    {" "}
-                    InCUBE8
-                  </a>{" "}
-                  is a 3d puzzle game with the objective to roll a die in
-                  multiple directions using the arrow keys to activate the
-                  platforms by landing the die's face on the corresponding
-                  numbers. Worked as a co-creator and lead programmer,
-                  responsible for ideation and implementation of the game within
-                  a two day period.
-                </p>
-                <p>
-                  <strong>Technologies Used: </strong>Unity
-                </p>
-              </div>
-            </li>
-            <li className="timeline-item">
-              <div className="timeline-info">
-                <span>July 2023</span>
-              </div>
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <h3 className="timeline-title">Divided Destiny</h3>
-                <p>
-                  <a
-                    href="https://dpsguzzler.itch.io/divided-destiny"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    {" "}
-                    Divided Destiny
-                  </a>{" "}
-                  is a 2D puzzle platformer where players guide two distinct
-                  characters—a man with magnetic abilities and a woman with
-                  agility and strength—on intersecting journeys of
-                  self-discovery. Through innovative gameplay mechanics, players
-                  solve intricate puzzles and explore themes of personal
-                  identity, challenging societal norms, and embracing non-binary
-                  perspectives in an immersive, thought-provoking experience.
-                </p>
-                <p>
-                  <strong>Technologies Used: </strong>Unity
-                </p>
-              </div>
-            </li>
-            <li className="timeline-item">
-              <div className="timeline-info">
-                <span>Sept 2024</span>
-              </div>
-              <div className="timeline-marker"></div>
-              <div className="timeline-content">
-                <h3 className="timeline-title">Zen Garden</h3>
-                <p>
-                  <a
-                    href="https://dpsguzzler.itch.io/zen-garden"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    {" "}
-                    Zen Garden
-                  </a>{" "}
-                  is a 2D Top Down Survival game with the objective of surviving
-                  as a zen monk in a garden. Worked as a co-creator, responsible
-                  for ideation and implementation of the game within a one week
-                  period.
-                </p>
-                <p>
-                  <strong>Technologies Used: </strong>Unity
                 </p>
               </div>
             </li>
