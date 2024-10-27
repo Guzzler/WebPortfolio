@@ -7,6 +7,7 @@ import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
 import portrait from "../../../assets/images/portrait.png";
+import GameGallery from "./GameGallery";
 
 const BaseContent = () => {
   const [loaded, setLoaded] = useState(false);
@@ -164,6 +165,7 @@ const BaseContent = () => {
             </div>
 
             <ExperienceTimeline />
+            {smallDevice ? <GameGallery /> : null}
           </Col>
           <Col md={8} sm={24} xs={24} className="resume-second-col">
             <div className="caption f24 text-green resume-caption">
@@ -180,7 +182,8 @@ const BaseContent = () => {
                   <span className="italics">
                     Machine Learning; Artificial Intelligence and Future
                     Markets; Software for Startups; Intro to Deep Learning;
-                    Advanced Natural Language Processing.{" "}
+                    Advanced Natural Language Processing; Large Language Models;
+                    On Device Machine Learning.{" "}
                   </span>
                 </div>
               </div>
@@ -233,16 +236,16 @@ const BaseContent = () => {
                 <span className="italics">
                   {" "}
                   React/Redux, Flutter, Flask, Django, OpenCV, NodeJS, Android,
-                  Socket.io, Keras, LibGdx, Unity{" "}
+                  Socket.io, Keras, LibGdx, Unity, Ipython, SwiftUI{" "}
                 </span>
               </div>
 
               <div className="padding--ends">
                 <span className="strong">Interests:</span>{" "}
                 <span className="italics">
-                  UI/UX development, Human Computer Interaction, Low Resource
-                  System Design, Deep Learning, Artificial Intelligence, Social
-                  Entrepreneurship{" "}
+                  Deep Learning, Artificial Intelligence, Social
+                  Entrepreneurship, Human Computer Interaction, Low Resource
+                  System Design, Mental Health Technology{" "}
                 </span>
               </div>
             </div>
@@ -256,7 +259,12 @@ const BaseContent = () => {
             </div>
           </Col>
         </Row>
-        <div className="overflow-auto padding-sides padding--ends"></div>
+        {!smallDevice ? (
+          <Row>
+            {" "}
+            <GameGallery />
+          </Row>
+        ) : null}
       </Col>
     </Row>
   );
