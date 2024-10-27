@@ -35,7 +35,7 @@ const games = [
       thumbnail: "https://img.itch.zone/aW1nLzEwNjY0MTI3LnBuZw==/315x250%23c/gpQ%2BOf.png",
       url: "https://mrmathur.itch.io/love-at-first-sight",
       embedUrl: "https://itch.io/embed-upload/6928454?color=FFFFFF",
-      description: "The farm is in a Hollywood crisis! Our bunny has been binge-watching Ryan Gosling movies and now has unrealistic expectations of love! Can you help the bunny get home without falling in love?",
+      description: "A reverse stealth 2D top-down game where you help a love-struck bunny avoid falling for toxic relationships on the farm.",
       technologies: "Unity",
       releaseDate: "December 2022",
       embeddable: true
