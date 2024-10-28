@@ -191,7 +191,7 @@ const ExperienceTimeline = (props) => {
                 <h3 className="timeline-title">Openshiksha Initiative </h3>
                 <p>
                   <a
-                    href="https://www.openshiksha.org"
+                    href="https://github.com/openshiksha/openshiksha"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
@@ -220,7 +220,7 @@ const ExperienceTimeline = (props) => {
                 <h3 className="timeline-title">VaccinePost</h3>
                 <p>
                   <a
-                    href="https://vaccinepost.co.in"
+                    href="https://github.com/Guzzler/Cowin-Notification-System"
                     target="_blank"
                     rel="noreferrer noopener"
                   >

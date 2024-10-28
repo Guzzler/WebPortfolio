@@ -150,7 +150,7 @@ const BaseContent = () => {
                 open-source educational initiative for underserved students
                 called{" "}
                 <a
-                  href="https://www.openshiksha.org/"
+                  href="https://github.com/openshiksha/openshiksha/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
