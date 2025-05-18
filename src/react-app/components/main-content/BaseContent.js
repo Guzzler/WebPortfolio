@@ -7,7 +7,7 @@ import "./BaseContent.css";
 import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
 import portrait from "../../../assets/images/portrait.png";
-import sharangPortrait from '../../../assets/images/sharang.jpeg'
+import sharangPortrait from "../../../assets/images/sharang.jpeg";
 import GameGallery from "./GameGallery";
 
 const BaseContent = () => {
@@ -127,8 +127,8 @@ const BaseContent = () => {
                 I recently graduated with a Master's degree in Artificial
                 Intelligence and Innovation from Carnegie Mellon University
                 (2022 - 2024). I am currently working as a founding engineer at
-                a stealth AI startup in the mental health space in San
-                Francisco, CA. Some of our early work can be found{" "}
+                a stealth AI startup in San Francisco, CA. Some of our early
+                work can be found{" "}
                 <a
                   href="https://betternow.ai"
                   target="_blank"

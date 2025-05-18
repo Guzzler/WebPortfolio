@@ -21,14 +21,12 @@ const ExperienceTimeline = (props) => {
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
-                  Founding Engineer, Stealth Startup (BetternowAI)
+                  Founding Engineer, Stealth Startup (PersonaAI)
                 </h3>
                 <p>
-                  Developing innovative systems as part of the product team to
-                  provide individuals with a personalized, 24/7 coach for
-                  managing stress and anxiety. This coach seamlessly integrates
-                  cutting-edge technologies with proven therapeutic practices
-                  and psychological insights to support a user's mental health.
+                  Engineering the core intelligence and adaptive behavioral
+                  systems for a platform to build 3D AI avatars with rich,
+                  customizable behaviors and interactive visual experiences.
                 </p>
                 <p>
                   <strong>Technologies Used: </strong>Python, React.js, SwiftUI,
