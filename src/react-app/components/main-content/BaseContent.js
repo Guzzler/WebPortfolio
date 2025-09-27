@@ -127,10 +127,10 @@ const BaseContent = () => {
                 I recently graduated with a Master's degree in Artificial
                 Intelligence and Innovation from Carnegie Mellon University
                 (2022 - 2024). I am currently working as a founding engineer at
-                a stealth AI startup in San Francisco, CA. Some of our early
-                work can be found{" "}
+                a Persona AI in San Francisco, CA. Some of our early work can be
+                found{" "}
                 <a
-                  href="https://betternow.ai"
+                  href="https://persona-ai.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

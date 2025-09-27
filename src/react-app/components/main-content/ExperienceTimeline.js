@@ -21,7 +21,7 @@ const ExperienceTimeline = (props) => {
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
-                  Founding Engineer, Stealth Startup (PersonaAI)
+                  Founding Engineer, Persona AI
                 </h3>
                 <p>
                   Engineering the core intelligence and adaptive behavioral
