@@ -1,5 +1,6 @@
+/* Legacy colors (keeping for compatibility) */
 .background-green {
-  background-color: #00887A !important;
+  background-color: #3b82f6 !important;
 }
 
 .background-peach {
@@ -19,9 +20,72 @@
 }
 
 .background-blue {
-  background-color: #0a1c3f !important;
+  background: #1e293b !important;
 }
 
 .background-offwhite {
-  background-color: #FFFFFC !important;
+  background-color: #f8fafc !important;
+}
+
+/* New Modern Color System */
+.background-dark {
+  background: #0f172a !important;
+}
+
+.background-light {
+  background-color: #f8fafc !important;
+}
+
+/* Primary color */
+.gradient-primary {
+  background: #3b82f6;
+}
+
+/* Dark background for sidebar */
+.gradient-dark {
+  background: #1e293b;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Card backgrounds */
+.card-bg {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.card-bg-hover {
+  transition: all 0.2s ease;
+}
+
+.card-bg-hover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
 }

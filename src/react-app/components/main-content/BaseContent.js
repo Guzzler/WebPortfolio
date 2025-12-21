@@ -12,6 +12,7 @@ import GameGallery from "./GameGallery";
 
 const BaseContent = () => {
   const [loaded, setLoaded] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const smallDevice = isSmallDevice();
 
   useEffect(() => {
@@ -19,6 +20,10 @@ const BaseContent = () => {
     img.src = portrait;
     img.onload = () => setLoaded(true);
   }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   if (!loaded) {
     return (
@@ -31,8 +36,21 @@ const BaseContent = () => {
     );
   }
 
+  const programmingLanguages = ["Python", "C++", "Java", "SQL", "HTML", "CSS", "Javascript", "XML", "Typescript", "Golang"];
+  const tools = ["React/Redux", "Flutter", "Flask", "Django", "OpenCV", "NodeJS", "Android", "Socket.io", "Keras", "LibGdx", "Unity", "Ipython", "SwiftUI"];
+  const interests = ["Deep Learning", "Artificial Intelligence", "Social Entrepreneurship", "Human Computer Interaction", "Low Resource System Design", "Mental Health Technology"];
+
+  const hobbies = [
+    { icon: "fa-gamepad", text: "Building Games" },
+    { icon: "fa-futbol", text: "Football/Basketball" },
+    { icon: "fa-trophy", text: "League of Legends" },
+    { icon: "fa-desktop", text: "PC Gaming" },
+    { icon: "fa-tv", text: "Watching Sports" },
+    { icon: "fa-chess", text: "Playing Board Games" }
+  ];
+
   return (
-    <Row className="width-100 height-min-100 background-white">
+    <Row className={`width-100 height-min-100 ${darkMode ? 'dark-mode' : ''}`}>
       <Col
         span={4}
         md={8}
@@ -40,22 +58,35 @@ const BaseContent = () => {
         sm={24}
         xs={24}
         xxl={4}
-        className="left-column background-blue roboto-font f18 text-white"
+        className="left-column inter-font f16 text-white"
       >
+        <button
+          className="dark-mode-toggle"
+          onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
+        >
+          <i className={`fa ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+        </button>
+
         <div className="loading-screen">
-          <div
-            className="portrait"
-            style={{
-              backgroundImage: `url(${sharangPortrait})`,
-            }}
-          />
+          <div className="portrait-wrapper">
+            <div className="portrait-ring"></div>
+            <div
+              className="portrait"
+              style={{
+                backgroundImage: `url(${sharangPortrait})`,
+              }}
+            />
+          </div>
         </div>
-        <div className="text-left cv-text-details">
-          <div className="caption f14 text-green cv-caption">Name</div>
-          <div>Sharang Pai</div>
-          <div className="caption f14 text-green cv-caption">Focus</div>
-          <div>Computer Science / Artificial Intelligence </div>
-          <div className="caption f14 text-green cv-caption">Say Hello</div>
+        <div className="cv-text-details">
+          <div className="cv-name">Sharang Pai</div>
+          <div className="cv-tagline">Building AI for the future</div>
+
+          <div className="cv-caption">Focus</div>
+          <div className="cv-focus">Computer Science / Artificial Intelligence</div>
+
+          <div className="cv-caption">Say Hello</div>
           <div>
             <a
               className="text-white mailtolink"
@@ -64,42 +95,40 @@ const BaseContent = () => {
               sharangpai123@gmail.com
             </a>
           </div>
-          <div className="caption f14 text-green cv-caption">Connect</div>
-          <div>
-            <div className="connect-button-container">
-              <ul className="connect-buttons">
-                <li className="connect-button">
-                  <a
-                    className="connect-link"
-                    href="https://www.github.com/Guzzler"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="connect-button">
-                  <a
-                    className="connect-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.linkedin.com/in/sharang-pai/"
-                  >
-                    <i className="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li className="connect-button">
-                  <a
-                    className="connect-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://sharangpai.me"
-                  >
-                    <i className="fa fa-globe" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+
+          <div className="connect-button-container">
+            <ul className="connect-buttons">
+              <li className="connect-button">
+                <a
+                  className="connect-link"
+                  href="https://www.github.com/Guzzler"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fa fa-github" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li className="connect-button">
+                <a
+                  className="connect-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/in/sharang-pai/"
+                >
+                  <i className="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li className="connect-button">
+                <a
+                  className="connect-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://sharangpai.me"
+                >
+                  <i className="fa fa-globe" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </Col>
@@ -109,25 +138,25 @@ const BaseContent = () => {
         xxl={20}
         sm={24}
         xs={24}
-        className="resume-main-content roboto-font"
+        className="resume-main-content inter-font"
         style={smallDevice ? { minHeight: "100vh" } : { height: "100vh" }}
       >
         <Row>
           <Col md={16} sm={24} xs={24} className="resume-first-col">
-            <div className="caption f24 text-green resume-caption">About </div>
-            <div className="f14 text-black">
-              <div className="padding-half--ends">
+            <div className="resume-caption">About</div>
+            <div className="about-content">
+              <p>
                 I'm a computer scientist interested in the intersection of
                 information technology and data science for socially relevant
                 applications. This webpage is an attempt to structure some of my
                 ideas and projects. Feel free to get in touch if you're
                 interested in my work or share common interests!
-              </div>
-              <div className="padding-half--ends">
+              </p>
+              <p>
                 I recently graduated with a Master's degree in Artificial
                 Intelligence and Innovation from Carnegie Mellon University
                 (2022 - 2024). I am currently working as a founding engineer at
-                a Persona AI in San Francisco, CA. Some of our early work can be
+                Persona AI in San Francisco, CA. Some of our early work can be
                 found{" "}
                 <a
                   href="https://persona-ai.ai"
@@ -159,110 +188,90 @@ const BaseContent = () => {
                 . My ultimate purpose is to become a socially relevant
                 technological entrepreneur and use innovative technology to
                 bridge the socio-economic gap for the underserved.
-              </div>
-            </div>
-            <div className="caption f24 text-green resume-caption">
-              EXPERIENCE{" "}
+              </p>
             </div>
 
+            <div className="resume-caption">Experience</div>
             <ExperienceTimeline />
             {smallDevice ? <GameGallery /> : null}
           </Col>
+
           <Col md={8} sm={24} xs={24} className="resume-second-col">
-            <div className="caption f24 text-green resume-caption">
-              EDUCATION{" "}
-            </div>
-            <div className="f14 text-black">
-              <div className="padding--ends">
-                {" "}
-                <strong>MS. Artificial Intelligence and Innovation </strong> /
-                Carnegie Mellon University
-                <div className="text-light-grey">2022 - 2024</div>
-                <div>
-                  <strong>Selected Coursework:</strong>{" "}
-                  <span className="italics">
-                    Machine Learning; Artificial Intelligence and Future
-                    Markets; Software for Startups; Intro to Deep Learning;
-                    Advanced Natural Language Processing; Large Language Models;
-                    On Device Machine Learning.{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="padding--ends">
-                {" "}
-                <strong>
-                  BTech. Computers and Communication Engineering{" "}
-                </strong>{" "}
-                / Manipal Institute of Technology (9.64/10 GPA)
-                <div className="text-light-grey">2015 - 2019</div>
-                <div>
-                  <strong>Selected Coursework:</strong>{" "}
-                  <span className="italics">
-                    Operating Systems; Artificial Intelligence; Pattern
-                    Recognition; Computer Architecture; Embedded System Design;
-                    Neural Networks and Fuzzy Logic; Natural Computing; Human
-                    Computer Interaction; Computer Vision.{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="padding--ends">
-                {" "}
-                <strong>High School </strong> / Delhi Public School, Pune
-                <div className="text-light-grey">2003 - 2015</div>
-                <div>
-                  Graduated as the head of the student council body governing
-                  over 2500 students. Received multiple scholars honours (given
-                  for academic excellence) and was part of both the basketball
-                  and football varsity teams, having captained the basketball
-                  team for a brief period. Qualified for the Indian National
-                  Informatics Olympiad (2012/2013) and also participated in
-                  Google Code-in (2013).
-                </div>
+            <div className="resume-caption">Education</div>
+
+            <div className="education-card">
+              <div className="degree">MS. Artificial Intelligence and Innovation</div>
+              <div className="school">Carnegie Mellon University</div>
+              <div className="year-badge">2022 - 2024</div>
+              <div className="coursework">
+                <span className="coursework-label">Selected Coursework: </span>
+                Machine Learning; Artificial Intelligence and Future Markets; Software for Startups; Intro to Deep Learning; Advanced Natural Language Processing; Large Language Models; On Device Machine Learning.
               </div>
             </div>
-            <div className="caption f24 text-green resume-caption">
-              Technical{" "}
-            </div>
-            <div className="f16 text-black">
-              <div className="padding--ends">
-                <span className="strong">Programming Languages:</span>
-                <span className="italics">
-                  {" "}
-                  Python, C++, Java, SQL, HTML, CSS, Javascript, XML,
-                  Typescript, Golang{" "}
-                </span>
+
+            <div className="education-card">
+              <div className="degree">BTech. Computers and Communication Engineering</div>
+              <div className="school">Manipal Institute of Technology (9.64/10 GPA)</div>
+              <div className="year-badge">2015 - 2019</div>
+              <div className="coursework">
+                <span className="coursework-label">Selected Coursework: </span>
+                Operating Systems; Artificial Intelligence; Pattern Recognition; Computer Architecture; Embedded System Design; Neural Networks and Fuzzy Logic; Natural Computing; Human Computer Interaction; Computer Vision.
               </div>
-              <div className="padding--ends">
-                <span className="strong">Tools:</span>{" "}
-                <span className="italics">
-                  {" "}
-                  React/Redux, Flutter, Flask, Django, OpenCV, NodeJS, Android,
-                  Socket.io, Keras, LibGdx, Unity, Ipython, SwiftUI{" "}
-                </span>
+            </div>
+
+            <div className="education-card">
+              <div className="degree">High School</div>
+              <div className="school">Delhi Public School, Pune</div>
+              <div className="year-badge">2003 - 2015</div>
+              <div className="description">
+                Graduated as the head of the student council body governing over 2500 students. Received multiple scholars honours (given for academic excellence) and was part of both the basketball and football varsity teams, having captained the basketball team for a brief period. Qualified for the Indian National Informatics Olympiad (2012/2013) and also participated in Google Code-in (2013).
+              </div>
+            </div>
+
+            <div className="resume-caption">Technical</div>
+
+            <div className="skills-section">
+              <div className="skills-category">
+                <span className="skills-category-label">Programming Languages</span>
+                <div className="skill-tags">
+                  {programmingLanguages.map((lang, index) => (
+                    <span key={index} className="skill-tag">{lang}</span>
+                  ))}
+                </div>
               </div>
 
-              <div className="padding--ends">
-                <span className="strong">Interests:</span>{" "}
-                <span className="italics">
-                  Deep Learning, Artificial Intelligence, Social
-                  Entrepreneurship, Human Computer Interaction, Low Resource
-                  System Design, Mental Health Technology{" "}
-                </span>
+              <div className="skills-category">
+                <span className="skills-category-label">Tools & Frameworks</span>
+                <div className="skill-tags">
+                  {tools.map((tool, index) => (
+                    <span key={index} className="skill-tag">{tool}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="skills-category">
+                <span className="skills-category-label">Interests</span>
+                <div className="skill-tags">
+                  {interests.map((interest, index) => (
+                    <span key={index} className="skill-tag">{interest}</span>
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="caption f24 text-green resume-caption">
-              IN MY DOWN TIME{" "}
-            </div>
-            <div className="padding--ends f16 text-black">
-              <span className="strong">Hobbies:</span> Building new
-              games;Playing Football/Basketball;League of Legends;Gaming on my
-              PC;Watching Sports;Watching Anime;
+
+            <div className="resume-caption">In My Down Time</div>
+            <div className="hobbies-grid">
+              {hobbies.map((hobby, index) => (
+                <div key={index} className="hobby-item">
+                  <i className={`fa ${hobby.icon} hobby-icon`}></i>
+                  <span>{hobby.text}</span>
+                </div>
+              ))}
             </div>
           </Col>
         </Row>
         {!smallDevice ? (
           <Row>
-            {" "}
             <GameGallery />
           </Row>
         ) : null}

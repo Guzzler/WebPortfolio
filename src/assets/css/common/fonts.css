@@ -5,3 +5,14 @@
 .roboto-font {
     font-family: 'Roboto', sans-serif;
 }
+
+.inter-font {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Default body font */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

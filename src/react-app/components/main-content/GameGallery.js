@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; // Import carousel CSS
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { isMobile } from "react-device-detect";
-import "./GameGallery.css"; // Import custom CSS
+import "./GameGallery.css";
 
 const games = [
     {
@@ -81,30 +81,37 @@ const games = [
       return () => document.removeEventListener("keydown", handleEsc);
     }, []);
   
-    const settings = {
-      infinite: true,
-      dots: true,
-      speed: 500,
-      arrows: true,
-      autoplaySpeed: 3000,
-      autoplay: true,
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: false,
-            swipeToSlide: true,
-          },
-        },
-      ],
-    };
+const settings = {
+  infinite: true,
+  dots: true,
+  speed: 500,
+  arrows: true,
+  autoplaySpeed: 3000,
+  autoplay: true,
+  slidesToScroll: 1,
+
+  // ✅ default for largest screens
+  slidesToShow: 3,
+
+  responsive: [
+    {
+      breakpoint: 1536, // <= 1536px
+      settings: { slidesToShow: 2 },
+    },
+    {
+      breakpoint: 768, // <= 768px
+      settings: {
+        slidesToShow: 1,
+        dots: false,
+        swipeToSlide: true,
+      },
+    },
+  ],
+};
   
     const openModal = (game) => {
       if (isMobile) {
+        // On mobile, always open in new tab
         window.open(game.url, "_blank");
       } else {
         setActiveGame(game);
@@ -130,8 +137,11 @@ const games = [
                   <p className="game-date">{game.releaseDate}</p>
                   <p className="game-description">{game.description}</p>
                   <button className="play-button">
-                    {isMobile ? "View Game" : "Play Now"}
+                    {isMobile ? "View on itch.io" : "Play Now"}
                   </button>
+                  {isMobile && (
+                    <p className="mobile-hint">Best played on desktop</p>
+                  )}
                 </div>
               </div>
             </div>

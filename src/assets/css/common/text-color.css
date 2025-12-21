@@ -1,5 +1,10 @@
+/* Primary colors - updated to new palette */
 .text-green {
-  color: #00887A !important;
+  color: #3b82f6 !important;
+}
+
+.text-primary {
+  color: #3b82f6 !important;
 }
 
 .text-peach {
@@ -11,7 +16,7 @@
 }
 
 .text-offwhite {
-  color: #fffeee !important;
+  color: #f8fafc !important;
 }
 
 .text-black {
@@ -23,10 +28,30 @@
 }
 
 .text-blue {
-  color: #77A6F7 !important;
+  color: #3b82f6 !important;
 }
 
 .text-light-grey {
-  color: #C8CFD5 !important;
+  color: #94a3b8 !important;
 }
 
+/* New Modern Text Colors */
+.text-dark {
+  color: #1e293b !important;
+}
+
+.text-secondary {
+  color: #334155 !important;
+}
+
+.text-muted {
+  color: #64748b !important;
+}
+
+.text-light {
+  color: #94a3b8 !important;
+}
+
+.text-accent {
+  color: #60a5fa !important;
+}
