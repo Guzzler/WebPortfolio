@@ -89,20 +89,23 @@ const settings = {
   autoplaySpeed: 3000,
   autoplay: true,
   slidesToScroll: 1,
-
-  // ✅ default for largest screens
   slidesToShow: 3,
 
   responsive: [
     {
-      breakpoint: 1536, // <= 1536px
+      breakpoint: 1500,
+      settings: { slidesToShow: 3 },
+    },
+    {
+      breakpoint: 1300,
       settings: { slidesToShow: 2 },
     },
     {
-      breakpoint: 768, // <= 768px
+      breakpoint: 800,
       settings: {
         slidesToShow: 1,
-        dots: false,
+        arrows: false,
+        dots: true,
         swipeToSlide: true,
       },
     },
