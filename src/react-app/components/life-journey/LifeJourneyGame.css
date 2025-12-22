@@ -1,0 +1,146 @@
+.life-journey-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.back-to-portfolio {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-to-portfolio:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.back-to-portfolio i {
+  font-size: 12px;
+}
+
+.game-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 4px rgba(59, 130, 246, 0.3),
+    0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.game-wrapper canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.game-controls-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+  color: rgba(226, 232, 240, 0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  z-index: 100;
+}
+
+.game-controls-hint span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.game-controls-hint kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .game-wrapper {
+    max-width: 100vw;
+    border-radius: 0;
+  }
+
+  .back-to-portfolio {
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+.level-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 100;
+}
+
+.level-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 768px) {
+  .game-controls-hint {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .level-indicator {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
