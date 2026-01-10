@@ -1,6 +1,7 @@
 //* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./BaseContent.css";
@@ -290,6 +291,62 @@ const BaseContent = () => {
             <GameGallery />
           </Row>
         ) : null}
+        <Row style={{ marginTop: '30px', padding: '20px' }}>
+          <Col span={24}>
+            <div style={{
+              background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+              padding: '30px',
+              borderRadius: '12px',
+              textAlign: 'center',
+              boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)'
+            }}>
+              <h2 style={{
+                color: '#ffffff',
+                fontFamily: 'monospace',
+                fontSize: '28px',
+                marginBottom: '10px'
+              }}>
+                Life.run()
+              </h2>
+              <p style={{
+                color: '#e0e7ff',
+                fontFamily: 'monospace',
+                fontSize: '16px',
+                marginBottom: '20px'
+              }}>
+                Play through my life journey as a pixel art platformer game!
+              </p>
+              <Link
+                to="/life-game"
+                onClick={() => mixpanel.track('Life Game - Click from Portfolio')}
+              >
+                <button style={{
+                  background: '#ffffff',
+                  color: '#3b82f6',
+                  border: 'none',
+                  padding: '12px 30px',
+                  fontSize: '16px',
+                  fontFamily: 'monospace',
+                  fontWeight: 'bold',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                }}>
+                  Play Now →
+                </button>
+              </Link>
+            </div>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );
