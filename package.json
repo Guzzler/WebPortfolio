@@ -13,6 +13,7 @@
     "chessboardjsx": "^2.4.2",
     "circletype": "^2.3.0",
     "lodash": "^4.17.15",
+    "mixpanel-browser": "^2.73.0",
     "react": "^16.13.1",
     "react-device-detect": "^2.2.3",
     "react-dom": "^16.13.1",

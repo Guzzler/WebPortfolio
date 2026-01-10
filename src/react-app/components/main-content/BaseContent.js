@@ -9,6 +9,7 @@ import { isSmallDevice } from "../../../common/utils/index";
 import portrait from "../../../assets/images/portrait.png";
 import sharangPortrait from "../../../assets/images/sharang.jpeg";
 import GameGallery from "./GameGallery";
+import { mixpanel } from "../../../App";
 
 const BaseContent = () => {
   const [loaded, setLoaded] = useState(false);
@@ -23,6 +24,13 @@ const BaseContent = () => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+    mixpanel.track('Dark Mode Toggle', {
+      mode: !darkMode ? 'dark' : 'light'
+    });
+  };
+
+  const trackSocialClick = (platform) => {
+    mixpanel.track('Social Link Click', { platform });
   };
 
   if (!loaded) {
@@ -91,6 +99,7 @@ const BaseContent = () => {
             <a
               className="text-white mailtolink"
               href="mailto:sharangpai123@gmail.com"
+              onClick={() => mixpanel.track('Email Click')}
             >
               sharangpai123@gmail.com
             </a>
@@ -104,6 +113,7 @@ const BaseContent = () => {
                   href="https://www.github.com/Guzzler"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('GitHub')}
                 >
                   <i className="fa fa-github" aria-hidden="true"></i>
                 </a>
@@ -114,6 +124,7 @@ const BaseContent = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://www.linkedin.com/in/sharang-pai/"
+                  onClick={() => trackSocialClick('LinkedIn')}
                 >
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
@@ -124,6 +135,7 @@ const BaseContent = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://sharangpai.me"
+                  onClick={() => trackSocialClick('Website')}
                 >
                   <i className="fa fa-globe" aria-hidden="true"></i>
                 </a>
@@ -162,6 +174,7 @@ const BaseContent = () => {
                   href="https://persona-ai.ai"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => mixpanel.track('External Link', { destination: 'Persona AI' })}
                 >
                   here
                 </a>
@@ -170,6 +183,7 @@ const BaseContent = () => {
                   href="https://feifang.info/ai-for-social-good/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => mixpanel.track('External Link', { destination: 'AISOC' })}
                 >
                   AISOC
                 </a>{" "}
@@ -182,6 +196,7 @@ const BaseContent = () => {
                   href="https://github.com/openshiksha/openshiksha/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => mixpanel.track('External Link', { destination: 'OpenShiksha' })}
                 >
                   OpenShiksha
                 </a>

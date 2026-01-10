@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { isMobile } from "react-device-detect";
 import "./GameGallery.css";
+import { mixpanel } from "../../../App";
 
 const games = [
     {
@@ -70,7 +71,17 @@ const games = [
   const GameGallery = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [activeGame, setActiveGame] = useState(null);
-  
+
+    const closeModal = useCallback(() => {
+      if (activeGame) {
+        mixpanel.track('Game Modal Close', {
+          game_name: activeGame.title
+        });
+      }
+      setIsModalVisible(false);
+      setActiveGame(null);
+    }, [activeGame]);
+
     useEffect(() => {
       const handleEsc = (event) => {
         if (event.key === "Escape") {
@@ -79,8 +90,8 @@ const games = [
       };
       document.addEventListener("keydown", handleEsc);
       return () => document.removeEventListener("keydown", handleEsc);
-    }, []);
-  
+    }, [closeModal]);
+
 const settings = {
   infinite: true,
   dots: true,
@@ -111,8 +122,14 @@ const settings = {
     },
   ],
 };
-  
+
     const openModal = (game) => {
+      // Track game click
+      mixpanel.track('Game Click', {
+        game_name: game.title,
+        device: isMobile ? 'mobile' : 'desktop'
+      });
+
       if (isMobile) {
         // On mobile, always open in new tab
         window.open(game.url, "_blank");
@@ -120,11 +137,6 @@ const settings = {
         setActiveGame(game);
         setIsModalVisible(true);
       }
-    };
-  
-    const closeModal = () => {
-      setIsModalVisible(false);
-      setActiveGame(null);
     };
   
     return (
