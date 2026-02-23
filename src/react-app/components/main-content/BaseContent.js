@@ -167,18 +167,27 @@ const BaseContent = () => {
               <p>
                 I recently graduated with a Master's degree in Artificial
                 Intelligence and Innovation from Carnegie Mellon University
-                (2022 - 2024). I am currently working as a founding engineer at
-                Persona AI in San Francisco, CA. Some of our early work can be
-                found{" "}
+                (2022 - 2024). I was a founding ML engineer at{" "}
                 <a
                   href="https://persona-ai.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => mixpanel.track('External Link', { destination: 'Persona AI' })}
                 >
-                  here
+                  Persona AI
                 </a>
-                . Previously, I worked as a research assistant at the{" "}
+                , which was acquired by{" "}
+                <a
+                  href="https://lumalabs.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => mixpanel.track('External Link', { destination: 'Luma AI' })}
+                >
+                  Luma AI
+                </a>
+                , where I now work as a Member of Technical Staff on their
+                new agentic product for image and video generation design.
+                Previously, I worked as a research assistant at the{" "}
                 <a
                   href="https://feifang.info/ai-for-social-good/"
                   target="_blank"

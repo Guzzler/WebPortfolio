@@ -27,17 +27,37 @@ const ExperienceTimeline = () => {
             </li>
             <li className="timeline-item">
               <div className="timeline-info">
-                <span>June 2024 - Current</span>
+                <span>Feb 2026 - Present</span>
               </div>
               <div className="timeline-marker"></div>
               <div className="timeline-content">
                 <h3 className="timeline-title">
-                  Founding Engineer, Persona AI
+                  Member of Technical Staff, Product Engineering, Luma AI
                 </h3>
                 <p>
-                  Engineering the core intelligence and adaptive behavioral
-                  systems for a platform to build 3D AI avatars with rich,
-                  customizable behaviors and interactive visual experiences.
+                  Working on Luma's new agentic product for image/video
+                  generation design — built for studio and production workflows,
+                  end-to-end from agent orchestration and tool use to full-stack
+                  delivery.
+                </p>
+                <TechTags technologies="Python, React.js, Typescript" />
+              </div>
+            </li>
+            <li className="timeline-item">
+              <div className="timeline-info">
+                <span>June 2024 - Feb 2026</span>
+              </div>
+              <div className="timeline-marker"></div>
+              <div className="timeline-content">
+                <h3 className="timeline-title">
+                  Founding ML Engineer, Persona AE Inc (Now Luma AI)
+                </h3>
+                <p>
+                  Built core AI platform primitives for a multi-modal avatar
+                  product spanning wellness, sales, and medical intake — covering
+                  model integration, orchestration, and application-layer
+                  tooling. Owned production avatar systems end-to-end including
+                  memory, low-latency inference, and tools.
                 </p>
                 <TechTags technologies="Python, React.js, SwiftUI, Typescript, FastAPI, CosmosDB" />
               </div>
