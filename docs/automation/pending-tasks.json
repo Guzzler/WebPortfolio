@@ -19,7 +19,8 @@
         "Implemented a new control-room hero, refreshed the profile rail, tightened narrative copy, and reframed the Games section so it reads as part of Sharang's identity.",
         "Added stronger focus states and keyboard handling for interactive elements, including game cards and timeline links.",
         "Updated metadata to better match the portfolio's AI-engineer-plus-creative-builder positioning.",
-        "Fixed a Mixpanel initialization crash in App.js so analytics calls do not break portfolio interactions when the token is unavailable."
+        "Fixed a Mixpanel initialization crash in App.js so analytics calls do not break portfolio interactions when the token is unavailable.",
+        "Opened PR #2 with screenshot artifacts linked in the body."
       ],
       "touchedFiles": [
         "public/index.html",
@@ -32,7 +33,7 @@
         "docs/automation/artifacts/2026-03-13-control-room-intro/README.md",
         "docs/automation/pending-tasks.json"
       ],
-      "prLink": null,
+      "prLink": "https://github.com/Guzzler/WebPortfolio/pull/2",
       "artifactPaths": [
         "docs/automation/artifacts/2026-03-13-control-room-intro/README.md",
         "docs/automation/artifacts/2026-03-13-control-room-intro/desktop-hero-dark.png",
