@@ -3,7 +3,7 @@
   "tasks": [
     {
       "id": "2026-03-13-personal-control-room-intro",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "title": "Build a personal control-room intro system",
       "rationale": "The current portfolio is polished but reads too much like a generic product site. A stronger first-screen narrative can better unify Sharang's AI engineering depth, social-impact motivation, and creative interests without changing the site's one-page structure.",
@@ -13,7 +13,36 @@
         "Desktop and mobile layouts remain responsive and visually intentional.",
         "Dark mode, light mode, and keyboard focus states remain accessible and legible.",
         "The resulting design avoids generic SaaS styling and avoids adding unsupported claims."
-      ]
+      ],
+      "branch": "codex/auto-control-room-intro-2026-03-13",
+      "notes": [
+        "Implemented the new control-room hero, refreshed the profile rail, tightened narrative copy, and reframed the Games section so it reads as part of Sharang's identity.",
+        "Added stronger focus states and keyboard handling for interactive elements, including game cards and timeline links.",
+        "Updated metadata to better match the portfolio's AI-engineer-plus-creative-builder positioning.",
+        "Blocked from completing notifications, push/PR creation, and browser verification because the sandbox rejected ntfy transport, GitHub CLI config access, SSH git push, and local Node execution."
+      ],
+      "touchedFiles": [
+        "public/index.html",
+        "src/react-app/components/main-content/BaseContent.css",
+        "src/react-app/components/main-content/BaseContent.js",
+        "src/react-app/components/main-content/GameGallery.css",
+        "src/react-app/components/main-content/GameGallery.js",
+        "src/react-app/components/main-content/timeline.css",
+        "docs/automation/artifacts/2026-03-13-control-room-intro/README.md",
+        "docs/automation/pending-tasks.json"
+      ],
+      "prLink": null,
+      "artifactPaths": [
+        "docs/automation/artifacts/2026-03-13-control-room-intro/README.md"
+      ],
+      "verification": {
+        "lint": "blocked: Node/npm execution from the sandbox was denied",
+        "test": "blocked: Node/npm execution from the sandbox was denied",
+        "build": "blocked: Node/npm execution from the sandbox was denied",
+        "chromeDesktop": "blocked: local app launch unavailable because Node execution is denied",
+        "chromeMobile": "blocked: local app launch unavailable because Node execution is denied",
+        "manualCodeReview": "completed: reviewed BaseContent, GameGallery, metadata, and CSS diffs after patching"
+      }
     }
   ]
 }

@@ -4,14 +4,19 @@
    ======================================== */
 
 /* Link styles */
-a {
+.timeline a {
   color: var(--primary, #3b82f6);
   transition: all 0.2s ease;
 }
 
-a:hover {
+.timeline a:hover {
   color: var(--primary-hover, #2563eb);
   text-decoration: none;
+}
+
+.timeline a:focus-visible {
+  outline: 2px solid var(--accent, #f2ba72);
+  outline-offset: 3px;
 }
 
 /* ========================================
