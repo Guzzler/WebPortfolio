@@ -20,7 +20,8 @@
         "Added stronger focus states and keyboard handling for interactive elements, including game cards and timeline links.",
         "Updated metadata to better match the portfolio's AI-engineer-plus-creative-builder positioning.",
         "Fixed a Mixpanel initialization crash in App.js so analytics calls do not break portfolio interactions when the token is unavailable.",
-        "Opened PR #2 with screenshot artifacts linked in the body."
+        "Opened PR #2 with screenshot artifacts linked in the body.",
+        "Follow-up review fixes reordered the mobile stack so the control-room hero leads on small screens and promoted the major resume section labels to semantic h2 headings."
       ],
       "touchedFiles": [
         "public/index.html",
@@ -52,8 +53,8 @@
         "lint": "passed: npm run lint",
         "test": "no matching tests: react-scripts reported no matching test files for the current repo glob",
         "build": "passed: npm run build",
-        "chromeDesktop": "passed: verified hero layout, games section, and game modal in headless Chrome at 1440px width",
-        "chromeMobile": "passed: verified hero layout, games section, and outbound game link behavior in headless Chrome at 390px width",
+        "chromeDesktop": "passed: verified the refreshed hero, games section, and game modal in headless Chrome at 1440px width after the review fixes",
+        "chromeMobile": "passed: verified the hero now leads the first viewport and the games section remains responsive in headless Chrome at 390px width after the review fixes",
         "overflowCheck": "passed: DOM scrollWidth matched clientWidth on both desktop and mobile viewports"
       }
     }

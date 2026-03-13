@@ -1,6 +1,7 @@
 # Control Room Intro Artifacts
 
 Generated on 2026-03-13 from the local production build served at `http://127.0.0.1:4173`.
+Refreshed on 2026-03-13 after the PR review fixes for mobile hero ordering and semantic section headings.
 
 ## Screenshots
 - `desktop-hero-dark.png`

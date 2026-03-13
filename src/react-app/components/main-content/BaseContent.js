@@ -377,7 +377,7 @@ const BaseContent = () => {
           <Row className="resume-sections-row">
             <Col md={16} sm={24} xs={24} className="resume-first-col">
               <section id="about">
-                <div className="resume-caption">About</div>
+                <h2 className="resume-caption">About</h2>
                 <p className="section-lede">
                   Serious engineering, social relevance, and a little creative
                   stubbornness are the through-lines.
@@ -445,7 +445,7 @@ const BaseContent = () => {
               </section>
 
               <section id="experience">
-                <div className="resume-caption">Experience</div>
+                <h2 className="resume-caption">Experience</h2>
                 <p className="section-lede">
                   So far it has been a mix of product engineering, founding-team
                   work, research, and open-source projects across AI, climate,
@@ -459,7 +459,7 @@ const BaseContent = () => {
 
             <Col md={8} sm={24} xs={24} className="resume-second-col">
               <section id="education">
-                <div className="resume-caption">Education</div>
+                <h2 className="resume-caption">Education</h2>
                 <p className="section-lede">
                   Formal AI training layered on systems, entrepreneurship, and HCI.
                 </p>
@@ -505,7 +505,7 @@ const BaseContent = () => {
               </section>
 
               <section id="technical">
-                <div className="resume-caption">Technical</div>
+                <h2 className="resume-caption">Technical</h2>
                 <p className="section-lede">
                   Tools I reach for most often when shipping products and prototypes.
                 </p>
@@ -547,7 +547,7 @@ const BaseContent = () => {
               </section>
 
               <section id="downtime">
-                <div className="resume-caption">In My Down Time</div>
+                <h2 className="resume-caption">In My Down Time</h2>
                 <p className="section-lede">
                   Play matters too. It shows up in sports, games, and system-heavy
                   hobbies.
