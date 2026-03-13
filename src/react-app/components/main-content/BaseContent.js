@@ -34,15 +34,15 @@ const controlRoomHighlights = [
     label: "Play with",
     title: "Games, sports, and systems feel",
     detail:
-      "Games are where I experiment with pacing, feedback, and delight; sports and board games keep the competitive side honest.",
+      "Games are where I get to play with feel, feedback, and small interactive ideas for fun; sports and board games keep the competitive side alive.",
   },
 ];
 
 const proofPoints = [
   {
     eyebrow: "Now",
-    value: "Luma AI and Persona",
-    note: "From founding-ML work to product engineering on agentic products.",
+    value: "Luma AI",
+    note: "Building agentic creative tooling for image and video workflows.",
   },
   {
     eyebrow: "Training",
@@ -281,10 +281,10 @@ const BaseContent = () => {
             <div className="control-room-grid">
               <div className="control-room-story">
                 <span className="control-room-eyebrow">
-                  AI engineer / product builder / open-source minded / creatively restless
+                  AI engineer / product builder / open-source minded / socially motivated
                 </span>
                 <h1 className="control-room-title">
-                  I build AI products that feel ambitious, useful, and deeply human.
+                  I build AI products that feel ambitious, socially impactful, and deeply human-centered.
                 </h1>
                 <p className="control-room-copy">
                   Today I am on product engineering at{" "}
@@ -329,7 +329,7 @@ const BaseContent = () => {
 
                 <div className="intro-actions">
                   <a
-                    className="intro-action intro-action-primary"
+                    className="intro-action"
                     href="#experience"
                     onClick={() => trackIntroAction("experience")}
                   >
@@ -447,8 +447,9 @@ const BaseContent = () => {
               <section id="experience">
                 <div className="resume-caption">Experience</div>
                 <p className="section-lede">
-                  A mix of product engineering, founding roles, research, and
-                  open-source work across AI, climate, fintech, and education.
+                  So far it has been a mix of product engineering, founding-team
+                  work, research, and open-source projects across AI, climate,
+                  fintech, and education.
                 </p>
                 <ExperienceTimeline />
               </section>

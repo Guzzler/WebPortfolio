@@ -429,12 +429,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-.intro-action-primary {
-  background: linear-gradient(135deg, rgba(88, 199, 255, 0.9), rgba(57, 143, 197, 0.92));
-  color: #07111d;
-  border-color: transparent;
-}
-
 .control-room-panel-grid {
   display: grid;
   gap: 14px;
