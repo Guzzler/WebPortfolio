@@ -1,48 +1,29 @@
-/* ========================================
-   GAME GALLERY - CLEAN MODERN STYLES
-   ======================================== */
-
 .game-gallery {
   width: 100%;
-  padding: 48px 60px;
-  background: var(--light-bg, #ffffff);
+  margin-top: 28px;
+  padding: 28px 0 54px;
   position: relative;
 }
 
-.dark-mode .game-gallery {
-  background: var(--light-bg, #0f172a);
+.gallery-header {
+  max-width: 48rem;
+  margin: 0 0 26px;
 }
 
 .gallery-heading {
-  text-align: center;
-  font-size: 22px;
+  margin: 12px 0 12px;
+  color: var(--text-primary, #162338);
+  font-size: 30px;
   font-weight: 700;
-  color: var(--text-primary, #1e293b);
-  margin-bottom: 32px;
-  position: relative;
-  display: inline-block;
-  width: 100%;
+  letter-spacing: -0.04em;
 }
 
-.dark-mode .gallery-heading {
-  color: var(--text-primary, #f1f5f9);
+.gallery-copy {
+  margin: 0;
+  color: var(--text-muted, #5f748f);
+  font-size: 14px;
+  line-height: 1.8;
 }
-
-.gallery-heading::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 3px;
-  background: var(--primary, #3b82f6);
-  border-radius: 2px;
-}
-
-/* ========================================
-   SLICK SLIDER EQUAL HEIGHT FIX
-   ======================================== */
 
 .slick-track {
   display: flex !important;
@@ -56,245 +37,190 @@
   height: 100%;
 }
 
-/* ========================================
-   GAME SLIDE & CARD
-   ======================================== */
-
 .game-slide {
-  position: relative;
-  text-align: center;
-  padding: 16px;
   height: 100%;
+  padding: 10px;
 }
 
 .game-card {
   position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 12px;
-  transition: all 0.2s ease;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  background: var(--card-bg, #ffffff);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  border: 1px solid var(--border-color, #e2e8f0);
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
-}
-
-.dark-mode .game-card {
-  background: var(--card-bg, #1e293b);
-  border-color: var(--border-color, #334155);
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 22px;
+  border: 1px solid var(--border-color, rgba(102, 123, 152, 0.18));
+  background:
+    linear-gradient(180deg, rgba(88, 199, 255, 0.08), transparent 34%),
+    var(--card-bg, rgba(255, 255, 255, 0.88));
+  box-shadow: var(--shadow-xs, 0 8px 24px rgba(26, 41, 61, 0.06));
+  transition: var(--transition, all 0.24s ease);
+  outline: none;
 }
 
 .game-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm, 0 18px 40px rgba(26, 41, 61, 0.08));
 }
 
-.dark-mode .game-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+.game-card:focus-visible,
+.play-button:focus-visible,
+.close-button:focus-visible {
+  outline: 2px solid var(--accent, #f2ba72);
+  outline-offset: 4px;
 }
-
-/* ========================================
-   GAME THUMBNAIL
-   ======================================== */
 
 .game-thumbnail {
-  border-radius: 12px 12px 0 0;
   width: 100%;
   height: auto;
   aspect-ratio: 315 / 250;
   object-fit: cover;
+  border-radius: 22px 22px 0 0;
   transition: transform 0.3s ease;
-  flex-shrink: 0;
 }
 
 .game-card:hover .game-thumbnail {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
-/* ========================================
-   GAME INFO
-   ======================================== */
-
 .game-info {
-  padding: 20px;
-  text-align: center;
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  min-height: 180px;
+  min-height: 230px;
+  padding: 20px;
+}
+
+.game-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.game-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 199, 255, 0.18);
+  background: rgba(88, 199, 255, 0.08);
+  color: var(--primary, #58c7ff);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.game-pill-muted {
+  color: var(--text-muted, #5f748f);
+  border-color: var(--border-color, rgba(102, 123, 152, 0.18));
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.dark-mode .game-pill-muted {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .game-info h3 {
-  margin: 0 0 6px 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary, #1e293b);
-  flex-shrink: 0;
-}
-
-.dark-mode .game-info h3 {
-  color: var(--text-primary, #f1f5f9);
-}
-
-.game-date {
-  font-size: 12px;
-  color: var(--text-muted, #64748b);
-  margin-bottom: 10px;
-  font-weight: 500;
-  flex-shrink: 0;
+  margin: 0 0 10px;
+  color: var(--text-primary, #162338);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .game-description {
+  margin: 0 0 16px;
+  color: var(--text-muted, #5f748f);
   font-size: 13px;
-  color: var(--text-muted, #64748b);
-  margin-bottom: 16px;
-  line-height: 1.5;
+  line-height: 1.7;
   flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
-
-/* ========================================
-   PLAY BUTTON
-   ======================================== */
 
 .play-button {
-  background: var(--primary, #3b82f6);
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  cursor: pointer;
-  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(88, 199, 255, 0.92), rgba(57, 143, 197, 0.92));
+  color: #07111d;
   font-size: 13px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
-  flex-shrink: 0;
-  margin-top: auto;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 28px rgba(55, 141, 196, 0.18);
 }
-
-.play-button:hover {
-  background: var(--primary-hover, #2563eb);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
-}
-
-/* ========================================
-   MOBILE HINT
-   ======================================== */
 
 .mobile-hint {
+  margin: 12px 0 0;
+  color: var(--text-light, #8b9db5);
   font-size: 11px;
-  color: var(--text-light, #94a3b8);
-  margin-top: 8px;
-  margin-bottom: 0;
-  font-style: italic;
-  flex-shrink: 0;
+  line-height: 1.5;
 }
-
-/* ========================================
-   CAROUSEL ARROWS
-   ======================================== */
 
 .slick-prev,
 .slick-next {
   z-index: 10;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
 }
 
 .slick-prev {
-  left: -45px;
+  left: -12px;
 }
 
 .slick-next {
-  right: -45px;
+  right: -12px;
 }
 
-.slick-prev:before,
-.slick-next:before {
-  color: var(--text-muted, #64748b);
-  font-size: 24px;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
+.slick-prev::before,
+.slick-next::before {
+  color: var(--text-muted, #5f748f);
+  font-size: 28px;
+  opacity: 0.7;
 }
 
-.slick-prev:hover:before,
-.slick-next:hover:before {
-  opacity: 1;
-}
-
-.dark-mode .slick-prev:before,
-.dark-mode .slick-next:before {
-  color: var(--text-muted, #94a3b8);
-}
-
-/* Carousel dots */
 .slick-dots {
-  bottom: -30px;
+  bottom: -34px;
 }
 
-.slick-dots li button:before {
-  color: var(--text-muted, #64748b);
-  opacity: 0.3;
+.slick-dots li button::before {
+  color: var(--text-muted, #5f748f);
+  opacity: 0.35;
 }
 
-.slick-dots li.slick-active button:before {
-  color: var(--primary, #3b82f6);
+.slick-dots li.slick-active button::before {
+  color: var(--primary, #58c7ff);
   opacity: 1;
 }
-
-.dark-mode .slick-dots li.slick-active button:before {
-  color: var(--accent, #60a5fa);
-}
-
-/* ========================================
-   MODAL OVERLAY
-   ======================================== */
 
 .custom-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(4px);
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(5, 11, 20, 0.82);
+  backdrop-filter: blur(8px);
   z-index: 1000;
-  animation: fadeIn 0.25s ease;
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* ========================================
-   MODAL
-   ======================================== */
 
 .custom-modal {
   position: relative;
-  width: 80vw;
-  height: 80vh;
-  background: var(--card-bg, #ffffff);
-  border-radius: 12px;
+  width: min(1080px, 88vw);
+  height: min(720px, 82vh);
   overflow: hidden;
-  animation: scaleIn 0.25s ease;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-}
-
-.dark-mode .custom-modal {
-  background: var(--card-bg, #1e293b);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-strong, #ffffff);
+  box-shadow: var(--shadow-lg, 0 30px 72px rgba(26, 41, 61, 0.16));
 }
 
 .custom-modal iframe {
@@ -303,203 +229,82 @@
   border: none;
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ========================================
-   CLOSE BUTTON
-   ======================================== */
-
 .close-button {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  background: rgba(0, 0, 0, 0.5);
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
   border: none;
-  border-radius: 50%;
-  font-size: 20px;
+  border-radius: 999px;
+  background: rgba(5, 11, 20, 0.56);
   color: #ffffff;
+  font-size: 22px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  z-index: 10;
+  z-index: 2;
+  transition: var(--transition, all 0.24s ease);
 }
 
 .close-button:hover {
-  background: rgba(239, 68, 68, 0.8);
+  background: rgba(215, 62, 62, 0.88);
 }
-
-/* ========================================
-   RESPONSIVE - LARGE SCREENS
-   ======================================== */
-
-@media (min-width: 1400px) {
-  .game-gallery {
-    padding: 48px 80px;
-  }
-
-  .slick-prev {
-    left: -50px;
-  }
-
-  .slick-next {
-    right: -50px;
-  }
-}
-
-/* ========================================
-   RESPONSIVE - MEDIUM-LARGE SCREENS (around 1280px)
-   ======================================== */
 
 @media (max-width: 1350px) {
-  .game-gallery {
-    padding: 40px 60px;
-  }
-
-  .game-slide {
-    padding: 12px;
-  }
-
-  .slick-prev {
-    left: -45px;
-  }
-
-  .slick-next {
-    right: -45px;
-  }
-}
-
-/* ========================================
-   RESPONSIVE - MEDIUM SCREENS
-   ======================================== */
-
-@media (max-width: 1200px) {
-  .game-gallery {
-    padding: 40px 50px;
-  }
-
-  .slick-prev {
-    left: -40px;
-  }
-
-  .slick-next {
-    right: -40px;
-  }
-}
-
-/* ========================================
-   RESPONSIVE - TABLET
-   ======================================== */
-
-@media (max-width: 992px) {
-  .game-gallery {
-    padding: 40px 45px;
-  }
-
-  .game-slide {
-    padding: 12px;
-  }
-
-  .slick-prev {
-    left: -35px;
-  }
-
-  .slick-next {
-    right: -35px;
-  }
-}
-
-/* ========================================
-   RESPONSIVE - MOBILE
-   ======================================== */
-
-@media (max-width: 768px) {
-  .game-gallery {
-    width: 100%;
-    padding: 32px 16px;
-  }
-
-  .gallery-heading {
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-
   .game-slide {
     padding: 8px;
   }
+}
 
-  .game-card {
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  .game-thumbnail {
-    border-radius: 10px 10px 0 0;
-  }
-
-  .game-info {
-    padding: 16px;
-    min-height: 160px;
-  }
-
-  .game-info h3 {
-    font-size: 15px;
-  }
-
-  .game-description {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-
-  .play-button {
-    padding: 8px 20px;
-    font-size: 12px;
+@media (max-width: 992px) {
+  .gallery-heading {
+    font-size: 28px;
   }
 
   .custom-modal {
-    width: 95vw;
-    height: 70vh;
-    border-radius: 10px;
+    width: 92vw;
+    height: 74vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-gallery {
+    padding-bottom: 40px;
   }
 
-  /* Hide arrows on mobile, use swipe instead */
+  .gallery-heading {
+    font-size: 26px;
+  }
+
+  .game-slide {
+    padding: 6px;
+  }
+
+  .game-info {
+    min-height: 210px;
+    padding: 18px;
+  }
+
+  .game-info h3 {
+    font-size: 19px;
+  }
+
   .slick-prev,
   .slick-next {
     display: none !important;
   }
 
   .slick-dots {
-    bottom: -25px;
+    bottom: -28px;
   }
 }
 
-/* ========================================
-   RESPONSIVE - SMALL MOBILE
-   ======================================== */
-
 @media (max-width: 480px) {
-  .game-gallery {
-    padding: 24px 12px;
-  }
-
   .gallery-heading {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .game-info {
-    padding: 14px;
-    min-height: 150px;
+    min-height: 0;
+    padding: 16px;
   }
 }

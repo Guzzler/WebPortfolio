@@ -7,90 +7,66 @@ import "./GameGallery.css";
 import { mixpanel } from "../../../App";
 
 const games = [
-    {
-      title: "Zen Garden",
-      thumbnail:
-        "https://img.itch.zone/aW1nLzE3Nzg1NTEzLnBuZw==/315x250%23c/ilHY7P.png",
-      url: "https://dpsguzzler.itch.io/zen-garden", // Normal itch.io URL
-      embedUrl: "https://itch.io/embed-upload/11514825?color=ffffff", // Embed URL for iframe
-      description:
-        "A 2D top-down survival game where you survive as a zen monk in a garden.",
-      technologies: "Unity",
-      releaseDate: "September 2024",
-      embeddable: true,
-    },
-    {
-      title: "Divided Destiny",
-      thumbnail:
-        "https://img.itch.zone/aW1nLzEyNzU0OTE0LnBuZw==/315x250%23c/O6Sg3r.png",
-      url: "https://dpsguzzler.itch.io/divided-destiny",
-      embedUrl: "https://itch.io/embed-upload/8289447?color=ffffff",
-      description:
-        "A 2D puzzle platformer exploring themes of personal identity.",
-      technologies: "Unity",
-      releaseDate: "July 2023",
-      embeddable: true,
-    },
-    {
-      title: "Love Farm",
-      thumbnail: "https://img.itch.zone/aW1nLzEwNjY0MTI3LnBuZw==/315x250%23c/gpQ%2BOf.png",
-      url: "https://mrmathur.itch.io/love-at-first-sight",
-      embedUrl: "https://itch.io/embed-upload/6928454?color=FFFFFF",
-      description: "A reverse stealth 2D top-down game where you help a love-struck bunny avoid falling for toxic relationships on the farm.",
-      technologies: "Unity",
-      releaseDate: "December 2022",
-      embeddable: true
-    },
-    {
-      title: "InCUBE8",
-      thumbnail:
-        "https://img.itch.zone/aW1nLzk1MzI2ODkuanBn/315x250%23c/iE%2B53Q.jpg",
-      url: "https://dpsguzzler.itch.io/incub",
-      embedUrl: "https://itch.io/embed-upload/6173636?color=ffffff",
-      description:
-        "A 3D puzzle game challenging players to roll a die to activate platforms.",
-      technologies: "Unity",
-      releaseDate: "July 2022",
-      embeddable: true,
-    },
-    {
-      title: "The Afterlife Party",
-      thumbnail:
-        "https://img.itch.zone/aW1nLzgyNzMxNzMucG5n/315x250%23c/6Gx2FE.png",
-      url: "https://dpsguzzler.itch.io/the-afterlife-party",
-      embedUrl: "https://itch.io/embed-upload/5340536?color=FFFFFF",
-      description:
-        "A puzzle platformer where players cleanse an entire party of undead spirits.",
-      technologies: "Unity",
-      releaseDate: "February 2022",
-      embeddable: true,
-    },
-  ];
-
-
-  const GameGallery = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [activeGame, setActiveGame] = useState(null);
-
-    const closeModal = useCallback(() => {
-      if (activeGame) {
-        mixpanel.track('Game Modal Close', {
-          game_name: activeGame.title
-        });
-      }
-      setIsModalVisible(false);
-      setActiveGame(null);
-    }, [activeGame]);
-
-    useEffect(() => {
-      const handleEsc = (event) => {
-        if (event.key === "Escape") {
-          closeModal();
-        }
-      };
-      document.addEventListener("keydown", handleEsc);
-      return () => document.removeEventListener("keydown", handleEsc);
-    }, [closeModal]);
+  {
+    title: "Zen Garden",
+    thumbnail:
+      "https://img.itch.zone/aW1nLzE3Nzg1NTEzLnBuZw==/315x250%23c/ilHY7P.png",
+    url: "https://dpsguzzler.itch.io/zen-garden",
+    embedUrl: "https://itch.io/embed-upload/11514825?color=ffffff",
+    description:
+      "A 2D top-down survival game where you survive as a zen monk in a garden.",
+    technologies: "Unity",
+    releaseDate: "September 2024",
+    embeddable: true,
+  },
+  {
+    title: "Divided Destiny",
+    thumbnail:
+      "https://img.itch.zone/aW1nLzEyNzU0OTE0LnBuZw==/315x250%23c/O6Sg3r.png",
+    url: "https://dpsguzzler.itch.io/divided-destiny",
+    embedUrl: "https://itch.io/embed-upload/8289447?color=ffffff",
+    description: "A 2D puzzle platformer exploring themes of personal identity.",
+    technologies: "Unity",
+    releaseDate: "July 2023",
+    embeddable: true,
+  },
+  {
+    title: "Love Farm",
+    thumbnail:
+      "https://img.itch.zone/aW1nLzEwNjY0MTI3LnBuZw==/315x250%23c/gpQ%2BOf.png",
+    url: "https://mrmathur.itch.io/love-at-first-sight",
+    embedUrl: "https://itch.io/embed-upload/6928454?color=FFFFFF",
+    description:
+      "A reverse stealth 2D top-down game where you help a love-struck bunny avoid falling for toxic relationships on the farm.",
+    technologies: "Unity",
+    releaseDate: "December 2022",
+    embeddable: true,
+  },
+  {
+    title: "InCUBE8",
+    thumbnail:
+      "https://img.itch.zone/aW1nLzk1MzI2ODkuanBn/315x250%23c/iE%2B53Q.jpg",
+    url: "https://dpsguzzler.itch.io/incub",
+    embedUrl: "https://itch.io/embed-upload/6173636?color=ffffff",
+    description:
+      "A 3D puzzle game challenging players to roll a die to activate platforms.",
+    technologies: "Unity",
+    releaseDate: "July 2022",
+    embeddable: true,
+  },
+  {
+    title: "The Afterlife Party",
+    thumbnail:
+      "https://img.itch.zone/aW1nLzgyNzMxNzMucG5n/315x250%23c/6Gx2FE.png",
+    url: "https://dpsguzzler.itch.io/the-afterlife-party",
+    embedUrl: "https://itch.io/embed-upload/5340536?color=FFFFFF",
+    description:
+      "A puzzle platformer where players cleanse an entire party of undead spirits.",
+    technologies: "Unity",
+    releaseDate: "February 2022",
+    embeddable: true,
+  },
+];
 
 const settings = {
   infinite: true,
@@ -101,7 +77,6 @@ const settings = {
   autoplay: true,
   slidesToScroll: 1,
   slidesToShow: 3,
-
   responsive: [
     {
       breakpoint: 1500,
@@ -123,68 +98,117 @@ const settings = {
   ],
 };
 
-    const openModal = (game) => {
-      // Track game click
-      mixpanel.track('Game Click', {
-        game_name: game.title,
-        device: isMobile ? 'mobile' : 'desktop'
-      });
+const GameGallery = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [activeGame, setActiveGame] = useState(null);
 
-      if (isMobile) {
-        // On mobile, always open in new tab
-        window.open(game.url, "_blank");
-      } else {
-        setActiveGame(game);
-        setIsModalVisible(true);
+  const closeModal = useCallback(() => {
+    if (activeGame) {
+      mixpanel.track("Game Modal Close", {
+        game_name: activeGame.title,
+      });
+    }
+    setIsModalVisible(false);
+    setActiveGame(null);
+  }, [activeGame]);
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        closeModal();
       }
     };
-  
-    return (
-      <div className="game-gallery">
-        <h2 className="gallery-heading">Games</h2>
-        <Slider {...settings}>
-          {games.map((game, index) => (
-            <div key={index} className="game-slide">
-              <div className="game-card" onClick={() => openModal(game)}>
-                <img src={game.thumbnail} alt={game.title} className="game-thumbnail" />
-                <div className="game-info">
-                  <h3>{game.title}</h3>
-                  <p className="game-date">{game.releaseDate}</p>
-                  <p className="game-description">{game.description}</p>
-                  <button className="play-button">
-                    {isMobile ? "View on itch.io" : "Play Now"}
-                  </button>
-                  {isMobile && (
-                    <p className="mobile-hint">Best played on desktop</p>
-                  )}
+
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [closeModal]);
+
+  const openModal = (game) => {
+    mixpanel.track("Game Click", {
+      game_name: game.title,
+      device: isMobile ? "mobile" : "desktop",
+    });
+
+    if (isMobile || !game.embeddable) {
+      window.open(game.url, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    setActiveGame(game);
+    setIsModalVisible(true);
+  };
+
+  const handleGameKeyDown = (event, game) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openModal(game);
+    }
+  };
+
+  return (
+    <section className="game-gallery" id="games">
+      <div className="gallery-header">
+        <span className="gallery-eyebrow">Play lab</span>
+        <h2 className="gallery-heading">Games and experiments</h2>
+        <p className="gallery-copy">
+          Games are where I get to play with mechanics, feedback loops, and odd
+          little ideas just for the fun of it. They are a lighter counterbalance
+          to the more serious product work.
+        </p>
+      </div>
+
+      <Slider {...settings}>
+        {games.map((game) => (
+          <div key={game.title} className="game-slide">
+            <div
+              className="game-card"
+              onClick={() => openModal(game)}
+              onKeyDown={(event) => handleGameKeyDown(event, game)}
+              role="button"
+              tabIndex={0}
+              aria-label={`${isMobile ? "Open" : "Launch"} ${game.title}`}
+            >
+              <img src={game.thumbnail} alt={game.title} className="game-thumbnail" />
+              <div className="game-info">
+                <div className="game-meta">
+                  <span className="game-pill">{game.technologies}</span>
+                  <span className="game-pill game-pill-muted">{game.releaseDate}</span>
                 </div>
+                <h3>{game.title}</h3>
+                <p className="game-description">{game.description}</p>
+                <span className="play-button">
+                  {isMobile ? "Open on itch.io" : "Launch demo"}
+                </span>
+                {isMobile ? (
+                  <p className="mobile-hint">Best experienced on desktop when possible</p>
+                ) : null}
               </div>
             </div>
-          ))}
-        </Slider>
-  
-        {isModalVisible && (
-          <div className="custom-modal-overlay" onClick={closeModal}>
-            <div
-              className="custom-modal"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button className="close-button" onClick={closeModal}>&times;</button>
-              {activeGame && (
-                <iframe
-                  src={activeGame.embedUrl}
-                  title={activeGame.title}
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  allowFullScreen
-                ></iframe>
-              )}
-            </div>
           </div>
-        )}
-      </div>
-    );
-  };
-  
-  export default GameGallery;
+        ))}
+      </Slider>
+
+      {isModalVisible ? (
+        <div className="custom-modal-overlay" onClick={closeModal}>
+          <div className="custom-modal" onClick={(event) => event.stopPropagation()}>
+            <button className="close-button" onClick={closeModal} aria-label="Close game">
+              &times;
+            </button>
+            {activeGame ? (
+              <iframe
+                src={activeGame.embedUrl}
+                title={activeGame.title}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </section>
+  );
+};
+
+export default GameGallery;
