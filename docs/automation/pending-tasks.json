@@ -1,0 +1,19 @@
+{
+  "updatedAt": "2026-03-13",
+  "tasks": [
+    {
+      "id": "2026-03-13-personal-control-room-intro",
+      "status": "pending",
+      "priority": "high",
+      "title": "Build a personal control-room intro system",
+      "rationale": "The current portfolio is polished but reads too much like a generic product site. A stronger first-screen narrative can better unify Sharang's AI engineering depth, social-impact motivation, and creative interests without changing the site's one-page structure.",
+      "acceptanceCriteria": [
+        "The first viewport clearly explains who Sharang is, what he is building now, and why his work matters.",
+        "The intro uses factual personal signals that connect AI/product work with games, sports, and board-game interests.",
+        "Desktop and mobile layouts remain responsive and visually intentional.",
+        "Dark mode, light mode, and keyboard focus states remain accessible and legible.",
+        "The resulting design avoids generic SaaS styling and avoids adding unsupported claims."
+      ]
+    }
+  ]
+}
