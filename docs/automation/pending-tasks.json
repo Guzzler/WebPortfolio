@@ -37,6 +37,7 @@
         "docs/automation/artifacts/2026-03-13-builder-modes-section/README.md",
         "docs/automation/pending-tasks.json"
       ],
+      "prLink": "https://github.com/Guzzler/WebPortfolio/pull/3",
       "artifactPaths": [
         "docs/automation/artifacts/2026-03-13-builder-modes-section/README.md",
         "docs/automation/artifacts/2026-03-13-builder-modes-section/desktop-builder-dark.png",

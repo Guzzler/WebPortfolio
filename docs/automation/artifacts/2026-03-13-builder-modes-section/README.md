@@ -4,6 +4,7 @@
 - Added a new Builder Modes section that reframes Sharang's middle-of-page story around three connected ways of building: AI products, public-interest access work, and play.
 - Reworked the Games heading and supporting copy so the gallery feels like evidence for the "Build for play" mode instead of a detached hobbies block.
 - Added repo-level automation notes in [`AGENTS.md`](C:\Users\shara\.codex\worktrees\1828\WebPortfolio\AGENTS.md) so future runs branch from `origin/main`, handle `gh` more reliably, and interpret push dry-runs correctly in detached worktrees.
+- Opened PR #3: `https://github.com/Guzzler/WebPortfolio/pull/3`
 
 ## Verification
 - `npm run lint`
