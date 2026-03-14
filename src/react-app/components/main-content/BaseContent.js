@@ -61,51 +61,58 @@ const proofPoints = [
   },
 ];
 
-const programmingLanguages = [
-  "Python",
-  "C++",
-  "Java",
-  "SQL",
-  "HTML",
-  "CSS",
-  "Javascript",
-  "XML",
-  "Typescript",
-  "Golang",
+const builderModes = [
+  {
+    eyebrow: "Mode 01",
+    title: "Build AI products",
+    summary:
+      "I like shipping systems where models, tool use, interfaces, and product judgment all have to hold together.",
+    examples: [
+      "At Luma AI I work on agentic creative tooling for image and video workflows.",
+      "At Persona I helped build avatar systems across memory, orchestration, low-latency inference, and application tooling.",
+      "Work at StepChange and RedBrickAI kept me close to real user problems in climate and computer vision products.",
+    ],
+    stack: ["Python", "Typescript", "React/Redux", "FastAPI", "SwiftUI"],
+  },
+  {
+    eyebrow: "Mode 02",
+    title: "Build for access",
+    summary:
+      "The projects that stick with me are usually the ones trying to widen access, improve decisions, or matter beyond a polished demo.",
+    examples: [
+      "OpenShiksha was built as an open-source education platform for underserved students and real school pilots.",
+      "VaccinePost came out of the pandemic as a practical notification system for vaccine availability in India.",
+      "AISOC research under Dr. Fei Fang focused that same instinct on environmental conservation work with LLMs.",
+    ],
+    stack: ["Django", "AWS Lambdas", "LLMs", "Low-resource design"],
+  },
+  {
+    eyebrow: "Mode 03",
+    title: "Build for play",
+    summary:
+      "Games are where I rehearse pacing, interaction feel, and readable systems without the pressure of a roadmap.",
+    examples: [
+      "Unity projects like Zen Garden and Divided Destiny are small labs for mechanics, tone, and feedback loops.",
+      "Sports and board games keep me thinking about balance, competition, and how people read systems quickly.",
+      "That playful practice feeds back into product taste: onboarding, delight, and interaction rhythm matter.",
+    ],
+    stack: ["Unity", "LibGDX", "Interaction design", "Rapid prototyping"],
+  },
 ];
 
-const tools = [
-  "React/Redux",
-  "Flutter",
-  "Flask",
-  "Django",
-  "OpenCV",
-  "NodeJS",
-  "Android",
-  "Socket.io",
-  "Keras",
-  "LibGdx",
-  "Unity",
-  "Ipython",
-  "SwiftUI",
-];
-
-const interests = [
-  "Deep Learning",
-  "Artificial Intelligence",
-  "Social Entrepreneurship",
-  "Human Computer Interaction",
-  "Low Resource System Design",
-  "Mental Health Technology",
-];
-
-const hobbies = [
-  { icon: "fa-gamepad", text: "Building Games" },
-  { icon: "fa-futbol", text: "Football and Basketball" },
-  { icon: "fa-trophy", text: "League of Legends" },
-  { icon: "fa-desktop", text: "PC Gaming" },
-  { icon: "fa-tv", text: "Watching Sports" },
-  { icon: "fa-chess", text: "Playing Board Games" },
+const toolkitClusters = [
+  {
+    label: "Core stack",
+    items: ["Python", "Typescript", "React/Redux", "SQL", "NodeJS"],
+  },
+  {
+    label: "ML and product surfaces",
+    items: ["LLMs", "Keras", "OpenCV", "Flask", "Django", "SwiftUI"],
+  },
+  {
+    label: "Creative prototyping",
+    items: ["Unity", "Flutter", "Socket.io", "LibGDX", "Board-game thinking"],
+  },
 ];
 
 const BaseContent = () => {
@@ -504,61 +511,78 @@ const BaseContent = () => {
                 </div>
               </section>
 
-              <section id="technical">
-                <h2 className="resume-caption">Technical</h2>
+              <section id="builder-modes">
+                <h2 className="resume-caption">Builder Modes</h2>
                 <p className="section-lede">
-                  Tools I reach for most often when shipping products and prototypes.
+                  The through-line is not just what I know. It is the kinds of
+                  systems I keep choosing to build.
                 </p>
 
-                <div className="skills-section">
-                  <div className="skills-category">
-                    <span className="skills-category-label">Programming languages</span>
-                    <div className="skill-tags">
-                      {programmingLanguages.map((lang) => (
-                        <span key={lang} className="skill-tag">
-                          {lang}
-                        </span>
-                      ))}
-                    </div>
+                <div className="builder-mode-grid">
+                  {builderModes.map((mode) => (
+                    <article key={mode.title} className="builder-mode-card">
+                      <div className="builder-mode-header">
+                        <span className="builder-mode-eyebrow">{mode.eyebrow}</span>
+                        <h3>{mode.title}</h3>
+                      </div>
+                      <p className="builder-mode-summary">{mode.summary}</p>
+                      <ul className="builder-mode-list">
+                        {mode.examples.map((example) => (
+                          <li key={example}>{example}</li>
+                        ))}
+                      </ul>
+                      <div className="builder-mode-stack">
+                        {mode.stack.map((item) => (
+                          <span key={item} className="builder-mode-chip">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="builder-toolkit">
+                  <div className="builder-toolkit-header">
+                    <span className="builder-toolkit-eyebrow">Support system</span>
+                    <p>
+                      Technical range still matters, but I care most about which
+                      tools move each mode forward without turning the page into a
+                      generic skills dump.
+                    </p>
                   </div>
 
-                  <div className="skills-category">
-                    <span className="skills-category-label">Tools and frameworks</span>
-                    <div className="skill-tags">
-                      {tools.map((tool) => (
-                        <span key={tool} className="skill-tag">
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="skills-category">
-                    <span className="skills-category-label">Interests</span>
-                    <div className="skill-tags">
-                      {interests.map((interest) => (
-                        <span key={interest} className="skill-tag">
-                          {interest}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="builder-toolkit-grid">
+                    {toolkitClusters.map((cluster) => (
+                      <div key={cluster.label} className="builder-toolkit-cluster">
+                        <span className="builder-toolkit-label">{cluster.label}</span>
+                        <div className="builder-toolkit-tags">
+                          {cluster.items.map((item) => (
+                            <span key={item} className="skill-tag">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </section>
 
-              <section id="downtime">
-                <h2 className="resume-caption">In My Down Time</h2>
-                <p className="section-lede">
-                  Play matters too. It shows up in sports, games, and system-heavy
-                  hobbies.
-                </p>
-                <div className="hobbies-grid">
-                  {hobbies.map((hobby) => (
-                    <div key={hobby.text} className="hobby-item">
-                      <i className={`fa ${hobby.icon} hobby-icon`}></i>
-                      <span>{hobby.text}</span>
-                    </div>
-                  ))}
+                <div className="builder-bridge">
+                  <div>
+                    <span className="builder-bridge-eyebrow">Why games live here</span>
+                    <p>
+                      The Games section is not a side quest. It is where pacing,
+                      tension, onboarding, and interaction feel stay sharp.
+                    </p>
+                  </div>
+                  <a
+                    className="builder-bridge-link"
+                    href="#games"
+                    onClick={() => trackIntroAction("builder-modes-games")}
+                  >
+                    See the play lab
+                  </a>
                 </div>
               </section>
             </Col>

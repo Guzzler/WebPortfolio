@@ -3,7 +3,7 @@
   "tasks": [
     {
       "id": "2026-03-13-builder-modes-section",
-      "status": "pending",
+      "status": "implemented",
       "priority": "high",
       "title": "Design a Builder Modes narrative section",
       "rationale": "The new control-room intro improved the first impression, but the middle of the page still collapses into a generic resume pattern. Reframing the Technical and In My Down Time area around how Sharang builds can better connect his Luma product work, public-interest motivation, open-source contributions, and game-making practice.",
@@ -20,7 +20,40 @@
         "Open-source contributor",
         "Game maker"
       ],
-      "planPath": "docs/automation/daily-plans/2026-03-13.md"
+      "planPath": "docs/automation/daily-plans/2026-03-13.md",
+      "branch": "codex/auto-builder-modes-2026-03-13",
+      "notes": [
+        "Replaced the generic Technical and In My Down Time stack with a Builder Modes section that frames Sharang through AI product systems, public-interest access work, and play.",
+        "Compressed the raw tool dump into a supporting system beneath the narrative cards so technical credibility remains visible without dominating the story.",
+        "Updated the Games section header and framing so it reads as evidence for the creative-builder mode instead of a detached hobbies shelf.",
+        "Added repo-level automation notes in AGENTS.md so future runs branch from origin/main, use safer gh forms, and treat non-fast-forward dry-run push responses as connectivity success rather than blockers."
+      ],
+      "touchedFiles": [
+        "AGENTS.md",
+        "src/react-app/components/main-content/BaseContent.css",
+        "src/react-app/components/main-content/BaseContent.js",
+        "src/react-app/components/main-content/GameGallery.css",
+        "src/react-app/components/main-content/GameGallery.js",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/README.md",
+        "docs/automation/pending-tasks.json"
+      ],
+      "artifactPaths": [
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/README.md",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/desktop-builder-dark.png",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/desktop-builder-light.png",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/desktop-games-dark.png",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/mobile-builder-dark.png",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/mobile-builder-light.png",
+        "docs/automation/artifacts/2026-03-13-builder-modes-section/mobile-games-dark.png"
+      ],
+      "verification": {
+        "lint": "passed: npm run lint",
+        "test": "no matching tests: react-scripts reported no matching test files for the current repo glob",
+        "build": "passed: npm run build",
+        "chromeDesktop": "passed: headless Chrome at 1440px verified the Builder Modes layout, dark/light rendering, and the bridge into the Games section",
+        "chromeMobile": "passed: headless Chrome at 390px verified the Builder Modes stack, dark/light rendering, and the bridge into the Games section",
+        "overflowCheck": "passed: DOM scrollWidth matched clientWidth on desktop and mobile in both dark and light mode"
+      }
     },
     {
       "id": "2026-03-13-personal-control-room-intro",
