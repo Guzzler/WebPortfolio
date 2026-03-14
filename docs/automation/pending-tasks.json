@@ -2,6 +2,27 @@
   "updatedAt": "2026-03-13",
   "tasks": [
     {
+      "id": "2026-03-13-builder-modes-section",
+      "status": "pending",
+      "priority": "high",
+      "title": "Design a Builder Modes narrative section",
+      "rationale": "The new control-room intro improved the first impression, but the middle of the page still collapses into a generic resume pattern. Reframing the Technical and In My Down Time area around how Sharang builds can better connect his Luma product work, public-interest motivation, open-source contributions, and game-making practice.",
+      "acceptanceCriteria": [
+        "The section clearly presents three connected modes of work: AI product systems, public-interest or open-source building, and creative play.",
+        "Examples use grounded portfolio facts such as Luma AI, Persona, OpenShiksha, VaccinePost, AISOC, and existing game projects without adding unsupported claims.",
+        "Raw tool lists are either compressed or subordinated so the narrative leads and technical credibility still remains visible.",
+        "Desktop and mobile layouts remain responsive, readable, and visually consistent with the control-room introduction.",
+        "The Games section feels more connected to the rest of the portfolio rather than reading as an isolated extra."
+      ],
+      "identityThemes": [
+        "AI builder",
+        "Social-impact technologist",
+        "Open-source contributor",
+        "Game maker"
+      ],
+      "planPath": "docs/automation/daily-plans/2026-03-13.md"
+    },
+    {
       "id": "2026-03-13-personal-control-room-intro",
       "status": "implemented",
       "priority": "high",
