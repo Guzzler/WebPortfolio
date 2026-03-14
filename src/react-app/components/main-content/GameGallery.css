@@ -25,6 +25,29 @@
   line-height: 1.8;
 }
 
+.gallery-signal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.gallery-signal {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 199, 255, 0.18);
+  background: rgba(88, 199, 255, 0.08);
+  color: var(--text-secondary, #2a3a52);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dark-mode .gallery-signal {
+  background: rgba(255, 255, 255, 0.03);
+}
+
 .slick-track {
   display: flex !important;
 }
@@ -295,6 +318,10 @@
 
   .slick-dots {
     bottom: -28px;
+  }
+
+  .gallery-signal-row {
+    margin-top: 14px;
   }
 }
 
