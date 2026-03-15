@@ -1,6 +1,27 @@
 {
-  "updatedAt": "2026-03-13",
+  "updatedAt": "2026-03-15",
   "tasks": [
+    {
+      "id": "2026-03-15-experience-builder-arcs",
+      "status": "pending",
+      "priority": "high",
+      "title": "Reframe the Experience timeline around builder arcs",
+      "rationale": "The hero now communicates Sharang's identity much more clearly, but the Experience section still reads mainly as chronology. Reframing it around recurring builder arcs can connect Luma AI, Persona, AISOC, OpenShiksha, VaccinePost, and the Games section into a more coherent story about ambitious systems, public-interest motivation, and creative product instincts.",
+      "acceptanceCriteria": [
+        "The Experience section introduces two or three clear through-lines that connect current AI product work, public-interest or open-source work, and creative interaction design.",
+        "The timeline remains factually grounded in existing roles and projects such as Luma AI, Persona, AISOC, OpenShiksha, and VaccinePost without adding unsupported claims.",
+        "The revised structure makes the transition into the Games section feel intentional rather than disconnected.",
+        "Desktop and mobile layouts stay readable and responsive without breaking the current timeline alignment or creating horizontal overflow.",
+        "Dark mode, light mode, keyboard focus states, and contrast all remain accessible."
+      ],
+      "identityThemes": [
+        "AI builder",
+        "Social-impact technologist",
+        "Open-source contributor",
+        "Game maker"
+      ],
+      "planPath": "docs/automation/daily-plans/2026-03-15.md"
+    },
     {
       "id": "2026-03-13-builder-modes-section",
       "status": "pending",
