@@ -26,7 +26,8 @@
         "Implemented a new builder-arc frame above the Experience timeline, rewrote the timeline as a structured narrative around recurring arcs, and added a deliberate bridge into the Games section.",
         "Added AISOC to the Experience narrative, renamed the final timeline chapter to public-interest and open source, and tightened copy for Luma AI, Persona, OpenShiksha, and VaccinePost.",
         "Updated the Games introduction copy so it reads as a design lab connected to the rest of Sharang's builder identity.",
-        "Verified the Experience section and the Experience-to-Games handoff in headless Chrome at desktop and mobile widths with fresh screenshot artifacts."
+        "Verified the Experience section and the Experience-to-Games handoff in headless Chrome at desktop and mobile widths with fresh screenshot artifacts.",
+        "Opened PR #4 with codex and codex-automation labels."
       ],
       "touchedFiles": [
         "src/react-app/components/main-content/BaseContent.css",
@@ -48,6 +49,7 @@
         "docs/automation/artifacts/2026-03-15-experience-builder-arcs/mobile-bridge-dark.png",
         "docs/automation/artifacts/2026-03-15-experience-builder-arcs/mobile-games-dark.png"
       ],
+      "prLink": "https://github.com/Guzzler/WebPortfolio/pull/4",
       "verification": {
         "manualSourceReview": "completed: reviewed JSX and CSS changes locally for structure, copy grounding, and responsive intent",
         "lint": "passed: npm run lint",
