@@ -2,16 +2,24 @@
 
 ## Status
 
-Implementation was completed locally on branch `codex/auto-experience-arcs-2026-03-15`, but visual artifacts could not be captured in this run.
+Implementation was completed on branch `codex/auto-experience-arcs-2026-03-15` and verified in headless Chrome.
 
-## Why Screenshots Are Missing
+## Verification Summary
 
-- The sandbox blocked access to the installed Node runtime at `C:\Program Files\nodejs`.
-- `node_modules` is not present in this worktree, so the site could not be started locally without that runtime.
-- Because the app could not be served, Chrome desktop and mobile verification could not be completed and no screenshots were produced.
+- `npm run lint`: passed
+- `npm test -- --watch=false`: no matching tests in this repo
+- `npm run build`: passed
+- Chrome desktop check: passed at `1440px` width
+- Chrome mobile check: passed at `390px` width
+- Overflow check: passed on both desktop and mobile (`scrollWidth === clientWidth`)
 
-## Intended Capture Targets
+## Screenshots
 
-- Desktop Experience section at approximately 1440px width in dark mode.
-- Mobile Experience section at approximately 390px width in dark mode.
-- The transition from Experience into the Games section after the new builder-arc framing.
+- `desktop-experience-dark.png`
+- `desktop-experience-light.png`
+- `desktop-bridge-dark.png`
+- `desktop-games-dark.png`
+- `mobile-experience-dark.png`
+- `mobile-experience-light.png`
+- `mobile-bridge-dark.png`
+- `mobile-games-dark.png`
