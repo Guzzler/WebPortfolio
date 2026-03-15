@@ -3,7 +3,7 @@
   "tasks": [
     {
       "id": "2026-03-15-experience-builder-arcs",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "title": "Reframe the Experience timeline around builder arcs",
       "rationale": "The hero now communicates Sharang's identity much more clearly, but the Experience section still reads mainly as chronology. Reframing it around recurring builder arcs can connect Luma AI, Persona, AISOC, OpenShiksha, VaccinePost, and the Games section into a more coherent story about ambitious systems, public-interest motivation, and creative product instincts.",
@@ -20,7 +20,35 @@
         "Open-source contributor",
         "Game maker"
       ],
-      "planPath": "docs/automation/daily-plans/2026-03-15.md"
+      "planPath": "docs/automation/daily-plans/2026-03-15.md",
+      "branch": "codex/auto-experience-arcs-2026-03-15",
+      "notes": [
+        "Implemented a new builder-arc frame above the Experience timeline, rewrote the timeline as a structured narrative around recurring arcs, and added a deliberate bridge into the Games section.",
+        "Added AISOC to the Experience narrative, renamed the final timeline chapter to public-interest and open source, and tightened copy for Luma AI, Persona, OpenShiksha, and VaccinePost.",
+        "Updated the Games introduction copy so it reads as a design lab connected to the rest of Sharang's builder identity.",
+        "This run is blocked on environment constraints: ntfy posts failed with a transport receive error, the installed Node runtime in Program Files was inaccessible from the sandbox, and git push over SSH failed with a signal-pipe error."
+      ],
+      "touchedFiles": [
+        "src/react-app/components/main-content/BaseContent.css",
+        "src/react-app/components/main-content/BaseContent.js",
+        "src/react-app/components/main-content/ExperienceTimeline.js",
+        "src/react-app/components/main-content/GameGallery.js",
+        "src/react-app/components/main-content/timeline.css",
+        "docs/automation/artifacts/2026-03-15-experience-builder-arcs/README.md",
+        "docs/automation/pending-tasks.json"
+      ],
+      "artifactPaths": [
+        "docs/automation/artifacts/2026-03-15-experience-builder-arcs/README.md"
+      ],
+      "verification": {
+        "manualSourceReview": "completed: reviewed JSX and CSS changes locally for structure, copy grounding, and responsive intent",
+        "lint": "blocked: unable to execute npm or node inside the sandbox because access to C:\\Program Files\\nodejs was denied",
+        "test": "blocked: unable to run react-scripts test without an executable Node runtime and installed node_modules",
+        "build": "blocked: unable to run react-scripts build without an executable Node runtime and installed node_modules",
+        "chromeDesktop": "blocked: local site could not be started, so desktop verification and screenshots were not completed",
+        "chromeMobile": "blocked: local site could not be started, so mobile verification and screenshots were not completed",
+        "overflowCheck": "blocked: browser verification could not be performed because the app was not runnable in this environment"
+      }
     },
     {
       "id": "2026-03-13-builder-modes-section",
