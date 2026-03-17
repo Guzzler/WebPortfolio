@@ -45,6 +45,7 @@
         "docs/automation/scripts/verify-studio-notes.mjs",
         "docs/automation/pending-tasks.json"
       ],
+      "prLink": "https://github.com/Guzzler/WebPortfolio/pull/5",
       "artifactPaths": [
         "docs/automation/artifacts/2026-03-17-studio-notes-shelf/README.md",
         "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-games-dark.png",
