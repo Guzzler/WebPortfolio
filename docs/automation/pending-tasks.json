@@ -1,6 +1,27 @@
 {
-  "updatedAt": "2026-03-15",
+  "updatedAt": "2026-03-17",
   "tasks": [
+    {
+      "id": "2026-03-17-studio-notes-shelf",
+      "status": "pending",
+      "priority": "high",
+      "title": "Turn the right column into a Studio Notes shelf",
+      "rationale": "The hero and Experience sections now carry a much stronger authored story, but the current Technical and In My Down Time blocks still collapse into a generic resume pattern. A curated Studio Notes shelf can keep Sharang's technical credibility while connecting AI product work, public-interest motivation, open-source contribution, and the playful game-making side into one warmer composition.",
+      "acceptanceCriteria": [
+        "The right column replaces generic tool and hobby lists with two or three curated modules that explain how Sharang builds, what he cares about, and how play shapes the work.",
+        "Examples stay grounded in existing portfolio facts such as Luma AI, Persona, AISOC, OpenShiksha, VaccinePost, Unity games, sports, and board games without adding unsupported claims.",
+        "Technical credibility remains visible through compact grouped stacks or supporting tags, but raw tool lists no longer dominate the section.",
+        "The revised right-column layout stays responsive on desktop and mobile with no horizontal overflow or awkward chip wrapping.",
+        "Dark mode, light mode, keyboard focus states, and contrast remain accessible and legible."
+      ],
+      "identityThemes": [
+        "AI builder",
+        "Social-impact technologist",
+        "Open-source contributor",
+        "Game maker"
+      ],
+      "planPath": "docs/automation/daily-plans/2026-03-17.md"
+    },
     {
       "id": "2026-03-15-experience-builder-arcs",
       "status": "pending",
