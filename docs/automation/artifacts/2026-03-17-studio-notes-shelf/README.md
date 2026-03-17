@@ -1,15 +1,21 @@
 # Studio Notes Shelf Artifacts
 
-Generated on 2026-03-17 from the local workspace.
+Generated on 2026-03-17 from the local production build served at `http://127.0.0.1:4173`.
 
-## Verification Status
+## Screenshots
 
-- No screenshots were captured for this run.
-- Local CRA commands could not be executed because `node` and `npm` from the installed Windows path returned `Access is denied` inside the sandbox.
-- Headless Chrome was available, but the same sandbox prevented the local preview/screenshot flow from producing usable image artifacts.
+- `desktop-studio-notes-dark.png`
+- `desktop-studio-notes-light.png`
+- `desktop-games-dark.png`
+- `mobile-studio-notes-dark.png`
+- `mobile-studio-notes-light.png`
+- `mobile-games-dark.png`
 
-## Manual Follow-up
+## Verification Notes
 
-- Run the portfolio locally from `codex/auto-studio-notes-shelf-2026-03-17`.
-- Verify the new right-column Studio Notes shelf at desktop and mobile widths in dark and light mode.
-- Capture screenshots once the app can be served from an environment with working Node execution.
+- `npm run lint` passed.
+- `npm test -- --watch=false` passed after adding a `window.matchMedia` mock to the Jest setup.
+- `npm run build` passed.
+- Desktop and mobile screenshots were captured from the local production build in Chrome via Playwright.
+- The Studio Notes shelf and the follow-through into Games were checked in dark mode on desktop and mobile, with light-mode captures for the Studio Notes shelf.
+- `verification.json` records no horizontal overflow at `1440px` and `390px` in both themes.

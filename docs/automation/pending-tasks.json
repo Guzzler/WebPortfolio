@@ -3,7 +3,7 @@
   "tasks": [
     {
       "id": "2026-03-17-studio-notes-shelf",
-      "status": "blocked",
+      "status": "implemented",
       "priority": "high",
       "title": "Turn the right column into a Studio Notes shelf",
       "rationale": "The hero and Experience sections now carry a much stronger authored story, but the current Technical and In My Down Time blocks still collapse into a generic resume pattern. A curated Studio Notes shelf can keep Sharang's technical credibility while connecting AI product work, public-interest motivation, open-source contribution, and the playful game-making side into one warmer composition.",
@@ -26,26 +26,42 @@
         "Replaced the generic right-column Technical and In My Down Time stack locally with a curated Studio Notes shelf focused on current AI product work, public-interest motivation, and play as a source of product feel.",
         "Added compact supporting stack lanes so technical credibility remains visible without letting undifferentiated tool chips dominate the rail.",
         "Updated the Games intro copy and added a direct right-column bridge so the gallery reads as a continuation of Sharang's builder identity rather than a detached extra.",
-        "The run is blocked on environment constraints: ntfy posts failed with transport errors, Node execution from the installed Windows path is denied in the sandbox, Git push over SSH hit sandbox signal-pipe failures, and GitHub CLI PR commands cannot read the roaming config.",
-        "Created an artifact README documenting the blocked verification path, but no Chrome screenshots could be produced from this sandbox."
+        "Added a Jest `matchMedia` mock in `src/setupTests.js` so the existing App smoke test can run with `react-slick` in the test environment.",
+        "Verified the local production build in Chrome via Playwright at desktop and mobile widths with artifact screenshots saved under docs/automation/artifacts/2026-03-17-studio-notes-shelf."
       ],
       "touchedFiles": [
         "src/react-app/components/main-content/BaseContent.css",
         "src/react-app/components/main-content/BaseContent.js",
         "src/react-app/components/main-content/GameGallery.js",
+        "src/setupTests.js",
         "docs/automation/artifacts/2026-03-17-studio-notes-shelf/README.md",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-games-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-studio-notes-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-studio-notes-light.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/mobile-games-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/mobile-studio-notes-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/mobile-studio-notes-light.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/verification.json",
+        "docs/automation/scripts/verify-studio-notes.mjs",
         "docs/automation/pending-tasks.json"
       ],
       "artifactPaths": [
-        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/README.md"
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/README.md",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-games-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-studio-notes-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/desktop-studio-notes-light.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/mobile-games-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/mobile-studio-notes-dark.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/mobile-studio-notes-light.png",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/verification.json"
       ],
       "verification": {
-        "lint": "blocked: executing node/npm from the installed Windows path returned access denied inside the sandbox",
-        "test": "blocked: react-scripts test could not be started because node execution is denied inside the sandbox",
-        "build": "blocked: react-scripts build could not be started because node execution is denied inside the sandbox",
-        "chromeDesktop": "blocked: headless Chrome launched but did not produce usable screenshot output for the local verification attempt in this sandbox",
-        "chromeMobile": "blocked: headless Chrome launched but did not produce usable screenshot output for the local verification attempt in this sandbox",
-        "overflowCheck": "not run: dependent on the blocked local browser verification step"
+        "lint": "passed: npm run lint",
+        "test": "passed: npm test -- --watch=false",
+        "build": "passed: npm run build",
+        "chromeDesktop": "passed: captured and reviewed the Studio Notes shelf plus Games handoff at 1440px in the local production build",
+        "chromeMobile": "passed: captured and reviewed the Studio Notes shelf plus Games handoff at 390px in the local production build",
+        "overflowCheck": "passed: verification.json recorded matching clientWidth and scrollWidth on desktop and mobile in dark and light modes"
       }
     },
     {
