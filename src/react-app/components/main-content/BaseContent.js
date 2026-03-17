@@ -61,51 +61,43 @@ const proofPoints = [
   },
 ];
 
-const programmingLanguages = [
-  "Python",
-  "C++",
-  "Java",
-  "SQL",
-  "HTML",
-  "CSS",
-  "Javascript",
-  "XML",
-  "Typescript",
-  "Golang",
+const studioNotes = [
+  {
+    label: "Ships now",
+    title: "Complex AI products still have to feel human",
+    body:
+      "At Luma AI and before that Persona, I keep ending up closest to products where model behavior, tool orchestration, and interface taste all need to land together.",
+    tags: ["Python", "React/Redux", "Typescript", "FastAPI", "SwiftUI"],
+  },
+  {
+    label: "Stays true",
+    title: "Public-interest work is not a side quest",
+    body:
+      "AISOC, OpenShiksha, VaccinePost, and the long-term pull toward underserved communities all come from the same instinct: useful technology should widen access.",
+    tags: ["AISOC", "OpenShiksha", "VaccinePost", "Low-resource design"],
+  },
+  {
+    label: "Sharpens the work",
+    title: "Play keeps the product instincts honest",
+    body:
+      "Unity games, sports, and board-game nights are where pacing, feedback, competition, and system feel stay alive outside the usual product roadmap.",
+    tags: ["Unity", "Football", "Basketball", "Board games", "PC gaming"],
+  },
 ];
 
-const tools = [
-  "React/Redux",
-  "Flutter",
-  "Flask",
-  "Django",
-  "OpenCV",
-  "NodeJS",
-  "Android",
-  "Socket.io",
-  "Keras",
-  "LibGdx",
-  "Unity",
-  "Ipython",
-  "SwiftUI",
-];
-
-const interests = [
-  "Deep Learning",
-  "Artificial Intelligence",
-  "Social Entrepreneurship",
-  "Human Computer Interaction",
-  "Low Resource System Design",
-  "Mental Health Technology",
-];
-
-const hobbies = [
-  { icon: "fa-gamepad", text: "Building Games" },
-  { icon: "fa-futbol", text: "Football and Basketball" },
-  { icon: "fa-trophy", text: "League of Legends" },
-  { icon: "fa-desktop", text: "PC Gaming" },
-  { icon: "fa-tv", text: "Watching Sports" },
-  { icon: "fa-chess", text: "Playing Board Games" },
+const studioStacks = [
+  {
+    label: "Core stack",
+    items: ["Python", "Typescript", "React/Redux", "SQL", "Golang"],
+  },
+  {
+    label: "Product tools",
+    items: ["FastAPI", "Flask", "Django", "NodeJS", "Android", "OpenCV"],
+  },
+  {
+    label: "Themes",
+    items: ["Deep learning", "HCI", "Social entrepreneurship", "Mental health tech"],
+  },
 ];
 
 const BaseContent = () => {
@@ -133,6 +125,10 @@ const BaseContent = () => {
 
   const trackIntroAction = (target) => {
     mixpanel.track("Intro Action Click", { target });
+  };
+
+  const trackStudioNoteAction = (target) => {
+    mixpanel.track("Studio Notes Action Click", { target });
   };
 
   if (!loaded) {
@@ -504,61 +500,56 @@ const BaseContent = () => {
                 </div>
               </section>
 
-              <section id="technical">
-                <h2 className="resume-caption">Technical</h2>
+              <section id="studio-notes">
+                <h2 className="resume-caption">Studio Notes</h2>
                 <p className="section-lede">
-                  Tools I reach for most often when shipping products and prototypes.
+                  Less of a tool dump, more of a read on how I like to build.
                 </p>
 
-                <div className="skills-section">
-                  <div className="skills-category">
-                    <span className="skills-category-label">Programming languages</span>
-                    <div className="skill-tags">
-                      {programmingLanguages.map((lang) => (
-                        <span key={lang} className="skill-tag">
-                          {lang}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="skills-category">
-                    <span className="skills-category-label">Tools and frameworks</span>
-                    <div className="skill-tags">
-                      {tools.map((tool) => (
-                        <span key={tool} className="skill-tag">
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="skills-category">
-                    <span className="skills-category-label">Interests</span>
-                    <div className="skill-tags">
-                      {interests.map((interest) => (
-                        <span key={interest} className="skill-tag">
-                          {interest}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                <div className="studio-notes-shelf">
+                  {studioNotes.map((note) => (
+                    <article key={note.title} className="studio-note-card">
+                      <span className="studio-note-label">{note.label}</span>
+                      <h3>{note.title}</h3>
+                      <p>{note.body}</p>
+                      <div className="studio-note-tags" aria-label={`${note.title} signals`}>
+                        {note.tags.map((tag) => (
+                          <span key={tag} className="studio-note-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
                 </div>
-              </section>
 
-              <section id="downtime">
-                <h2 className="resume-caption">In My Down Time</h2>
-                <p className="section-lede">
-                  Play matters too. It shows up in sports, games, and system-heavy
-                  hobbies.
-                </p>
-                <div className="hobbies-grid">
-                  {hobbies.map((hobby) => (
-                    <div key={hobby.text} className="hobby-item">
-                      <i className={`fa ${hobby.icon} hobby-icon`}></i>
-                      <span>{hobby.text}</span>
+                <div className="studio-stack-lanes" aria-label="Supporting technical stacks">
+                  {studioStacks.map((lane) => (
+                    <div key={lane.label} className="studio-stack-lane">
+                      <span className="studio-stack-label">{lane.label}</span>
+                      <div className="studio-stack-tags">
+                        {lane.items.map((item) => (
+                          <span key={item} className="studio-stack-tag">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   ))}
+                </div>
+
+                <div className="studio-notes-footer">
+                  <p>
+                    Games sit below for a reason. They are where the same interest
+                    in feel, feedback, and readable systems gets to loosen up.
+                  </p>
+                  <a
+                    className="studio-notes-link"
+                    href="#games"
+                    onClick={() => trackStudioNoteAction("games")}
+                  >
+                    Follow that thread into games
+                  </a>
                 </div>
               </section>
             </Col>

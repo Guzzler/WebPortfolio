@@ -151,9 +151,9 @@ const GameGallery = () => {
         <span className="gallery-eyebrow">Play lab</span>
         <h2 className="gallery-heading">Games and experiments</h2>
         <p className="gallery-copy">
-          Games are where I get to play with mechanics, feedback loops, and odd
-          little ideas just for the fun of it. They are a lighter counterbalance
-          to the more serious product work.
+          Games are where I pressure-test feel, feedback loops, and readable
+          systems in smaller, stranger forms. They are less a hobby appendix
+          and more the place where my product instincts get to stay playful.
         </p>
       </div>
 

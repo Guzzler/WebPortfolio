@@ -3,7 +3,7 @@
   "tasks": [
     {
       "id": "2026-03-17-studio-notes-shelf",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "title": "Turn the right column into a Studio Notes shelf",
       "rationale": "The hero and Experience sections now carry a much stronger authored story, but the current Technical and In My Down Time blocks still collapse into a generic resume pattern. A curated Studio Notes shelf can keep Sharang's technical credibility while connecting AI product work, public-interest motivation, open-source contribution, and the playful game-making side into one warmer composition.",
@@ -20,7 +20,33 @@
         "Open-source contributor",
         "Game maker"
       ],
-      "planPath": "docs/automation/daily-plans/2026-03-17.md"
+      "planPath": "docs/automation/daily-plans/2026-03-17.md",
+      "branch": "codex/auto-studio-notes-shelf-2026-03-17",
+      "notes": [
+        "Replaced the generic right-column Technical and In My Down Time stack locally with a curated Studio Notes shelf focused on current AI product work, public-interest motivation, and play as a source of product feel.",
+        "Added compact supporting stack lanes so technical credibility remains visible without letting undifferentiated tool chips dominate the rail.",
+        "Updated the Games intro copy and added a direct right-column bridge so the gallery reads as a continuation of Sharang's builder identity rather than a detached extra.",
+        "The run is blocked on environment constraints: ntfy posts failed with transport errors, Node execution from the installed Windows path is denied in the sandbox, Git push over SSH hit sandbox signal-pipe failures, and GitHub CLI PR commands cannot read the roaming config.",
+        "Created an artifact README documenting the blocked verification path, but no Chrome screenshots could be produced from this sandbox."
+      ],
+      "touchedFiles": [
+        "src/react-app/components/main-content/BaseContent.css",
+        "src/react-app/components/main-content/BaseContent.js",
+        "src/react-app/components/main-content/GameGallery.js",
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/README.md",
+        "docs/automation/pending-tasks.json"
+      ],
+      "artifactPaths": [
+        "docs/automation/artifacts/2026-03-17-studio-notes-shelf/README.md"
+      ],
+      "verification": {
+        "lint": "blocked: executing node/npm from the installed Windows path returned access denied inside the sandbox",
+        "test": "blocked: react-scripts test could not be started because node execution is denied inside the sandbox",
+        "build": "blocked: react-scripts build could not be started because node execution is denied inside the sandbox",
+        "chromeDesktop": "blocked: headless Chrome launched but did not produce usable screenshot output for the local verification attempt in this sandbox",
+        "chromeMobile": "blocked: headless Chrome launched but did not produce usable screenshot output for the local verification attempt in this sandbox",
+        "overflowCheck": "not run: dependent on the blocked local browser verification step"
+      }
     },
     {
       "id": "2026-03-15-experience-builder-arcs",
