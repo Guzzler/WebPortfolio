@@ -4,3 +4,4 @@ build
 .firebase
 .env
 .claude
+.chrome-review-profile
