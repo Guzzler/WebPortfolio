@@ -816,11 +816,11 @@
   }
 
   .left-column {
-    order: 2;
+    order: 0;
     min-height: auto;
     border-right: none;
-    border-bottom: none;
-    border-top: 1px solid var(--sidebar-border);
+    border-top: none;
+    border-bottom: 1px solid var(--sidebar-border);
   }
 
   .cv-text-details {
