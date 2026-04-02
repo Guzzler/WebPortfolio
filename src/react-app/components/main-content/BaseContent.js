@@ -61,51 +61,37 @@ const proofPoints = [
   },
 ];
 
-const programmingLanguages = [
-  "Python",
-  "C++",
-  "Java",
-  "SQL",
-  "HTML",
-  "CSS",
-  "Javascript",
-  "XML",
-  "Typescript",
-  "Golang",
-];
-
-const tools = [
-  "React/Redux",
-  "Flutter",
-  "Flask",
-  "Django",
-  "OpenCV",
-  "NodeJS",
-  "Android",
-  "Socket.io",
-  "Keras",
-  "LibGdx",
-  "Unity",
-  "Ipython",
-  "SwiftUI",
-];
-
-const interests = [
-  "Deep Learning",
-  "Artificial Intelligence",
-  "Social Entrepreneurship",
-  "Human Computer Interaction",
-  "Low Resource System Design",
-  "Mental Health Technology",
-];
-
-const hobbies = [
-  { icon: "fa-gamepad", text: "Building Games" },
-  { icon: "fa-futbol", text: "Football and Basketball" },
-  { icon: "fa-trophy", text: "League of Legends" },
-  { icon: "fa-desktop", text: "PC Gaming" },
-  { icon: "fa-tv", text: "Watching Sports" },
-  { icon: "fa-chess", text: "Playing Board Games" },
+const studioNotes = [
+  {
+    index: "01",
+    eyebrow: "Shipping AI products",
+    title: "I like the part where ambitious models have to become trustworthy tools.",
+    detail:
+      "Luma AI and Persona both pulled me toward the same kind of work: product systems where orchestration, interface decisions, and production constraints all have to click together for the experience to feel usable.",
+    signals: ["Luma AI", "Persona", "Agentic creative workflows"],
+    stackLabel: "Usually shows up as",
+    stack: ["Python", "React / Redux", "TypeScript", "SwiftUI", "FastAPI"],
+  },
+  {
+    index: "02",
+    eyebrow: "Public-interest gravity",
+    title: "The work matters more when it expands access instead of just polishing demos.",
+    detail:
+      "AISOC, OpenShiksha, and VaccinePost all come from the same instinct: the best technical work should help people reach information, opportunity, or support more easily than they could before.",
+    signals: ["AISOC", "OpenShiksha", "VaccinePost"],
+    stackLabel: "Proof points",
+    stack: ["LLMs for conservation", "School pilots", "Django", "AWS Lambdas"],
+  },
+  {
+    index: "03",
+    eyebrow: "Play as practice",
+    title: "Games and competition keep my product instincts from getting too tidy.",
+    detail:
+      "Unity projects, sports, and board-game nights are where I keep practicing pacing, feedback loops, challenge curves, and the small bits of feel that make software memorable instead of merely functional.",
+    signals: ["Unity games", "Sports", "Board games"],
+    stackLabel: "What it sharpens",
+    stack: ["Mechanics tuning", "Interaction feel", "Approachable difficulty", "Joyful experimentation"],
+  },
 ];
 
 const BaseContent = () => {
@@ -504,61 +490,65 @@ const BaseContent = () => {
                 </div>
               </section>
 
-              <section id="technical">
-                <h2 className="resume-caption">Technical</h2>
+              <section id="studio-notes">
+                <h2 className="resume-caption">Studio Notes</h2>
                 <p className="section-lede">
-                  Tools I reach for most often when shipping products and prototypes.
+                  A quieter shelf for the patterns behind the resume: how I ship,
+                  what I care about, and why play still belongs in the same story.
                 </p>
 
-                <div className="skills-section">
-                  <div className="skills-category">
-                    <span className="skills-category-label">Programming languages</span>
-                    <div className="skill-tags">
-                      {programmingLanguages.map((lang) => (
-                        <span key={lang} className="skill-tag">
-                          {lang}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                <div className="studio-notes-shelf">
+                  {studioNotes.map((note) => (
+                    <article key={note.title} className="studio-note-card">
+                      <div className="studio-note-topline">
+                        <span className="studio-note-index">{note.index}</span>
+                        <span className="studio-note-eyebrow">{note.eyebrow}</span>
+                      </div>
 
-                  <div className="skills-category">
-                    <span className="skills-category-label">Tools and frameworks</span>
-                    <div className="skill-tags">
-                      {tools.map((tool) => (
-                        <span key={tool} className="skill-tag">
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                      <h3 className="studio-note-title">{note.title}</h3>
+                      <p className="studio-note-body">{note.detail}</p>
 
-                  <div className="skills-category">
-                    <span className="skills-category-label">Interests</span>
-                    <div className="skill-tags">
-                      {interests.map((interest) => (
-                        <span key={interest} className="skill-tag">
-                          {interest}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </section>
+                      <div
+                        className="studio-note-signal-row"
+                        aria-label={`${note.eyebrow} examples`}
+                      >
+                        {note.signals.map((signal) => (
+                          <span key={signal} className="studio-note-signal">
+                            {signal}
+                          </span>
+                        ))}
+                      </div>
 
-              <section id="downtime">
-                <h2 className="resume-caption">In My Down Time</h2>
-                <p className="section-lede">
-                  Play matters too. It shows up in sports, games, and system-heavy
-                  hobbies.
-                </p>
-                <div className="hobbies-grid">
-                  {hobbies.map((hobby) => (
-                    <div key={hobby.text} className="hobby-item">
-                      <i className={`fa ${hobby.icon} hobby-icon`}></i>
-                      <span>{hobby.text}</span>
-                    </div>
+                      <div className="studio-note-stack">
+                        <span className="studio-note-stack-label">
+                          {note.stackLabel}
+                        </span>
+                        <div className="studio-note-tag-row">
+                          {note.stack.map((item) => (
+                            <span key={`${note.index}-${item}`} className="studio-note-tag">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
                   ))}
+                </div>
+
+                <div className="studio-notes-bridge">
+                  <span className="studio-note-eyebrow">Bridge to play</span>
+                  <p>
+                    The games section is not a separate hobby tab. It is where
+                    interaction feel, challenge curves, and experimentation stay
+                    practiced.
+                  </p>
+                  <a
+                    className="studio-notes-link"
+                    href="#games"
+                    onClick={() => trackIntroAction("studio-notes-games")}
+                  >
+                    See the play lab
+                  </a>
                 </div>
               </section>
             </Col>

@@ -234,7 +234,9 @@
 .control-room-eyebrow,
 .control-room-panel-label,
 .proof-eyebrow,
-.gallery-eyebrow {
+.gallery-eyebrow,
+.studio-note-eyebrow,
+.studio-note-stack-label {
   color: var(--text-light);
   font-size: 11px;
   font-weight: 700;
@@ -450,7 +452,8 @@
 
 .control-room-panel:hover,
 .education-card:hover,
-.hobby-item:hover {
+.studio-note-card:hover,
+.studio-notes-bridge:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
 }
@@ -554,9 +557,7 @@
 }
 
 .about-content,
-.education-card,
-.skills-category,
-.hobby-item {
+.education-card {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--card-bg);
@@ -615,60 +616,178 @@
   font-weight: 700;
 }
 
-.skills-section {
+.studio-notes-shelf {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.skills-category {
-  padding: 18px;
+.studio-note-card,
+.studio-notes-bridge {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at top right, rgba(88, 199, 255, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 28%),
+    var(--card-bg);
+  box-shadow: var(--shadow-xs);
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
 }
 
-.skills-category-label {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--text-secondary);
-  font-size: 13px;
+.dark-mode .studio-note-card,
+.dark-mode .studio-notes-bridge {
+  background:
+    radial-gradient(circle at top right, rgba(88, 199, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 28%),
+    rgba(10, 20, 34, 0.86);
+}
+
+.studio-note-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary), rgba(242, 186, 114, 0.94));
+}
+
+.studio-note-topline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.studio-note-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 199, 255, 0.18);
+  background: rgba(88, 199, 255, 0.12);
+  color: var(--primary);
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-.skill-tags {
+.studio-note-title {
+  margin: 14px 0 10px;
+  color: var(--text-primary);
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+}
+
+.studio-note-body,
+.studio-notes-bridge p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.studio-note-signal-row,
+.studio-note-tag-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.skill-tag {
-  text-transform: none;
-  letter-spacing: normal;
+.studio-note-signal-row {
+  margin-top: 16px;
+}
+
+.studio-note-signal,
+.studio-note-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
+  line-height: 1.4;
 }
 
-.skill-tag:hover {
-  background: rgba(88, 199, 255, 0.16);
-}
-
-.hobbies-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.hobby-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px 16px;
+.studio-note-signal {
+  border: 1px solid rgba(242, 186, 114, 0.18);
+  background: rgba(242, 186, 114, 0.12);
   color: var(--text-secondary);
-  font-size: 13px;
+}
+
+.dark-mode .studio-note-signal {
+  background: rgba(242, 186, 114, 0.08);
+}
+
+.studio-note-stack {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.studio-note-stack-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.studio-note-tag {
+  border: 1px solid rgba(88, 199, 255, 0.18);
+  background: rgba(88, 199, 255, 0.08);
+  color: var(--primary);
+}
+
+.studio-notes-bridge {
+  margin-top: 16px;
+  background:
+    radial-gradient(circle at top left, rgba(242, 186, 114, 0.16), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 30%),
+    var(--card-bg);
+}
+
+.dark-mode .studio-notes-bridge {
+  background:
+    radial-gradient(circle at top left, rgba(242, 186, 114, 0.1), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 30%),
+    rgba(10, 20, 34, 0.86);
+}
+
+.studio-notes-bridge p {
+  margin-top: 12px;
+}
+
+.studio-notes-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin-top: 18px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.44);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-xs);
   transition: var(--transition);
 }
 
-.hobby-icon {
-  color: var(--accent);
-  font-size: 18px;
+.dark-mode .studio-notes-link {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.studio-notes-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(88, 199, 255, 0.28);
+  box-shadow: var(--shadow-sm);
 }
 
 .loading-overlay {
@@ -780,6 +899,7 @@
 .mailtolink:focus-visible,
 .connect-link:focus-visible,
 .intro-action:focus-visible,
+.studio-notes-link:focus-visible,
 .about-content a:focus-visible,
 .control-room-copy a:focus-visible {
   outline: 2px solid var(--accent);
@@ -857,10 +977,6 @@
   .resume-second-col {
     margin-top: 12px;
   }
-
-  .hobbies-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 768px) {
@@ -901,12 +1017,13 @@
 
   .about-content,
   .education-card,
-  .skills-category {
+  .studio-note-card,
+  .studio-notes-bridge {
     padding: 18px;
   }
 
-  .hobbies-grid {
-    grid-template-columns: 1fr;
+  .studio-note-title {
+    font-size: 18px;
   }
 }
 
@@ -929,6 +1046,10 @@
 
   .profile-data-card {
     padding: 16px;
+  }
+
+  .studio-notes-link {
+    width: 100%;
   }
 }
 

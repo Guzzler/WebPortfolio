@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-03-17",
+  "updatedAt": "2026-04-02",
   "tasks": [
     {
       "id": "2026-03-17-studio-notes-shelf",
-      "status": "pending",
+      "status": "blocked",
       "priority": "high",
       "title": "Turn the right column into a Studio Notes shelf",
       "rationale": "The hero and Experience sections now carry a much stronger authored story, but the current Technical and In My Down Time blocks still collapse into a generic resume pattern. A curated Studio Notes shelf can keep Sharang's technical credibility while connecting AI product work, public-interest motivation, open-source contribution, and the playful game-making side into one warmer composition.",
@@ -20,7 +20,35 @@
         "Open-source contributor",
         "Game maker"
       ],
-      "planPath": "docs/automation/daily-plans/2026-03-17.md"
+      "planPath": "docs/automation/daily-plans/2026-03-17.md",
+      "branch": "codex/auto-studio-notes-shelf-2026-04-02",
+      "notes": [
+        "Implemented a new Studio Notes shelf in the right column that replaces the generic Technical and In My Down Time resume blocks with three curated modules: shipping AI products, public-interest gravity, and play as practice.",
+        "Kept the content grounded in Luma AI, Persona, AISOC, OpenShiksha, VaccinePost, Unity games, sports, and board games while demoting the raw stack into smaller supporting tags.",
+        "Adjusted the Games section copy so the gallery feels like a continuation of Sharang's interaction instincts rather than a detached hobby area.",
+        "Automation completion was blocked by the sandbox: accessible Node installs could not be executed or copied, so lint/test/build and localhost Chrome screenshot verification could not run.",
+        "The same environment blocked ntfy delivery and GitHub auth/push steps, so no PR link or screenshot image artifacts were created this run."
+      ],
+      "touchedFiles": [
+        "src/react-app/components/main-content/BaseContent.css",
+        "src/react-app/components/main-content/BaseContent.js",
+        "src/react-app/components/main-content/GameGallery.js",
+        "docs/automation/artifacts/2026-04-02-studio-notes-shelf/README.md",
+        "docs/automation/pending-tasks.json"
+      ],
+      "artifactPaths": [
+        "docs/automation/artifacts/2026-04-02-studio-notes-shelf/README.md"
+      ],
+      "verification": {
+        "staticReview": "passed: reviewed the local diff and section structure after implementation",
+        "diffCheck": "passed: git diff --check",
+        "lint": "blocked: sandbox denied execution and copying of all visible Node runtimes",
+        "test": "blocked: sandbox denied execution and copying of all visible Node runtimes",
+        "build": "blocked: sandbox denied execution and copying of all visible Node runtimes",
+        "chromeDesktop": "blocked: localhost app could not be started because Node execution was denied",
+        "chromeMobile": "blocked: localhost app could not be started because Node execution was denied",
+        "overflowCheck": "blocked: localhost app could not be started because Node execution was denied"
+      }
     },
     {
       "id": "2026-03-15-experience-builder-arcs",

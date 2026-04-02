@@ -152,8 +152,9 @@ const GameGallery = () => {
         <h2 className="gallery-heading">Games and experiments</h2>
         <p className="gallery-copy">
           Games are where I get to play with mechanics, feedback loops, and odd
-          little ideas just for the fun of it. They are a lighter counterbalance
-          to the more serious product work.
+          little ideas just for the fun of it. They are also where I keep
+          practicing pacing, clarity, and interaction feel in a way that feeds
+          back into the more serious product work.
         </p>
       </div>
 
