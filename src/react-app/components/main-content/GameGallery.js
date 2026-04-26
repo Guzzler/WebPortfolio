@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -87,6 +87,8 @@ const settings = {
   arrows: true,
   autoplaySpeed: 3000,
   autoplay: true,
+  pauseOnHover: true,
+  pauseOnFocus: true,
   slidesToScroll: 1,
   slidesToShow: 3,
   responsive: [
@@ -111,8 +113,45 @@ const settings = {
 };
 
 const GameGallery = () => {
+  const sliderRef = useRef(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [activeGame, setActiveGame] = useState(null);
+
+  useEffect(() => {
+    const gallery = document.getElementById("games");
+    let autoplayTimer;
+
+    // Pause immediately so it stays on your newest game at first.
+    if (sliderRef.current) {
+      sliderRef.current.slickPause();
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          autoplayTimer = setTimeout(() => {
+            if (sliderRef.current) {
+              sliderRef.current.slickPlay();
+            }
+          }, 2000);
+
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.35,
+      }
+    );
+
+    if (gallery) {
+      observer.observe(gallery);
+    }
+
+    return () => {
+      clearTimeout(autoplayTimer);
+      observer.disconnect();
+    };
+  }, []);
 
   const closeModal = useCallback(() => {
     if (activeGame) {
@@ -120,6 +159,7 @@ const GameGallery = () => {
         game_name: activeGame.title,
       });
     }
+
     setIsModalVisible(false);
     setActiveGame(null);
   }, [activeGame]);
@@ -169,7 +209,7 @@ const GameGallery = () => {
         </p>
       </div>
 
-      <Slider {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {games.map((game) => (
           <div key={game.title} className="game-slide">
             <div
@@ -180,19 +220,32 @@ const GameGallery = () => {
               tabIndex={0}
               aria-label={`${isMobile ? "Open" : "Launch"} ${game.title}`}
             >
-              <img src={game.thumbnail} alt={game.title} className="game-thumbnail" />
+              <img
+                src={game.thumbnail}
+                alt={game.title}
+                className="game-thumbnail"
+              />
+
               <div className="game-info">
                 <div className="game-meta">
                   <span className="game-pill">{game.technologies}</span>
-                  <span className="game-pill game-pill-muted">{game.releaseDate}</span>
+                  <span className="game-pill game-pill-muted">
+                    {game.releaseDate}
+                  </span>
                 </div>
+
                 <h3>{game.title}</h3>
+
                 <p className="game-description">{game.description}</p>
+
                 <span className="play-button">
                   {isMobile ? "Open on itch.io" : "Launch demo"}
                 </span>
+
                 {isMobile ? (
-                  <p className="mobile-hint">Best experienced on desktop when possible</p>
+                  <p className="mobile-hint">
+                    Best experienced on desktop when possible
+                  </p>
                 ) : null}
               </div>
             </div>
@@ -202,10 +255,18 @@ const GameGallery = () => {
 
       {isModalVisible ? (
         <div className="custom-modal-overlay" onClick={closeModal}>
-          <div className="custom-modal" onClick={(event) => event.stopPropagation()}>
-            <button className="close-button" onClick={closeModal} aria-label="Close game">
+          <div
+            className="custom-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="close-button"
+              onClick={closeModal}
+              aria-label="Close game"
+            >
               &times;
             </button>
+
             {activeGame ? (
               <iframe
                 src={activeGame.embedUrl}

@@ -8,6 +8,8 @@ import ExperienceTimeline from "./ExperienceTimeline";
 import { isSmallDevice } from "../../../common/utils/index";
 import sharangPortrait from "../../../assets/images/sharang.jpeg";
 import GameGallery from "./GameGallery";
+import SiteTopBar from "../common/SiteTopBar";
+import useDarkMode from "../common/useDarkMode";
 import { mixpanel } from "../../../App";
 
 const profileSignals = [
@@ -110,7 +112,7 @@ const hobbies = [
 
 const BaseContent = () => {
   const [loaded, setLoaded] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, toggleDarkMode] = useDarkMode();
   const smallDevice = isSmallDevice();
 
   useEffect(() => {
@@ -119,13 +121,6 @@ const BaseContent = () => {
     img.onload = () => setLoaded(true);
     img.onerror = () => setLoaded(true);
   }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    mixpanel.track("Dark Mode Toggle", {
-      mode: !darkMode ? "dark" : "light",
-    });
-  };
 
   const trackSocialClick = (platform) => {
     mixpanel.track("Social Link Click", { platform });
@@ -147,7 +142,9 @@ const BaseContent = () => {
   }
 
   return (
-    <Row className={`width-100 height-min-100 ${darkMode ? "dark-mode" : ""}`}>
+    <div className={`home-shell${darkMode ? " dark-mode" : ""}`}>
+      <SiteTopBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Row className="width-100 height-min-100">
       <Col
         span={4}
         md={8}
@@ -157,14 +154,6 @@ const BaseContent = () => {
         xxl={4}
         className="left-column inter-font"
       >
-        <button
-          className="dark-mode-toggle"
-          onClick={toggleDarkMode}
-          aria-label="Toggle dark mode"
-        >
-          <i className={`fa ${darkMode ? "fa-sun" : "fa-moon"}`}></i>
-        </button>
-
         <div className="profile-rail">
           <div className="loading-screen">
             <div className="portrait-wrapper">
@@ -274,7 +263,11 @@ const BaseContent = () => {
         sm={24}
         xs={24}
         className="resume-main-content inter-font"
-        style={smallDevice ? { minHeight: "100vh" } : { height: "100vh" }}
+        style={
+          smallDevice
+            ? { minHeight: "calc(100vh - 60px)" }
+            : { height: "calc(100vh - 60px)" }
+        }
       >
         <div className="resume-content-shell">
           <header className="control-room-hero" id="top">
@@ -567,7 +560,8 @@ const BaseContent = () => {
           {!smallDevice ? <GameGallery /> : null}
         </div>
       </Col>
-    </Row>
+      </Row>
+    </div>
   );
 };
 
