@@ -8,17 +8,19 @@ import { mixpanel } from "../../../App";
 
 const formatDate = (iso) => {
   try {
-    const date = new Date(iso);
-    return date.toLocaleDateString("en-US", {
+    const [year, month, day] = iso.split("T")[0].split("-").map(Number);
+
+    if (!year || !month || !day) return iso;
+
+    return new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
-    });
+    }).format(new Date(year, month - 1, day));
   } catch (e) {
     return iso;
   }
 };
-
 const renderBlock = (block, index) => {
   switch (block.type) {
     case "pullquote":

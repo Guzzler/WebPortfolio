@@ -8,10 +8,6 @@ const BlogShell = ({ children, darkMode, toggleDarkMode }) => {
       <SiteTopBar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       <main className="blog-main">{children}</main>
-
-      <footer className="blog-footer">
-        © Sharang Pai
-      </footer>
     </div>
   );
 };
