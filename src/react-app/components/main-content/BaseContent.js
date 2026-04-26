@@ -328,13 +328,6 @@ const BaseContent = () => {
                   >
                     View experience
                   </a>
-                  <Link
-                    className="intro-action"
-                    to="/blog"
-                    onClick={() => trackIntroAction("writing")}
-                  >
-                    Read writing
-                  </Link>
                   <a
                     className="intro-action"
                     href="#games"
