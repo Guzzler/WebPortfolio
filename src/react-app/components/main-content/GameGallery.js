@@ -8,6 +8,18 @@ import { mixpanel } from "../../../App";
 
 const games = [
   {
+    title: "Sweep of the Realm",
+    thumbnail:
+      "https://img.itch.zone/aW1nLzI2OTEwODI0LnBuZw==/315x250%23c/e%2BbTWT.png",
+    url: "https://dpsguzzler.itch.io/sweep-of-the-realm",
+    embedUrl: "https://itch.io/embed-upload/17309145?color=333333",
+    description:
+      "A Roomba falls through a portal into a filthy medieval kingdom. The king calls it a curse. You call it a cleaning job.",
+    technologies: "Unity",
+    releaseDate: "April 2026",
+    embeddable: true,
+  },
+  {
     title: "Zen Garden",
     thumbnail:
       "https://img.itch.zone/aW1nLzE3Nzg1NTEzLnBuZw==/315x250%23c/ilHY7P.png",
