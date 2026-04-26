@@ -104,8 +104,6 @@ const BlogPost = () => {
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <span className="blog-meta-divider">·</span>
             <span>{post.readingTime}</span>
-            <span className="blog-meta-divider">·</span>
-            <span>By Sharang Pai</span>
           </div>
         </header>
 
