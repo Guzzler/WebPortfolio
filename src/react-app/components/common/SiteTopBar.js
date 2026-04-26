@@ -16,14 +16,6 @@ const SiteTopBar = ({ darkMode, toggleDarkMode }) => {
   return (
     <header className={`site-topbar${darkMode ? " is-dark" : ""}`}>
       <div className="site-topbar-inner">
-        <Link
-          to="/"
-          className="site-topbar-brand"
-          onClick={() => trackNav("brand")}
-        >
-          Sharang Pai
-        </Link>
-
         <nav className="site-topbar-nav" aria-label="Primary">
           <Link
             to="/"

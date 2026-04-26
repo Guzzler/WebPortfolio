@@ -97,15 +97,6 @@ const BlogPost = () => {
         </Link>
 
         <header className="blog-article-header">
-          {post.tags && post.tags.length > 0 ? (
-            <div className="blog-article-tags">
-              {post.tags.map((tag) => (
-                <span key={tag} className="blog-article-tag">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          ) : null}
           <h1 className="blog-article-title">{post.title}</h1>
           <div className="blog-article-meta">
             <time dateTime={post.date}>{formatDate(post.date)}</time>

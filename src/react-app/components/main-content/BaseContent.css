@@ -302,12 +302,75 @@
 .home-shell {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 100vh;
   background: var(--light-bg);
+  overflow-x: hidden;
+}
+
+.home-shell > .ant-row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100%;
 }
 
 .home-shell .left-column {
   min-height: calc(100vh - 60px);
+}
+
+/* Modern scrollbars — apply across the site so the home main column
+   and the blog scroll container both feel quiet rather than chunky. */
+
+.home-shell *::-webkit-scrollbar,
+.blog-shell *::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.home-shell *::-webkit-scrollbar-track,
+.blog-shell *::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.home-shell *::-webkit-scrollbar-thumb,
+.blog-shell *::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(102, 123, 152, 0.28);
+  border-radius: 999px;
+}
+
+.home-shell *::-webkit-scrollbar-thumb:hover,
+.blog-shell *::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 123, 152, 0.45);
+}
+
+.home-shell.dark-mode *::-webkit-scrollbar-thumb,
+.blog-shell.is-dark *::-webkit-scrollbar-thumb {
+  background: rgba(111, 141, 177, 0.22);
+}
+
+.home-shell.dark-mode *::-webkit-scrollbar-thumb:hover,
+.blog-shell.is-dark *::-webkit-scrollbar-thumb:hover {
+  background: rgba(111, 141, 177, 0.4);
+}
+
+/* Firefox */
+.home-shell,
+.blog-shell {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 123, 152, 0.32) transparent;
+}
+
+.home-shell.dark-mode,
+.blog-shell.is-dark {
+  scrollbar-color: rgba(111, 141, 177, 0.28) transparent;
 }
 
 .control-room-hero {
