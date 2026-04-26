@@ -2,7 +2,7 @@ const post = {
   slug: "the-immigrants-dilemma",
   title: "The Immigrant's Dilemma",
   date: "2026-04-26",
-  readingTime: "7 min read",
+  readingTime: "12 min read",
   tags: ["Essay", "AI", "Game theory"],
   excerpt:
     "What makes sense for an individual and what might be good for the world are not always the same thing. And increasingly, in a world being shaped by AI, they feel pulled in different directions.",
