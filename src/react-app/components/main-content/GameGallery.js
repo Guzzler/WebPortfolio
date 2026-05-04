@@ -112,6 +112,8 @@ const settings = {
   ],
 };
 
+const gallerySignals = ["Mechanics", "Feedback", "Pacing", "Mood", "Experimentation"];
+
 const GameGallery = () => {
   const sliderRef = useRef(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -200,13 +202,21 @@ const GameGallery = () => {
   return (
     <section className="game-gallery" id="games">
       <div className="gallery-header">
-        <span className="gallery-eyebrow">Play lab</span>
-        <h2 className="gallery-heading">Games and experiments</h2>
+        <span className="gallery-eyebrow">Builder mode 03</span>
+        <h2 className="gallery-heading">Games as the play lab</h2>
         <p className="gallery-copy">
-          Games are where I get to play with mechanics, feedback loops, and odd
-          little ideas just for the fun of it. They are a lighter counterbalance
-          to the more serious product work.
+          This is where product instinct gets to breathe a little. The projects
+          are playful, but they sharpen the same taste for interaction feel,
+          readable systems, and surprising feedback that shows up in more
+          serious work too.
         </p>
+        <div className="gallery-signal-row" aria-label="Games section themes">
+          {gallerySignals.map((signal) => (
+            <span key={signal} className="gallery-signal">
+              {signal}
+            </span>
+          ))}
+        </div>
       </div>
 
       <Slider ref={sliderRef} {...settings}>
