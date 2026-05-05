@@ -23,6 +23,30 @@
    TIMELINE BASE
    ======================================== */
 
+.experience-timeline-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.experience-timeline-intro {
+  padding: 20px 22px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  background:
+    linear-gradient(135deg, rgba(88, 199, 255, 0.08), transparent 55%),
+    var(--card-bg, #ffffff);
+  box-shadow: var(--shadow-xs, 0 8px 24px rgba(26, 41, 61, 0.06));
+}
+
+.experience-timeline-copy {
+  margin: 12px 0 0;
+  color: var(--text-secondary, #2a3a52);
+  font-size: 14px;
+  line-height: 1.75;
+  max-width: 44rem;
+}
+
 .timeline {
   line-height: 1.6;
   list-style: none;
@@ -165,6 +189,22 @@
   margin-bottom: 0;
 }
 
+.timeline-period-copy {
+  margin: 10px 0 0;
+  color: var(--text-muted, #64748b);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.timeline-link {
+  display: inline-flex;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* ========================================
    TIMELINE TITLE
    ======================================== */
@@ -180,6 +220,36 @@
 
 .dark-mode .timeline-title {
   color: var(--text-primary, #f1f5f9);
+}
+
+/* ========================================
+   ARC TAGS
+   ======================================== */
+
+.timeline-arc-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.timeline-arc-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 186, 114, 0.18);
+  background: rgba(242, 186, 114, 0.12);
+  color: var(--accent, #f2ba72);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dark-mode .timeline-arc-pill {
+  border-color: rgba(242, 186, 114, 0.16);
+  background: rgba(242, 186, 114, 0.1);
 }
 
 /* ========================================
@@ -451,6 +521,10 @@
     transform: translateX(-50%);
   }
 
+  .timeline-centered > .timeline-item:nth-child(even) .timeline-arc-row {
+    justify-content: flex-end;
+  }
+
   /* Tech tags alignment for centered layout */
   .timeline-centered > .timeline-item:nth-child(even) .tech-tags-container {
     justify-content: flex-end;
@@ -469,6 +543,10 @@
 
   .timeline-content {
     padding: 16px;
+  }
+
+  .experience-timeline-intro {
+    padding: 18px;
   }
 
   .timeline-title {
@@ -492,8 +570,9 @@
   .period .timeline-content {
     padding: 20px 0 10px;
   }
-  .timeline-title{
-    margin: 0px 0px 10px 0px;
+
+  .timeline-title {
+    margin: 0 0 10px;
   }
 }
 

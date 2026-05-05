@@ -63,6 +63,27 @@ const proofPoints = [
   },
 ];
 
+const experienceArcs = [
+  {
+    eyebrow: "Arc 01",
+    title: "Agentic product systems",
+    detail:
+      "Luma AI, Persona, RedBrickAI, and UpDuo all live in the same lane: turning complex AI or data systems into products people can actually use.",
+  },
+  {
+    eyebrow: "Arc 02",
+    title: "Public-interest and access",
+    detail:
+      "AISOC, OpenShiksha, VaccinePost, StepChange, and fintech work all reflect the same instinct - use software to widen access and make difficult decisions more practical.",
+  },
+  {
+    eyebrow: "Arc 03",
+    title: "Interaction feel through play",
+    detail:
+      "The games section is part of the same story. It is where I keep sharpening feedback, pacing, and product feel in a smaller, more experimental format.",
+  },
+];
+
 const programmingLanguages = [
   "Python",
   "C++",
@@ -109,6 +130,18 @@ const hobbies = [
   { icon: "fa-tv", text: "Watching Sports" },
   { icon: "fa-chess", text: "Playing Board Games" },
 ];
+
+const GamesBridge = () => (
+  <div className="experience-bridge-card">
+    <span className="experience-bridge-label">Why games belong here</span>
+    <p>
+      The games below are a smaller design lab for the same instincts that show
+      up in the rest of this portfolio: systems thinking, interaction feel,
+      playful experimentation, and the discipline to make something enjoyable to
+      use.
+    </p>
+  </div>
+);
 
 const BaseContent = () => {
   const [loaded, setLoaded] = useState(false);
@@ -440,11 +473,21 @@ const BaseContent = () => {
               <section id="experience">
                 <h2 className="resume-caption">Experience</h2>
                 <p className="section-lede">
-                  So far it has been a mix of product engineering, founding-team
-                  work, research, and open-source projects across AI, climate,
-                  fintech, and education.
+                  Chronology matters, but the pattern matters more: I keep
+                  returning to agentic product systems, public-interest access
+                  work, and interaction design shaped by play.
                 </p>
+                <div className="experience-arc-grid" aria-label="Recurring builder arcs">
+                  {experienceArcs.map((arc) => (
+                    <article key={arc.title} className="experience-arc-card">
+                      <span className="experience-arc-eyebrow">{arc.eyebrow}</span>
+                      <h3 className="experience-arc-title">{arc.title}</h3>
+                      <p className="experience-arc-detail">{arc.detail}</p>
+                    </article>
+                  ))}
+                </div>
                 <ExperienceTimeline />
+                <GamesBridge />
               </section>
 
               {smallDevice ? <GameGallery /> : null}
