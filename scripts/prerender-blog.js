@@ -105,7 +105,7 @@ writeStub(
   buildMeta({
     title: `Writing — ${SITE_TITLE}`,
     description:
-      "Long-form notes on AI, products, and the systems they sit inside.",
+      "Essays on artificial intelligence, technology, and the choices that come with building it.",
     url: `${SITE_URL}/blog`,
   })
 );

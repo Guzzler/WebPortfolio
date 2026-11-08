@@ -3,23 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
+        <meta
       name="description"
-      content="Sharang Pai is an AI engineer and product builder at Luma AI whose portfolio connects agentic systems, social-impact technology, open-source work, and game experiments."
+      content="Sharang Pai is an engineer at Luma AI working on evaluation and agent infrastructure for multimodal models. He builds open tools for education, public health and conservation, and makes small games."
     />
     <link rel="canonical" href="https://sharangpai.me/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sharang Pai" />
-    <meta property="og:title" content="Sharang Pai | AI Engineer, Product Builder, Game Creator" />
-    <meta property="og:description" content="Sharang Pai is an AI engineer and product builder at Luma AI whose portfolio connects agentic systems, social-impact technology, open-source work, and game experiments." />
+    <meta property="og:title" content="Sharang Pai | AI engineer at Luma AI" />
+    <meta property="og:description" content="Sharang Pai is an engineer at Luma AI working on evaluation and agent infrastructure for multimodal models. He builds open tools for education, public health and conservation, and makes small games." />
     <meta property="og:url" content="https://sharangpai.me/" />
     <meta property="og:image" content="https://sharangpai.me/static/favicon/android-icon-192x192.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sharang Pai | AI Engineer, Product Builder, Game Creator" />
-    <meta name="twitter:description" content="Sharang Pai is an AI engineer and product builder at Luma AI whose portfolio connects agentic systems, social-impact technology, open-source work, and game experiments." />
+    <meta name="twitter:title" content="Sharang Pai | AI engineer at Luma AI" />
+    <meta name="twitter:description" content="Sharang Pai is an engineer at Luma AI working on evaluation and agent infrastructure for multimodal models. He builds open tools for education, public health and conservation, and makes small games." />
     <meta name="twitter:image" content="https://sharangpai.me/static/favicon/android-icon-192x192.png" />
-    <link rel="preload" as="image" href="https://sharangpai.me/static/media/portrait.4f21b58b.png">
     <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/static/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/static/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/static/favicon/apple-icon-72x72.png">
@@ -36,7 +34,7 @@
     <link rel="manifest" href="%PUBLIC_URL%/static/manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/static/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0e1311">
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -50,16 +48,19 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Sharang Pai | AI Engineer, Product Builder, Game Creator</title>
+    <title>Sharang Pai | AI engineer at Luma AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/70e2a5299a.js" crossorigin="anonymous"></script>
-    <script src="https://use.typekit.net/bkt6ydm.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&family=Pixelify+Sans:wght@400..600&family=Public+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("sp:dark-mode") === "false" ? "light" : "dark";
+      } catch (e) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
