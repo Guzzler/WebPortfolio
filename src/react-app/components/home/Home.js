@@ -462,9 +462,6 @@ const Home = () => {
               </button>
             </li>
           </ul>
-          <p className="credits-fine">
-            Built with React, set in Literata, Public Sans and Pixelify Sans.
-          </p>
         </div>
       </footer>
 
