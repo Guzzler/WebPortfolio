@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -70,19 +71,40 @@ const Toast = ({ achievement }) => (
 );
 
 const Panel = ({ unlocked, onClose, onReset }) => {
+  const panelRef = useRef(null);
   const closeRef = useRef(null);
   const count = Object.keys(unlocked).length;
 
-  useEffect(() => {
-    if (closeRef.current) closeRef.current.focus();
-    const onKey = (event) => event.key === "Escape" && onClose();
+  useLayoutEffect(() => {
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current.focus({ preventScroll: true });
+    const onKey = (event) => {
+      if (event.key === "Escape") onClose();
+      if (event.key !== "Tab") return;
+      const buttons = panelRef.current.querySelectorAll("button");
+      const first = buttons[0];
+      const last = buttons[buttons.length - 1];
+      const focused = document.activeElement;
+      if (!panelRef.current.contains(focused) ||
+          (event.shiftKey ? focused === first : focused === last)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      }
+    };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+      if (previousFocus) previousFocus.focus({ preventScroll: true });
+    };
   }, [onClose]);
 
   return (
     <div className="panel-backdrop" onClick={onClose}>
       <div
+        ref={panelRef}
         className="trophy-panel"
         role="dialog"
         aria-modal="true"
@@ -122,7 +144,10 @@ const Panel = ({ unlocked, onClose, onReset }) => {
           })}
         </ul>
         {count > 0 ? (
-          <button type="button" className="text-btn" onClick={onReset}>
+          <button type="button" className="text-btn" onClick={() => {
+            closeRef.current.focus();
+            onReset();
+          }}>
             Reset progress
           </button>
         ) : null}

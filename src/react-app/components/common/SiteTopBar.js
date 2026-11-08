@@ -37,7 +37,7 @@ const useScrollProgress = () => {
 };
 
 // variant "game" (home) shows an XP bar; "reading" (blog) shows plain reading progress.
-const SiteTopBar = ({ active, variant = "game" }) => {
+const SiteTopBar = ({ active, variant = "game", inert }) => {
   const { pathname } = useLocation();
   const onHome = pathname === "/";
   const onBlog = pathname.startsWith("/blog");
@@ -46,21 +46,27 @@ const SiteTopBar = ({ active, variant = "game" }) => {
   const progress = useScrollProgress();
   const navRef = useRef(null);
   const [indicator, setIndicator] = useState(null);
-
   const current = onBlog ? "writing" : active;
 
   useLayoutEffect(() => {
-    const nav = navRef.current;
-    const el = nav && nav.querySelector(`[data-nav="${current}"]`);
-    if (!el) {
-      setIndicator(null);
-      return;
-    }
-    setIndicator({ left: el.offsetLeft, width: el.offsetWidth });
+    const measure = () => {
+      const el = navRef.current.querySelector(`[data-nav="${current}"]`);
+      setIndicator(el ? { left: el.offsetLeft, width: el.offsetWidth } : null);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, [current]);
 
   const trackNav = (target) => track("Site Nav Click", { target });
   const count = Object.keys(unlocked).length;
+
+  const onHomeClick = (event) => {
+    trackNav("home");
+    if (onHome && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      window.scrollTo({ top: 0 });
+    }
+  };
 
   const onTheme = () => {
     toggleTheme();
@@ -68,9 +74,9 @@ const SiteTopBar = ({ active, variant = "game" }) => {
   };
 
   return (
-    <header className={`hud hud-${variant}`}>
+    <header className={`hud hud-${variant}`} inert={inert}>
       <div className="hud-inner">
-        <Link to="/" className="hud-home" onClick={() => trackNav("home")}>
+        <Link to="/" className="hud-home" aria-label="Sharang Pai, home" onClick={onHomeClick}>
           <span className="hud-mark" aria-hidden="true">SP</span>
           <span className="hud-name">Sharang Pai</span>
         </Link>

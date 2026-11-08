@@ -15,6 +15,8 @@ export const TOUR_STEPS = [
     place: "Title screen",
     text:
       "Oh, hi! I'm Sharang, well, the 8-bit version. I'll walk you around, it takes about a minute. Use → or Enter to move on, Esc if you'd rather explore alone.",
+    touchText:
+      "Oh, hi! I'm Sharang, well, the 8-bit version. I'll walk you around in about a minute. Hit Next to come along, or Skip to explore on your own.",
   },
   {
     target: "#work",
@@ -33,6 +35,8 @@ export const TOUR_STEPS = [
     place: "Games",
     text:
       "And here's where I goof off. Small games, mostly made at game jams. They're my favourite way to learn design. Go on, pick one, they all run right here.",
+    touchText:
+      "And here's where I goof off. Small games, mostly made at game jams. They're my favourite way to learn design. Pick one to try after the tour.",
   },
   {
     target: "#writing",
@@ -54,7 +58,6 @@ export const TOUR_STEPS = [
   },
 ];
 
-const HUD_OFFSET = 76;
 const AVATAR = 64;
 
 const avatarImages = {};
@@ -86,23 +89,26 @@ const reducedMotion = () =>
   window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const sameRect = (a, b) =>
-  a &&
-  b &&
-  Math.abs(a.top - b.top) < 0.5 &&
-  Math.abs(a.left - b.left) < 0.5 &&
-  Math.abs(a.width - b.width) < 0.5 &&
-  Math.abs(a.height - b.height) < 0.5;
+  a === b ||
+  (a && b &&
+    Math.abs(a.top - b.top) < 0.5 &&
+    Math.abs(a.left - b.left) < 0.5 &&
+    Math.abs(a.width - b.width) < 0.5 &&
+    Math.abs(a.height - b.height) < 0.5);
 
 const Tour = ({ onClose }) => {
   const { unlock } = useAchievements();
   const [step, setStep] = useState(0);
-  const [typed, setTyped] = useState(0);
+  const [typed, setTyped] = useState(reducedMotion() ? Infinity : 0);
   const [rect, setRect] = useState(null);
   const dialogRef = useRef(null);
+  const textRef = useRef(null);
   const nextRef = useRef(null);
 
   const current = TOUR_STEPS[step];
-  const fullLength = current.text.length;
+  const compact = window.matchMedia("(max-width: 760px), (hover: none)").matches;
+  const narration = compact && current.touchText ? current.touchText : current.text;
+  const fullLength = narration.length;
   const isLast = step === TOUR_STEPS.length - 1;
   const doneTyping = typed >= fullLength;
 
@@ -110,89 +116,130 @@ const Tour = ({ onClose }) => {
     unlock("start");
     track("Tour Start");
     requestForm("sprite");
-    if (nextRef.current) nextRef.current.focus();
   }, [unlock]);
 
-  // Move the camera to the step's section.
-  useEffect(() => {
-    const el = document.querySelector(current.target);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - HUD_OFFSET;
-    window.scrollTo({ top, behavior: reducedMotion() ? "auto" : "smooth" });
-  }, [current.target]);
+  useLayoutEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    nextRef.current.focus({ preventScroll: true });
+    textRef.current.scrollTop = 0;
+  }, [step]);
 
   // Typewriter.
   useEffect(() => {
-    if (reducedMotion()) {
-      setTyped(fullLength);
-      return undefined;
-    }
-    setTyped(0);
+    if (reducedMotion()) return undefined;
     const id = window.setInterval(() => {
       setTyped((n) => {
         if (n >= fullLength) {
           window.clearInterval(id);
           return n;
         }
-        return n + 2;
+        return n + (compact ? 4 : 2);
       });
-    }, 22);
+    }, compact ? 20 : 22);
     return () => window.clearInterval(id);
-  }, [step, fullLength]);
+  }, [step, fullLength, compact]);
 
-  // Keep the spotlight glued to the section while the page scrolls.
+  // Start the camera at the section's content, below the measured sticky HUD.
   useLayoutEffect(() => {
+    const section = document.querySelector(current.target);
+    const hud = document.querySelector(".hud");
+    const dialog = dialogRef.current;
+    if (!section || !hud || !dialog) return undefined;
+
     let frame;
+    const contentTop = (bounds) =>
+      bounds.top + (parseFloat(window.getComputedStyle(section).paddingTop) || 0);
+
     const measure = () => {
-      const el = document.querySelector(current.target);
-      const dialog = dialogRef.current;
-      if (el && dialog) {
-        const r = el.getBoundingClientRect();
-        const pad = 10;
-        const floor = window.innerHeight - dialog.offsetHeight - 28;
-        const top = Math.max(r.top - pad, HUD_OFFSET - 8);
-        const bottom = Math.min(r.bottom + pad, floor);
-        const next = {
-          top,
-          left: Math.max(r.left - pad, 8),
-          width: Math.min(r.width + pad * 2, window.innerWidth - 16),
-          height: Math.max(bottom - top, 48),
-        };
-        setRect((prev) => (sameRect(prev, next) ? prev : next));
-      }
-      frame = window.requestAnimationFrame(measure);
+      frame = null;
+      const bounds = section.getBoundingClientRect();
+      const viewportWidth = document.documentElement.clientWidth;
+      const top = Math.max(contentTop(bounds) - 8, hud.getBoundingClientRect().bottom + 8);
+      const bottom = Math.min(bounds.bottom, dialog.offsetTop - 12);
+      const left = Math.max(bounds.left - 8, 12);
+      const right = Math.min(bounds.right + 8, viewportWidth - 12);
+      const next = bottom > top
+        ? { top, left, width: right - left, height: bottom - top }
+        : null;
+      setRect((prev) => (sameRect(prev, next) ? prev : next));
     };
-    measure();
-    return () => window.cancelAnimationFrame(frame);
+
+    const scheduleMeasure = () => {
+      if (!frame) frame = window.requestAnimationFrame(measure);
+    };
+    const moveCamera = (behavior) => {
+      const top = current.target === "#top" ? 0
+        : contentTop(section.getBoundingClientRect()) + window.scrollY - hud.offsetHeight - 20;
+      window.scrollTo({ top, behavior });
+      scheduleMeasure();
+    };
+    const onResize = () => moveCamera("instant");
+    const observer = new ResizeObserver(scheduleMeasure);
+    observer.observe(dialog);
+    observer.observe(section);
+    window.addEventListener("scroll", scheduleMeasure, { passive: true });
+    window.addEventListener("resize", onResize);
+    moveCamera(reducedMotion() ? "instant" : "smooth");
+
+    return () => {
+      window.scrollTo({ top: window.scrollY, behavior: "instant" });
+      observer.disconnect();
+      window.removeEventListener("scroll", scheduleMeasure);
+      window.removeEventListener("resize", onResize);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, [current.target]);
 
   const finish = useCallback(
     (completed) => {
       track(completed ? "Tour Complete" : "Tour Exit", { step });
       if (completed) unlock("tour");
-      onClose();
+      onClose(current.target);
     },
-    [onClose, step, unlock]
+    [current.target, onClose, step, unlock]
   );
 
+  const goTo = useCallback((index) => {
+    setTyped(reducedMotion() ? Infinity : 0);
+    setStep(index);
+  }, []);
+
   const next = useCallback(() => {
-    if (!doneTyping) {
+    if (!compact && !doneTyping) {
       setTyped(fullLength);
       return;
     }
     if (isLast) finish(true);
-    else setStep((s) => s + 1);
-  }, [doneTyping, fullLength, isLast, finish]);
+    else goTo(step + 1);
+  }, [compact, doneTyping, finish, fullLength, goTo, isLast, step]);
 
-  const back = useCallback(() => setStep((s) => Math.max(s - 1, 0)), []);
+  const back = useCallback(() => {
+    if (step > 0) goTo(step - 1);
+  }, [goTo, step]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const onKey = (event) => {
-      if (event.key === "Escape") finish(false);
-      else if (event.key === "ArrowRight") {
+      if (event.key === "Tab") {
+        const stops = dialogRef.current.querySelectorAll("button");
+        const first = stops[0];
+        const last = stops[stops.length - 1];
+        const active = document.activeElement;
+        if ((event.shiftKey && active === first) || (!event.shiftKey && active === last)) {
+          event.preventDefault();
+          (event.shiftKey ? last : first).focus();
+        }
+      } else if (event.key === "Escape") finish(false);
+      else if (event.key === "ArrowRight" && !event.repeat) {
         event.preventDefault();
         next();
-      } else if (event.key === "ArrowLeft") {
+      } else if (event.key === "ArrowLeft" && !event.repeat) {
         event.preventDefault();
         back();
       }
@@ -202,7 +249,7 @@ const Tour = ({ onClose }) => {
   }, [next, back, finish]);
 
   return (
-    <div className="tour" aria-live="polite">
+    <div className={`tour${rect ? "" : " is-dimmed"}`}>
       {rect ? (
         <div
           className="tour-spotlight"
@@ -215,8 +262,12 @@ const Tour = ({ onClose }) => {
         ref={dialogRef}
         className="tour-dialog"
         role="dialog"
-        aria-label={`Guided tour, step ${step + 1} of ${TOUR_STEPS.length}: ${current.place}`}
-        onClick={next}
+        aria-modal="true"
+        aria-label="Guided tour"
+        aria-describedby="tour-narration"
+        onClick={(event) => {
+          if (!compact && !event.target.closest(".tour-controls")) next();
+        }}
       >
         <div className={`tour-avatar${doneTyping ? "" : " is-talking"}`} aria-hidden="true">
           <PixelSwap form={isLast ? "photo" : "sprite"} width={AVATAR} height={AVATAR} draw={drawAvatar}>
@@ -229,23 +280,31 @@ const Tour = ({ onClose }) => {
             }
           </PixelSwap>
         </div>
-        <div className="tour-body">
-          <div className="tour-meta">
-            <span className="tour-name">Sharang</span>
-            <span className="tour-place">{current.place}</span>
-          </div>
-          <p className="tour-text">
-            {current.text.slice(0, typed)}
+        <div className="tour-meta" aria-hidden="true">
+          <span className="tour-name">Sharang</span>
+          <span className="tour-place">{current.place}</span>
+        </div>
+        <div className="sr-only" id="tour-narration" aria-live="polite" aria-atomic="true">
+          {`Step ${step + 1} of ${TOUR_STEPS.length}, ${current.place}. ${narration}`}
+        </div>
+        <div className="tour-copy" ref={textRef}>
+          <p className="tour-text" aria-hidden="true">
+            {narration.slice(0, typed)}
             <span className="tour-ghost" aria-hidden="true">
-              {current.text.slice(typed)}
+              {narration.slice(typed)}
             </span>
           </p>
-          <div className="tour-controls" onClick={(event) => event.stopPropagation()}>
-            <ol className="tour-pips" aria-hidden="true">
+        </div>
+        <div className="tour-controls">
+          <div className="tour-progress" aria-hidden="true">
+            <span>{step + 1} / {TOUR_STEPS.length}</span>
+            <ol className="tour-pips">
               {TOUR_STEPS.map((s, i) => (
                 <li key={s.target} className={i === step ? "is-on" : i < step ? "is-done" : ""} />
               ))}
             </ol>
+          </div>
+          <div className="tour-actions">
             <button type="button" className="tour-btn is-quiet" onClick={() => finish(false)}>
               Skip
             </button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { aiSystems, languages, technologies } from "../../content";
 import "./Toolkit.css";
 
@@ -182,6 +182,48 @@ export const FxChips = ({ items, label }) => (
   </ul>
 );
 
+const SkillTags = ({ items, detailId }) => {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <>
+      <ul className="tag-list">
+        {items.map((item) => (
+          <li key={item.label} className={item.code ? "has-code" : "has-used"}>
+            <button
+              type="button"
+              className="tag"
+              aria-expanded={selected === item}
+              aria-controls={detailId}
+              onClick={() => setSelected(selected === item ? null : item)}
+            >
+              {item.label}
+            </button>
+            {item.code ? (
+              <span className="tag-tip is-code" style={{ "--n": item.code.length }} aria-hidden="true">
+                <code>{item.code}</code>
+              </span>
+            ) : (
+              <span className="tag-tip is-used" aria-hidden="true">
+                <small>Used in</small>
+                {item.used}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+      <div id={detailId} role="status">
+        {selected ? (
+          <div className="tag-details">
+            <strong>{selected.label}</strong>
+            {selected.code ? <code>{selected.code}</code> : <span>{selected.used}</span>}
+          </div>
+        ) : null}
+      </div>
+    </>
+  );
+};
+
 const Toolkit = () => (
   <div className="toolkit">
     <section aria-labelledby="ai-heading">
@@ -204,33 +246,14 @@ const Toolkit = () => (
         <h3 id="lang-heading" className="sub-title">
           Languages
         </h3>
-        <ul className="tag-list">
-          {languages.map((item) => (
-            <li key={item.label} className="tag has-code" tabIndex={0}>
-              {item.label}
-              <span className="tag-tip is-code" style={{ "--n": item.code.length }} aria-hidden="true">
-                <code>{item.code}</code>
-              </span>
-            </li>
-          ))}
-        </ul>
+        <SkillTags items={languages} detailId="language-details" />
       </section>
 
       <section aria-labelledby="tech-heading">
         <h3 id="tech-heading" className="sub-title">
           Technologies
         </h3>
-        <ul className="tag-list">
-          {technologies.map((item) => (
-            <li key={item.label} className="tag has-used" tabIndex={0} title={`Used in: ${item.used}`}>
-              {item.label}
-              <span className="tag-tip is-used" aria-hidden="true">
-                <small>Used in</small>
-                {item.used}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <SkillTags items={technologies} detailId="technology-details" />
       </section>
     </div>
   </div>

@@ -4,6 +4,12 @@
   padding: 0 var(--gutter);
 }
 
+.home.is-touring {
+  /* Give the credits room to sit above the dialog during the last stop. */
+  padding-bottom: 58vh;
+  padding-bottom: 58dvh;
+}
+
 /* ---------- Title screen ---------- */
 .title-screen {
   position: relative;
@@ -88,6 +94,15 @@
   animation: rise 0.8s var(--ease-out) 0.7s both;
 }
 
+.title-context {
+  display: none;
+  max-width: 58ch;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .title-intro a,
 .quest-summary a {
   color: var(--ink);
@@ -148,6 +163,11 @@
 
 .press-start:hover {
   filter: brightness(1.06);
+}
+
+.press-start:focus-visible {
+  outline: 2px solid #241900;
+  outline-offset: -7px;
 }
 
 .press-start:active {
@@ -1476,16 +1496,13 @@
 }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .bubble {
+    right: calc(6px - var(--gutter));
+  }
+}
+
 @media (max-width: 900px) {
-  .title-screen {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-
-  .player-card {
-    order: -1;
-  }
-
   .zone {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1501,7 +1518,73 @@
   }
 }
 
+@media (max-width: 760px), (max-width: 1024px) and (max-height: 500px) {
+  .title-screen {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 32px 0 56px;
+  }
+
+  .player-card {
+    justify-self: center;
+  }
+
+  .player-card figcaption {
+    text-align: center;
+  }
+
+  .title-intro {
+    margin-top: 16px;
+    font-size: 1.05rem;
+  }
+
+  .title-intro a {
+    white-space: nowrap;
+  }
+
+  .title-intro,
+  .title-actions,
+  .title-links {
+    animation: none;
+  }
+
+  .headline-word {
+    animation-duration: 0.45s;
+    animation-delay: calc(var(--i) * 25ms);
+  }
+
+  .title-context-wide {
+    display: none;
+  }
+
+  .title-context {
+    display: block;
+  }
+
+  .title-actions {
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .title-links {
+    margin-top: 16px;
+  }
+
+  .title-links a {
+    min-height: 44px;
+  }
+}
+
 @media (max-width: 640px) {
+  .zone {
+    padding: 52px 0;
+  }
+
+  .zone-lede {
+    margin-bottom: 26px;
+    font-size: 1.0625rem;
+  }
+
   .quest,
   .earlier,
   .post-row {
@@ -1525,5 +1608,36 @@
 
   .tile-trail {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .title-actions .press-start {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .headline {
+    max-width: none;
+    font-size: clamp(1.9rem, 10.5vw, 2.3rem);
+  }
+}
+
+@media (hover: none) {
+  .cart-play {
+    top: auto;
+    bottom: 10px;
+    left: 10px;
+    padding: 3px 9px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .cart:hover .cart-play,
+  .cart:focus-visible .cart-play {
+    transform: none;
+    animation: none;
   }
 }
