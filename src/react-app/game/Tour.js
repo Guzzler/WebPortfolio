@@ -14,37 +14,43 @@ export const TOUR_STEPS = [
     target: "#top",
     place: "Title screen",
     text:
-      "Hey, I'm Sharang, or at least my 8-bit self. Welcome in. This is a quick tour of the site, about a minute. Press → or Enter to keep going, and Esc whenever you want to leave.",
+      "Oh, hi! I'm Sharang, well, the 8-bit version. I'll walk you around, it takes about a minute. Use → or Enter to move on, Esc if you'd rather explore alone.",
   },
   {
     target: "#work",
     place: "Work",
     text:
-      "The main quest. At Luma AI I lead Evaluations Engineering, which means working out how good our multimodal models really are, and I build agent infrastructure. Before that I was the first ML engineer at Persona, which Luma acquired.",
+      "Right now I'm at Luma AI, leading Evaluations Engineering. Basically, I figure out how good our models really are. Before this I was a founding engineer at Persona, and I've been early at a few startups, including the YC ride with RedBrick AI.",
   },
   {
     target: "#impact",
     place: "Impact",
     text:
-      "This is the part I care about most. Since 2015 I've built tools for people the tech industry tends to skip: classrooms in India, vaccine access during COVID, conservation teams at WWF, and most recently shelter dogs waiting for a home. It's the work I want to do more of.",
+      "Okay, this one matters most to me. Classrooms in India, vaccine slots during COVID, WWF conservation teams, and lately shelter dogs. Every skill I pick up is really an attempt to build more things like these, and build them well.",
   },
   {
     target: "#games",
     place: "Games",
     text:
-      "The arcade. I make small games, mostly at game jams, because it's the most fun way I know to practise design. Pick any of them to play it right here in your browser.",
+      "And here's where I goof off. Small games, mostly made at game jams. They're my favourite way to learn design. Go on, pick one, they all run right here.",
   },
   {
     target: "#writing",
     place: "Writing",
     text:
-      "Longer thinking lives here: essays on AI, technology, and the choices that come with building it.",
+      "Sometimes a thought needs more room than a tweet. These are my longer pieces on AI and the choices that come with building it.",
+  },
+  {
+    target: "#background",
+    place: "Background",
+    text:
+      "The origin story: CMU for my master's in AI, Manipal before that. Plus the stuff that keeps me sane, like football, board games and far too much League.",
   },
   {
     target: "#contact",
     place: "Credits",
     text:
-      "That's the tour, and that's the real me. If anything here resonated, I'd like to hear from you. There are a few achievements still hidden around the site, too.",
+      "And that's the real me. Thanks for sticking around! If something here clicked, say hi. Oh, and there are still a few achievements hiding on this site.",
   },
 ];
 
