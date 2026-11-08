@@ -1,383 +1,291 @@
-/*
- * Blog styling. Inherits the design tokens from BaseContent.css. Variables
- * are redeclared here so the blog routes look correct even when the home
- * page hasn't mounted in the same session. Intentionally restrained — no
- * gradients, no frosted glass, no radial glows.
- */
-
-:root {
-  --primary: #58c7ff;
-  --primary-hover: #2ea8df;
-  --accent: #f2ba72;
-  --sidebar-bg: #edf2f9;
-  --sidebar-panel: rgba(255, 255, 255, 0.78);
-  --sidebar-border: rgba(102, 123, 152, 0.18);
-  --light-bg: #f7f8fa;
-  --bg-elevated: #ffffff;
-  --hero-bg: #ffffff;
-  --card-bg: #ffffff;
-  --card-strong: #ffffff;
-  --text-primary: #14213d;
-  --text-secondary: #2a3a52;
-  --text-muted: #5f748f;
-  --text-light: #8b9db5;
-  --border-color: rgba(102, 123, 152, 0.18);
-  --hairline: rgba(102, 123, 152, 0.14);
-  --grid-line: rgba(74, 96, 123, 0.08);
-  --shadow-xs: 0 8px 24px rgba(26, 41, 61, 0.06);
-  --shadow-sm: 0 18px 40px rgba(26, 41, 61, 0.08);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --transition: all 0.2s ease;
-  --serif-stack: "Source Serif Pro", "Source Serif 4", "Iowan Old Style",
-    "Charter", "Baskerville", Georgia, serif;
-}
-
-.blog-shell.is-dark {
-  --sidebar-bg: #0b1523;
-  --sidebar-panel: rgba(9, 18, 31, 0.78);
-  --sidebar-border: rgba(111, 141, 177, 0.16);
-  --light-bg: #0a131f;
-  --bg-elevated: #0c1727;
-  --hero-bg: #0c1727;
-  --card-bg: #0c1727;
-  --card-strong: #0f1c2f;
-  --text-primary: #eef4ff;
-  --text-secondary: #d6e1f0;
-  --text-muted: #9eb1c8;
-  --text-light: #70839d;
-  --border-color: rgba(111, 141, 177, 0.16);
-  --hairline: rgba(111, 141, 177, 0.14);
-  --grid-line: rgba(120, 145, 178, 0.08);
-}
-
-.blog-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--light-bg);
-  color: var(--text-primary);
-  font-family: "Inter", sans-serif;
-}
+/* Editorial styles: calm, typographic, no game chrome in the reading area. */
 
 .blog-main {
-  flex: 1;
-  width: 100%;
-  max-width: 960px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 56px 24px 80px;
+  padding: clamp(48px, 9vh, 96px) var(--gutter) 120px;
 }
 
-.blog-eyebrow {
-  display: inline-block;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+/* ---------- Index ---------- */
+.blog-index-head {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--ink);
 }
 
-.blog-hero {
-  padding-bottom: 8px;
-  margin-bottom: 32px;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.blog-hero-title {
-  margin: 12px 0 14px;
-  color: var(--text-primary);
-  font-family: "Inter", sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-}
-
-.blog-hero-lede {
-  margin: 0 0 28px;
-  color: var(--text-secondary);
-  font-family: var(--serif-stack);
-  font-size: 17px;
-  line-height: 1.7;
-  max-width: 56ch;
-}
-
-/* List of posts — plain rows, hairline dividers, no cards. */
-
-.blog-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.blog-row {
-  display: block;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--hairline);
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s ease;
-}
-
-.blog-row:first-child {
-  padding-top: 8px;
-}
-
-.blog-row:last-child {
-  border-bottom: none;
-}
-
-.blog-row:hover .blog-row-title {
-  color: var(--primary);
-}
-
-.blog-row-meta,
-.blog-article-meta {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  color: var(--text-muted);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-}
-
-.blog-meta-divider {
-  color: var(--text-light);
-}
-
-.blog-row-title {
-  margin: 8px 0 6px;
-  color: var(--text-primary);
-  font-family: "Inter", sans-serif;
-  font-size: 22px;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  font-weight: 700;
-  transition: color 0.2s ease;
-}
-
-.blog-row-excerpt {
-  margin: 0;
-  color: var(--text-secondary);
-  font-family: var(--serif-stack);
-  font-size: 16px;
-  line-height: 1.65;
-}
-
-.blog-row-tags,
-.blog-article-tags {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
-  color: var(--text-light);
-  font-size: 12px;
-  font-style: italic;
-}
-
-.blog-row-tag::before,
-.blog-article-tag::before {
-  content: "·";
-  margin-right: 10px;
-  color: var(--text-light);
-  font-style: normal;
-}
-
-.blog-row-tag:first-child::before,
-.blog-article-tag:first-child::before {
-  content: "";
-  margin-right: 0;
-}
-
-/* Article (single post) */
-
-.blog-back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 24px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 13px;
+.blog-index-title {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
   font-weight: 500;
-  transition: color 0.2s ease, transform 0.2s ease;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
 }
 
-.blog-back-link:hover {
-  color: var(--primary);
-  transform: translateX(-2px);
+.blog-index-lede {
+  max-width: 52ch;
+  margin-top: 16px;
+  color: var(--ink-2);
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
-.blog-article {
+.blog-entry {
   display: flex;
   flex-direction: column;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--rule);
 }
 
-.blog-article-header {
-  padding-bottom: 28px;
-  margin-bottom: 32px;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.blog-article-tags {
-  margin-top: 0;
-  margin-bottom: 14px;
-}
-
-.blog-article-title {
-  margin: 0 0 14px;
-  color: var(--text-primary);
-  font-family: "Inter", sans-serif;
-  font-size: clamp(2rem, 4.4vw, 2.8rem);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-  font-weight: 700;
-}
-
-.blog-article-meta {
-  font-size: 13px;
-}
-
-.blog-article-body {
-  font-family: var(--serif-stack);
-  color: var(--text-primary);
-  font-size: 19px;
-  line-height: 1.78;
-}
-
-.blog-paragraph {
-  margin: 0 0 1.4em;
-  color: var(--text-secondary);
-}
-
-.blog-paragraph:last-child {
-  margin-bottom: 0;
-}
-
-.blog-h2 {
-  font-family: "Inter", sans-serif;
-  margin: 48px 0 16px;
-  color: var(--text-primary);
-  font-size: 22px;
-  letter-spacing: -0.02em;
-  font-weight: 700;
-}
-
-.blog-pullquote {
-  margin: 32px 0;
-  padding: 4px 0 4px 22px;
-  border-left: 3px solid var(--text-primary);
-  color: var(--text-primary);
-  font-family: var(--serif-stack);
-  font-style: italic;
-  font-size: 21px;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-}
-
-.blog-divider {
-  border: none;
-  border-top: 1px solid var(--hairline);
-  margin: 56px 0 36px;
-}
-
-/* Comments */
-
-.blog-comments {
+.blog-entry-meta {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
-.blog-comments-heading {
-  margin: 6px 0 0;
-  color: var(--text-primary);
-  font-family: "Inter", sans-serif;
-  font-size: 20px;
+.blog-entry-title {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3.4vw, 2.1rem);
+  font-weight: 500;
   letter-spacing: -0.015em;
-  font-weight: 700;
+  line-height: 1.15;
+  transition: color 0.15s ease;
 }
 
-.blog-comments-body {
-  margin: 0 0 4px;
-  color: var(--text-secondary);
-  font-family: var(--serif-stack);
-  font-size: 16px;
+.blog-entry-excerpt {
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-family: var(--serif);
+  font-size: 1.08rem;
   line-height: 1.65;
 }
 
-.blog-comments-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
+.blog-entry-cta {
+  margin-top: 16px;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-.blog-action {
+.blog-entry:hover .blog-entry-title {
+  color: var(--accent);
+}
+
+.blog-entry:hover .blog-entry-cta {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- Essay ---------- */
+.essay-back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 14px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 13px;
+  color: var(--muted);
+  font-size: 0.92rem;
   font-weight: 500;
-  font-family: "Inter", sans-serif;
-  transition: var(--transition);
+  transition: color 0.15s ease;
 }
 
-.blog-shell.is-dark .blog-action {
-  background: rgba(255, 255, 255, 0.02);
+.essay-back svg {
+  transition: transform 0.2s var(--ease-out);
 }
 
-.blog-action:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+.essay-back:hover {
+  color: var(--ink);
 }
 
-.cusdis-mount {
+.essay-back:hover svg {
+  transform: translateX(-3px);
+}
+
+.essay-head {
+  margin-top: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.essay-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.essay-title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6.2vw, 3.7rem);
+  font-weight: 500;
+  letter-spacing: -0.028em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.essay-standfirst {
+  margin-top: 22px;
+  color: var(--ink-2);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.essay-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.essay-author {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.essay-body {
+  padding-top: 40px;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.78;
+  color: var(--ink);
+  hanging-punctuation: first;
+  text-wrap: pretty;
+}
+
+.essay-body p {
+  margin: 0 0 1.4em;
+}
+
+.essay-body > p:first-child::first-letter {
+  float: left;
+  margin: 0.08em 0.1em 0 0;
+  font-size: 3.6em;
+  font-weight: 500;
+  line-height: 0.85;
+  color: var(--accent);
+}
+
+.essay-h2 {
+  margin: 2.2em 0 0.8em;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.essay-pullquote {
+  margin: 2.2em 0;
+  padding: 6px 0 6px 28px;
+  border-left: 3px solid var(--accent);
+}
+
+.essay-pullquote p {
+  margin: 0;
+  font-size: 1.55rem;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.essay-end {
+  height: 1px;
+}
+
+/* ---------- Reply ---------- */
+.essay-reply {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--ink);
+}
+
+.essay-author-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 36px;
+  color: var(--ink-2);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.essay-author-card img {
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.essay-author-card strong {
+  color: var(--ink);
+}
+
+.essay-reply-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.essay-reply-copy {
+  max-width: 56ch;
   margin-top: 8px;
+  color: var(--ink-2);
 }
 
-/* Footer */
-
-.blog-footer {
-  padding: 28px 24px 36px;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  border-top: 1px solid var(--hairline);
+.essay-reply-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
 }
 
-@media (max-width: 768px) {
-  .blog-main {
-    padding: 32px 18px 56px;
+.essay-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--rule);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.essay-action:hover {
+  border-color: var(--ink);
+}
+
+.essay-action.is-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.essay-action.is-primary:hover {
+  filter: brightness(1.08);
+}
+
+.essay-missing .essay-back {
+  margin-top: 28px;
+}
+
+@media (max-width: 560px) {
+  .essay-body {
+    font-size: 1.1rem;
+    line-height: 1.72;
   }
 
-  .blog-row {
-    padding: 22px 0;
+  .essay-standfirst {
+    font-size: 1.15rem;
   }
 
-  .blog-row-title {
-    font-size: 19px;
-  }
-
-  .blog-article-body {
-    font-size: 17px;
-    line-height: 1.75;
-  }
-
-  .blog-pullquote {
-    font-size: 19px;
-  }
-
-  .blog-action {
-    width: 100%;
-    justify-content: center;
+  .essay-pullquote p {
+    font-size: 1.3rem;
   }
 }

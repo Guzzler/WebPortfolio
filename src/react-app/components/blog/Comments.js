@@ -1,66 +1,51 @@
 import React from "react";
-import { mixpanel } from "../../../App";
+import Icon from "../common/Icon";
+import portrait from "../../../assets/images/sharang.jpeg";
+import { track } from "../../../analytics";
+import { profile } from "../../content";
 
+// Closing block for each essay: a short author note and ways to reply.
 const Comments = ({ slug, title }) => {
   const subject = encodeURIComponent(`Re: ${title}`);
+  const onReply = (channel) => track("Blog Reply Click", { channel, post: slug });
 
   return (
-    <section className="blog-comments" id="comments">
-      <span className="blog-eyebrow">Discussion</span>
-      <h3 className="blog-comments-heading">
-        Reply, push back, or share a thread.
-      </h3>
-      <p className="blog-comments-body">
-        I’m not running an open comment box here because I’d rather keep the
-        discussion personal and spam-free. If something here landed, or if you
-        disagree, I would genuinely like to hear it.
+    <section className="essay-reply" id="comments" aria-labelledby="reply-heading">
+      <div className="essay-author-card">
+        <img src={portrait} alt="" width="56" height="56" />
+        <p>
+          <strong>Sharang Pai</strong> is an engineer at Luma AI who works on evaluation and
+          agent infrastructure for multimodal models, and has built open tools for education,
+          public health and conservation since 2015.
+        </p>
+      </div>
+
+      <h2 id="reply-heading" className="essay-reply-title">
+        Respond to this essay
+      </h2>
+      <p className="essay-reply-copy">
+        There's no comment box here, by choice. If this landed, or if you disagree, I'd like
+        to hear from you directly.
       </p>
 
-      <div className="blog-comments-actions">
+      <div className="essay-reply-actions">
         <a
-          className="blog-action"
-          href={`mailto:sharangpai123@gmail.com?subject=${subject}`}
-          onClick={() =>
-            mixpanel.track("Blog Reply Click", {
-              channel: "email",
-              post: slug,
-            })
-          }
+          className="essay-action is-primary"
+          href={`mailto:${profile.email}?subject=${subject}`}
+          onClick={() => onReply("email")}
         >
-          <i className="fa fa-envelope" aria-hidden="true"></i>
+          <Icon name="mail" size={16} />
           Reply by email
         </a>
-
         <a
-          className="blog-action"
-          href="https://www.linkedin.com/in/sharang-pai/"
+          className="essay-action"
+          href={profile.links.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() =>
-            mixpanel.track("Blog Reply Click", {
-              channel: "linkedin",
-              post: slug,
-            })
-          }
+          onClick={() => onReply("linkedin")}
         >
-          <i className="fa fa-linkedin" aria-hidden="true"></i>
+          <Icon name="linkedin" size={15} />
           Message on LinkedIn
-        </a>
-
-        <a
-          className="blog-action"
-          href="https://www.github.com/Guzzler"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() =>
-            mixpanel.track("Blog Reply Click", {
-              channel: "github",
-              post: slug,
-            })
-          }
-        >
-          <i className="fa fa-github" aria-hidden="true"></i>
-          Find me on GitHub
         </a>
       </div>
     </section>

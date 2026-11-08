@@ -1,0 +1,19 @@
+{
+  "frameWidth": 257,
+  "frameHeight": 470,
+  "frames": [
+    "idle",
+    "blink",
+    "smile",
+    "talkA",
+    "talkB",
+    "talkC",
+    "joy"
+  ],
+  "head": [
+    9,
+    2,
+    244,
+    266
+  ]
+}

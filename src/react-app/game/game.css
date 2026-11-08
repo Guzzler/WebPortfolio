@@ -1,0 +1,458 @@
+/* ---------- Achievement toasts ---------- */
+.toast-stack {
+  position: fixed;
+  top: calc(var(--hud-h) + 14px);
+  right: 16px;
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 250px;
+  padding: 10px 18px 10px 10px;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 5px;
+  box-shadow: 4px 4px 0 var(--gold);
+  animation:
+    toast-in 0.55s var(--ease-pop) both,
+    toast-out 0.35s ease-in 3.8s forwards;
+}
+
+.toast::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: shimmer 0.9s ease 0.45s;
+}
+
+.toast-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background: var(--gold);
+  color: #2a1d00;
+  border-radius: 3px;
+  animation: trophy-pop 0.6s var(--ease-pop) 0.2s both;
+}
+
+.toast-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.toast-kicker {
+  color: var(--gold);
+  font-family: var(--pixel);
+  font-size: 0.78rem;
+}
+
+.toast-title {
+  font-weight: 650;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.9);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes trophy-pop {
+  0% {
+    transform: scale(0) rotate(-30deg);
+  }
+  70% {
+    transform: scale(1.25) rotate(8deg);
+  }
+}
+
+/* ---------- Achievements panel ---------- */
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--shade);
+  animation: fade-in 0.2s ease;
+}
+
+.trophy-panel {
+  width: min(600px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  padding: 26px;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 8px 8px 0 var(--gold);
+  animation: panel-in 0.35s var(--ease-pop);
+}
+
+.trophy-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.trophy-panel h2 {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.trophy-panel-head p {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.trophy-meter {
+  height: 10px;
+  margin: 18px 0 20px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.trophy-meter span {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--gold) 0 10px, var(--gold-deep) 10px 12px);
+  transition: width 0.6s var(--ease-out);
+}
+
+.trophy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.trophy {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  opacity: 0.55;
+}
+
+.trophy.is-got {
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--rule));
+}
+
+.trophy strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.trophy > span:last-child > span {
+  color: var(--muted);
+}
+
+.trophy-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: var(--surface-2);
+  color: var(--muted);
+  border-radius: 4px;
+}
+
+.trophy.is-got .trophy-badge {
+  background: var(--gold-soft);
+  color: var(--gold-ink);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- Guided tour ---------- */
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+}
+
+.tour-spotlight {
+  position: fixed;
+  border-radius: 10px;
+  box-shadow: 0 0 0 200vmax var(--shade);
+  transition:
+    top 0.32s var(--ease-out),
+    left 0.32s var(--ease-out),
+    width 0.32s var(--ease-out),
+    height 0.32s var(--ease-out);
+  animation: fade-in 0.4s ease;
+}
+
+.tour-spotlight::after {
+  --c: var(--gold);
+  --l: 18px;
+  --w: 3px;
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) top right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top right / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--w) var(--l);
+  background-repeat: no-repeat;
+  animation: cursor-bob 0.9s steps(1) infinite;
+}
+
+.tour-dialog {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  display: flex;
+  gap: 16px;
+  width: min(720px, calc(100vw - 24px));
+  padding: 16px 18px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 6px 6px 0 var(--gold);
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translateX(-50%);
+  animation: dialog-in 0.45s var(--ease-pop);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 30px);
+  }
+}
+
+.tour-avatar {
+  flex: none;
+  align-self: flex-start;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.tour-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.6);
+  transform-origin: 50% 36%;
+}
+
+.tour-avatar.is-talking {
+  animation: nod 0.9s ease-in-out infinite;
+}
+
+@keyframes nod {
+  50% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+}
+
+.tour-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.tour-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.tour-name {
+  color: var(--accent);
+  font-family: var(--pixel);
+  font-size: 1rem;
+}
+
+.tour-place {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.tour-text {
+  margin: 4px 0 12px;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.tour-ghost {
+  visibility: hidden;
+}
+
+.tour-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: default;
+}
+
+.tour-pips {
+  display: flex;
+  gap: 6px;
+  margin-right: auto;
+}
+
+.tour-pips li {
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid var(--muted);
+  transition: transform 0.3s var(--ease-pop), background-color 0.2s ease;
+}
+
+.tour-pips li.is-done {
+  background: var(--muted);
+}
+
+.tour-pips li.is-on {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.3) rotate(45deg);
+}
+
+.tour-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--pixel);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.12s var(--ease-pop);
+}
+
+.tour-btn:active {
+  transform: translateY(2px);
+}
+
+.tour-btn.is-quiet {
+  background: transparent;
+  color: var(--muted);
+}
+
+.tour-btn.is-quiet:hover {
+  color: var(--ink);
+}
+
+.tour-caret {
+  font-size: 0.65rem;
+  opacity: 0.35;
+}
+
+.tour-caret.is-ready {
+  opacity: 1;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .tour-dialog {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .tour-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .tour-avatar > div {
+    transform: scale(0.75);
+    transform-origin: 0 0;
+  }
+
+  .tour-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- Konami confetti ---------- */
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti-layer span {
+  position: absolute;
+  top: -12px;
+  animation-name: confetti-fall;
+  animation-timing-function: cubic-bezier(0.25, 0.6, 0.55, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(540deg);
+  }
+}

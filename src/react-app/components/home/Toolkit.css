@@ -1,0 +1,1238 @@
+/* ---------- Layout ---------- */
+.toolkit {
+  display: grid;
+  gap: 44px;
+}
+
+.toolkit-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+}
+
+/* AI systems: tiles with a glyph that comes alive on hover */
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.ai-tile {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+  min-height: 72px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, transform 0.3s var(--ease-pop);
+}
+
+.ai-tile:hover,
+.ai-tile:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.ai-tile .fx {
+  grid-row: span 2;
+  width: 42px;
+  height: 42px;
+  background: var(--accent-soft);
+  border-radius: 7px;
+}
+
+.ai-tile strong {
+  align-self: end;
+  font-size: 0.98rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.ai-tile > span:last-child {
+  align-self: start;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.35;
+  transition: opacity 0.2s ease;
+}
+
+/* Tags: languages type a snippet, technologies say where I used them */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  position: relative;
+  padding: 4px 11px;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  cursor: default;
+  outline: none;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.25s var(--ease-pop);
+}
+
+.tag:hover,
+.tag:focus-visible {
+  z-index: 3;
+  border-color: var(--ink);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.tag-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 9px);
+  padding: 6px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 6px) scale(0.96);
+  transition: opacity 0.18s ease, transform 0.3s var(--ease-pop);
+  pointer-events: none;
+}
+
+.tag-tip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  transform: translate(-50%, -4px) rotate(45deg);
+}
+
+.tag:hover .tag-tip,
+.tag:focus-visible .tag-tip {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* A tiny terminal: dark in both themes */
+.tag-tip.is-code {
+  background: #141c18;
+  color: #f0be45;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.tag-tip.is-code code {
+  border-right-color: #f0be45;
+}
+
+.tag-tip.is-code code {
+  display: block;
+  width: 0;
+  overflow: hidden;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.82rem;
+  border-right: 2px solid var(--gold);
+}
+
+.tag:hover .tag-tip.is-code code,
+.tag:focus-visible .tag-tip.is-code code {
+  animation:
+    type-in calc(var(--n) * 38ms) steps(var(--n)) 0.12s forwards,
+    caret 0.8s steps(1) infinite;
+}
+
+@keyframes type-in {
+  to {
+    width: calc(var(--n) * 1ch + 2px);
+  }
+}
+
+@keyframes caret {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+.tag-tip.is-used {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  max-width: 230px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--gold);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.tag-tip.is-used::after {
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.tag-tip.is-used small {
+  color: var(--gold-ink);
+  font-family: var(--pixel);
+  font-size: 0.72rem;
+}
+
+/* Chips with glyphs (interests, off screen) */
+.fx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 7px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  cursor: default;
+  outline: none;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.25s var(--ease-pop);
+}
+
+.fx-chip:hover,
+.fx-chip:focus-visible {
+  border-color: var(--ink);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+/* ---------- Glyph base ---------- */
+.fx {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+
+.fx i,
+.fx b {
+  display: block;
+  font-style: normal;
+}
+
+.fx svg {
+  display: block;
+  fill: currentColor;
+}
+
+/* Every glyph animates when its host is hovered or focused. */
+/* stylelint-disable-next-line */
+
+/* ---------- AI systems ---------- */
+/* LLMs: a caret, then the next tokens stream in */
+.fx-tokens-box {
+  position: static;
+}
+
+.fx-caret {
+  width: 4px;
+  height: 18px;
+  background: currentColor;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.fx-tokenrow {
+  position: absolute;
+  left: 72px;
+  bottom: 12px;
+  display: flex;
+  gap: 4px;
+}
+
+.fx-tokenrow i {
+  padding: 0 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--pixel);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  border-radius: 3px;
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-tokenrow i {
+  animation: token-in 0.25s var(--ease-pop) forwards;
+  animation-delay: calc(var(--k) * 170ms);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible).is-tokens > span:last-child {
+  opacity: 0;
+}
+
+@keyframes token-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Agentic systems: agents orbit a hub */
+.fx-hub {
+  width: 9px;
+  height: 9px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+.fx-orbit {
+  position: absolute;
+  inset: 0;
+}
+
+.fx-orbit i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px;
+  background: currentColor;
+  border-radius: 1px;
+  opacity: 0.55;
+  transform: rotate(calc(var(--k) * 120deg)) translateX(13px);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-orbit {
+  animation: spin 1.8s linear infinite;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-orbit i {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Self-improving systems, benchmarking, latency: an odometer that ticks */
+.fx-odo {
+  height: 18px;
+  overflow: hidden;
+  font-family: var(--pixel);
+  font-size: 1rem;
+  line-height: 18px;
+}
+
+.fx-odo > span {
+  display: block;
+  text-align: center;
+}
+
+.fx-odo b {
+  height: 18px;
+  font-weight: 500;
+}
+
+.fx-odo b:last-child {
+  color: var(--gold-ink);
+}
+
+.fx-odo.is-wide {
+  font-size: 0.72rem;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-odo > span {
+  animation: odo 1.1s steps(4) forwards;
+}
+
+@keyframes odo {
+  to {
+    transform: translateY(-72px);
+  }
+}
+
+/* Multimodal evaluation: a score meter fills */
+.fx-meter {
+  width: 28px;
+  height: 9px;
+  padding: 1px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+
+.fx-meter i {
+  width: 30%;
+  height: 100%;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-meter i {
+  width: 87%;
+  background: linear-gradient(90deg, currentColor 70%, var(--gold));
+  transition: width 0.9s var(--ease-out);
+}
+
+/* Safety and moderation: the shield arms itself */
+.fx-shield i {
+  position: relative;
+  width: 20px;
+  height: 24px;
+  background: currentColor;
+  clip-path: polygon(50% 0, 100% 16%, 100% 56%, 50% 100%, 0 56%, 0 16%);
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.fx-shield::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 5px;
+  height: 9px;
+  border-right: 2.5px solid var(--surface);
+  border-bottom: 2.5px solid var(--surface);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  transition: transform 0.35s var(--ease-pop) 0.15s;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-shield i {
+  opacity: 1;
+  animation: pop 0.4s var(--ease-pop);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-shield::after {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1);
+}
+
+@keyframes pop {
+  50% {
+    scale: 1.18;
+  }
+}
+
+/* Deep learning: an activation passes through the layers */
+.fx-layers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fx-layers i {
+  width: 4px;
+  height: 22px;
+  background: currentColor;
+  border-radius: 1px;
+  opacity: 0.35;
+}
+
+.fx-layers i:first-child,
+.fx-layers i:last-child {
+  height: 14px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-layers i {
+  animation: activate 0.9s ease-in-out infinite;
+  animation-delay: calc(var(--k) * 110ms);
+}
+
+@keyframes activate {
+  30% {
+    opacity: 1;
+    scale: 1 1.15;
+  }
+}
+
+/* ---------- Interests ---------- */
+/* AI for social good: a sprout grows */
+.fx-sprout {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  color: #4f9a3a;
+}
+
+.fx-sprout .soil {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 1px;
+  height: 3px;
+  background: #8a6a4a;
+  border-radius: 1px;
+}
+
+.fx-sprout .stem {
+  position: absolute;
+  left: 8px;
+  bottom: 4px;
+  width: 2px;
+  height: 11px;
+  background: currentColor;
+  transform: scaleY(0.35);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-pop);
+}
+
+.fx-sprout .leaf {
+  position: absolute;
+  top: 4px;
+  width: 6px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 4px 0;
+  transform: scale(0);
+  transition: transform 0.35s var(--ease-pop) 0.25s;
+}
+
+.fx-sprout .leaf.l {
+  left: 3px;
+  transform-origin: right bottom;
+}
+
+.fx-sprout .leaf.r {
+  left: 9px;
+  border-radius: 0 4px;
+  transform-origin: left bottom;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-sprout .stem {
+  transform: scaleY(1);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-sprout .leaf {
+  transform: scale(1);
+}
+
+/* Social entrepreneurship: a coin flips, +1 */
+.fx-coin i {
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
+  border: 2px solid var(--gold-deep);
+  border-radius: 50%;
+}
+
+.fx-coin b {
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  color: var(--gold-ink);
+  font-family: var(--pixel);
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-coin i {
+  animation: coin-flip 0.7s var(--ease-out);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-coin b {
+  animation: plus-one 0.8s ease-out 0.2s;
+}
+
+@keyframes coin-flip {
+  50% {
+    transform: translateY(-5px) rotateY(180deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes plus-one {
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+}
+
+/* Human-computer interaction: a cursor clicks */
+.fx-click {
+  color: var(--ink);
+}
+
+.fx-click svg {
+  position: relative;
+  width: 10px;
+  height: 14px;
+  transition: transform 0.3s var(--ease-pop);
+}
+
+.fx-click .ring {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-click svg {
+  animation: press 0.9s ease-in-out infinite;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-click .ring {
+  animation: ripple 0.9s ease-out infinite;
+}
+
+@keyframes press {
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  55% {
+    transform: translate(-2px, -2px) scale(0.85);
+  }
+}
+
+@keyframes ripple {
+  0%,
+  50% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+/* Low-resource system design: signal drops to one bar and keeps working */
+.fx-signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.fx-signal i {
+  width: 3px;
+  background: currentColor;
+}
+
+.fx-signal i:nth-child(1) {
+  height: 4px;
+}
+
+.fx-signal i:nth-child(2) {
+  height: 7px;
+}
+
+.fx-signal i:nth-child(3) {
+  height: 10px;
+}
+
+.fx-signal i:nth-child(4) {
+  height: 13px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-signal i:not(:first-child) {
+  animation: drop 1.6s ease-in-out infinite;
+  animation-delay: calc((4 - var(--k)) * 90ms);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-signal i:first-child {
+  animation: pulse-bar 0.8s ease-in-out infinite;
+}
+
+@keyframes drop {
+  20%,
+  70% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulse-bar {
+  50% {
+    background: var(--gold);
+  }
+}
+
+/* Mental health technology: a heartbeat */
+.fx-heart {
+  color: var(--coral);
+}
+
+.fx-heart svg {
+  width: 14px;
+  height: 12px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-heart svg {
+  animation: beat 1s ease-in-out infinite;
+}
+
+@keyframes beat {
+  15% {
+    scale: 1.25;
+  }
+  30% {
+    scale: 1;
+  }
+  45% {
+    scale: 1.15;
+  }
+  60% {
+    scale: 1;
+  }
+}
+
+/* Game design: d-pad presses in turn */
+.fx-dpad {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  color: var(--ink-2);
+}
+
+.fx-dpad::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background: currentColor;
+}
+
+.fx-dpad i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+}
+
+.fx-dpad .u {
+  left: 6px;
+  top: 0;
+}
+
+.fx-dpad .r {
+  left: 12px;
+  top: 6px;
+}
+
+.fx-dpad .d {
+  left: 6px;
+  top: 12px;
+}
+
+.fx-dpad .l {
+  left: 0;
+  top: 6px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-dpad i {
+  animation: dpad-press 1.2s steps(1) infinite;
+  animation-delay: calc(var(--k) * 300ms);
+}
+
+@keyframes dpad-press {
+  0%,
+  24% {
+    background: var(--gold);
+  }
+  25% {
+    background: currentColor;
+  }
+}
+
+/* ---------- Project motifs (Impact cards; color comes from --project) ---------- */
+/* OpenShiksha: a pencil writes a line */
+.fx-pencil {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+
+.fx-pencil .line {
+  position: absolute;
+  left: 1px;
+  bottom: 3px;
+  width: 6px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.fx-pencil .tip {
+  position: absolute;
+  left: 5px;
+  bottom: 4px;
+  width: 4px;
+  height: 15px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+  transform: rotate(35deg);
+  transform-origin: bottom center;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-pencil .line {
+  animation: write 1s ease-in-out forwards;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-pencil .tip {
+  animation: scribble 1s ease-in-out forwards;
+}
+
+@keyframes write {
+  to {
+    width: 20px;
+  }
+}
+
+@keyframes scribble {
+  25% {
+    translate: 4px -1px;
+  }
+  50% {
+    translate: 8px 0;
+  }
+  75% {
+    translate: 12px -1px;
+  }
+  to {
+    translate: 15px 0;
+  }
+}
+
+/* VaccinePost: the bell rings, a slot opens */
+.fx-bell {
+  position: relative;
+}
+
+.fx-bell svg {
+  width: 17px;
+  height: 18px;
+  transform-origin: 50% 0;
+}
+
+.fx-bell .badge {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  background: var(--coral);
+  border: 1.5px solid var(--surface);
+  border-radius: 50%;
+  transform: scale(0);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-bell svg {
+  animation: ring 0.8s ease-in-out;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-bell .badge {
+  transform: scale(1);
+  transition: transform 0.3s var(--ease-pop) 0.5s;
+}
+
+@keyframes ring {
+  20% {
+    transform: rotate(16deg);
+  }
+  40% {
+    transform: rotate(-14deg);
+  }
+  60% {
+    transform: rotate(9deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Conservation event detection: a radar picks something up */
+.fx-radar {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.fx-radar .ring {
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.fx-radar .ring.two {
+  inset: 9px;
+  opacity: 0.7;
+}
+
+.fx-radar .blip {
+  position: absolute;
+  left: 15px;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-radar .ring {
+  animation: sonar 1.4s ease-out infinite;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-radar .ring.two {
+  animation-delay: 0.7s;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-radar .blip {
+  animation: blip 1.4s steps(1) infinite;
+}
+
+@keyframes sonar {
+  from {
+    opacity: 0.9;
+    scale: 0.4;
+  }
+  to {
+    opacity: 0;
+    scale: 1.3;
+  }
+}
+
+@keyframes blip {
+  50% {
+    background: var(--gold);
+    scale: 1.6;
+  }
+}
+
+/* JournalAI: lines fill a page */
+.fx-notebook {
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  width: 18px;
+  height: 22px;
+  padding: 3px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+
+.fx-notebook i {
+  height: 2px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.fx-notebook i:nth-child(2) {
+  width: 70%;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-notebook i {
+  animation: jot 0.5s ease-out backwards;
+  animation-delay: calc(var(--k) * 200ms);
+}
+
+@keyframes jot {
+  from {
+    width: 0;
+  }
+}
+
+/* Pawthway: paw prints walk across */
+.fx-paws {
+  position: relative;
+  width: 26px;
+  height: 26px;
+}
+
+.fx-paws i {
+  position: absolute;
+  width: 6px;
+  height: 5px;
+  background: currentColor;
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: -3px -4px 0 -1px currentColor, 0 -5px 0 -1px currentColor, 3px -4px 0 -1px currentColor;
+  opacity: 0.4;
+}
+
+.fx-paws i:nth-child(1) {
+  left: 3px;
+  top: 19px;
+}
+
+.fx-paws i:nth-child(2) {
+  left: 11px;
+  top: 12px;
+}
+
+.fx-paws i:nth-child(3) {
+  left: 18px;
+  top: 5px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible, .fx-host:focus-within) .fx-paws i {
+  animation: step 1.5s ease-out infinite;
+  animation-delay: calc(var(--k) * 220ms);
+}
+
+@keyframes step {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  15%,
+  60% {
+    opacity: 1;
+    scale: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+/* ---------- Off screen ---------- */
+/* Building games: blocks drop into place */
+.fx-blocks {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.fx-blocks i {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.fx-blocks i:nth-child(1) {
+  left: 1px;
+  bottom: 1px;
+}
+
+.fx-blocks i:nth-child(2) {
+  left: 9px;
+  bottom: 1px;
+  background: var(--gold);
+}
+
+.fx-blocks i:nth-child(3) {
+  left: 5px;
+  bottom: 9px;
+  background: var(--coral);
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-blocks i {
+  animation: block-drop 0.45s var(--ease-pop) backwards;
+  animation-delay: calc(var(--k) * 140ms);
+}
+
+@keyframes block-drop {
+  from {
+    opacity: 0;
+    translate: 0 -14px;
+  }
+}
+
+/* Football: the ball rolls */
+.fx-ball i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.fx-ball.is-football i {
+  background:
+    radial-gradient(circle at 50% 50%, #1a1412 0 2.5px, transparent 3px),
+    radial-gradient(circle at 15% 25%, #1a1412 0 1.5px, transparent 2px),
+    radial-gradient(circle at 85% 25%, #1a1412 0 1.5px, transparent 2px),
+    radial-gradient(circle at 30% 90%, #1a1412 0 1.5px, transparent 2px),
+    radial-gradient(circle at 70% 90%, #1a1412 0 1.5px, transparent 2px),
+    #f6f3ec;
+  border: 1.5px solid #1a1412;
+}
+
+.fx-ball.is-basketball i {
+  background:
+    linear-gradient(90deg, transparent 45%, #4a2a12 45% 55%, transparent 55%),
+    linear-gradient(transparent 45%, #4a2a12 45% 55%, transparent 55%),
+    #e07a2e;
+  border: 1.5px solid #4a2a12;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-ball.is-football i {
+  animation: roll 1.2s ease-in-out infinite;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-ball.is-basketball i {
+  animation: bounce 0.7s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes roll {
+  25% {
+    transform: translateX(4px) rotate(120deg);
+  }
+  75% {
+    transform: translateX(-4px) rotate(-120deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(2px) scale(1.12, 0.86);
+  }
+  15% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* Board games: the die tumbles */
+.fx-dice i {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+}
+
+.fx-dice i i {
+  position: absolute;
+  width: 2.5px;
+  height: 2.5px;
+  background: var(--ink);
+  border: 0;
+  border-radius: 50%;
+}
+
+.fx-dice i i:nth-child(1) {
+  left: 2px;
+  top: 2px;
+}
+
+.fx-dice i i:nth-child(2) {
+  left: 4.25px;
+  top: 4.25px;
+}
+
+.fx-dice i i:nth-child(3) {
+  left: 6.5px;
+  top: 6.5px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-dice > i {
+  animation: tumble 0.8s var(--ease-out);
+}
+
+@keyframes tumble {
+  from {
+    transform: translate(-6px, -6px) rotate(-200deg);
+  }
+  70% {
+    transform: translate(1px, 1px) rotate(10deg);
+  }
+}
+
+/* League of Legends: gg */
+.fx-gg {
+  color: var(--gold-ink);
+  font-family: var(--pixel);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-gg {
+  animation: gg 0.6s var(--ease-pop);
+}
+
+@keyframes gg {
+  40% {
+    scale: 1.4;
+    rotate: -10deg;
+  }
+}
+
+/* PC gaming: WASD keys press in turn */
+.fx-wasd {
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
+.fx-wasd i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--ink-2);
+  border-radius: 1px;
+  font-size: 0;
+}
+
+.fx-wasd i:nth-child(1) {
+  left: 7px;
+  top: 0;
+}
+
+.fx-wasd i:nth-child(2) {
+  left: 0;
+  top: 7px;
+}
+
+.fx-wasd i:nth-child(3) {
+  left: 7px;
+  top: 7px;
+}
+
+.fx-wasd i:nth-child(4) {
+  left: 14px;
+  top: 7px;
+}
+
+:is(.fx-host:hover, .fx-host:focus-visible) .fx-wasd i {
+  animation: key-press 1.2s steps(1) infinite;
+  animation-delay: calc(var(--k) * 300ms);
+}
+
+@keyframes key-press {
+  0%,
+  24% {
+    background: var(--accent);
+    border-color: var(--accent);
+    translate: 0 1px;
+  }
+  25% {
+    background: transparent;
+  }
+}
+
+@media (max-width: 760px) {
+  .toolkit-split {
+    grid-template-columns: 1fr;
+  }
+}

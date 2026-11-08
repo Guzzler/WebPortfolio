@@ -64,5 +64,8 @@
     "eslint-plugin-react-hooks": "^4.0.5",
     "eslint-plugin-standard": "^4.0.1",
     "react-test-renderer": "^16.13.1"
+  },
+  "overrides": {
+    "react-error-overlay": "6.0.9"
   }
 }

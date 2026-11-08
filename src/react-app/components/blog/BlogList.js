@@ -1,54 +1,48 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import BlogShell from "./BlogShell";
-import useDarkMode from "../common/useDarkMode";
 import { getAllPosts } from "./posts";
-import { mixpanel } from "../../../App";
-
-const formatDate = (iso) => {
-  try {
-    const date = new Date(iso);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  } catch (e) {
-    return iso;
-  }
-};
+import { formatDate } from "./format";
+import { track } from "../../../analytics";
 
 const BlogList = () => {
-  const [darkMode, toggleDarkMode] = useDarkMode();
   const posts = getAllPosts();
 
   useEffect(() => {
-    mixpanel.track("Blog List View");
+    document.title = "Writing | Sharang Pai";
+    track("Blog List View");
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <BlogShell darkMode={darkMode} toggleDarkMode={toggleDarkMode}>
-      <section className="blog-list" aria-label="All posts">
+    <BlogShell>
+      <header className="blog-index-head">
+        <h1 className="blog-index-title">Writing</h1>
+        <p className="blog-index-lede">
+          Essays on artificial intelligence, technology, and the choices that come with
+          building it. Written slowly, published rarely.
+        </p>
+      </header>
+
+      <ol className="blog-index" aria-label="All essays">
         {posts.map((post) => (
-          <Link
-            key={post.slug}
-            to={`/blog/${post.slug}`}
-            className="blog-row"
-            onClick={() =>
-              mixpanel.track("Blog Post Click", { post: post.slug })
-            }
-          >
-            <div className="blog-row-meta">
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
-              <span className="blog-meta-divider">·</span>
-              <span>{post.readingTime}</span>
-            </div>
-            <h2 className="blog-row-title">{post.title}</h2>
-            <p className="blog-row-excerpt">{post.excerpt}</p>
-          </Link>
+          <li key={post.slug}>
+            <Link
+              to={`/blog/${post.slug}`}
+              className="blog-entry"
+              onClick={() => track("Blog Post Click", { post: post.slug })}
+            >
+              <span className="blog-entry-meta">
+                <time dateTime={post.date}>{formatDate(post.date)}</time>
+                <span>{post.readingTime}</span>
+              </span>
+              <span className="blog-entry-title">{post.title}</span>
+              <span className="blog-entry-excerpt">{post.excerpt}</span>
+              <span className="blog-entry-cta">Read essay</span>
+            </Link>
+          </li>
         ))}
-      </section>
+      </ol>
     </BlogShell>
   );
 };

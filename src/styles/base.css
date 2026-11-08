@@ -1,0 +1,273 @@
+/* ---------- Tokens ---------- */
+:root,
+:root[data-theme="light"] {
+  --bg: #f2f5f1;
+  --surface: #ffffff;
+  --surface-2: #e7ece6;
+  --ink: #14201a;
+  --ink-2: #36443d;
+  --muted: #5d6a63;
+  --rule: #d3dad2;
+  --accent: #0b6b55;
+  --accent-ink: #ffffff;
+  --accent-soft: #d9ebe3;
+  --gold: #e2a419;
+  --gold-deep: #9a6a00;
+  --gold-ink: #7a5300;
+  --gold-soft: #fbefcf;
+  --coral: #cf4f7a;
+  --shade: rgba(8, 14, 11, 0.6);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e1311;
+  --surface: #151b18;
+  --surface-2: #1b231f;
+  --ink: #e6ebe8;
+  --ink-2: #c2cbc6;
+  --muted: #8f9b95;
+  --rule: #27302b;
+  --accent: #5fc4a6;
+  --accent-ink: #08130f;
+  --accent-soft: #143029;
+  --gold: #f0be45;
+  --gold-deep: #a87a10;
+  --gold-ink: #f0be45;
+  --gold-soft: #2c2512;
+  --coral: #ef7fa3;
+  --shade: rgba(3, 6, 5, 0.72);
+  color-scheme: dark;
+}
+
+:root {
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pixel: "Pixelify Sans", ui-monospace, monospace;
+  --wrap: 1160px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --hud-h: 60px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--hud-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+canvas,
+svg {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: #1a1300;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 100;
+  padding: 8px 14px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ---------- Shared bits ---------- */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s var(--ease-pop);
+}
+
+.icon-btn:hover {
+  background: var(--surface-2);
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+.text-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.text-btn:hover {
+  color: var(--ink);
+}
+
+/* Selection cursor: four corner brackets that snap onto the hovered item,
+   the way a game menu highlights an option. */
+.select-frame {
+  position: relative;
+}
+
+.select-frame::after {
+  --c: var(--gold);
+  --l: 12px;
+  --w: 2px;
+  content: "";
+  position: absolute;
+  inset: -7px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) top right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) top right / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--w) var(--l),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--l) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--w) var(--l);
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.12s steps(2), transform 0.18s steps(3);
+}
+
+.select-frame:hover::after,
+.select-frame:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: cursor-bob 0.9s steps(1) 0.2s infinite;
+}
+
+.select-frame:focus-visible {
+  outline: none;
+}
+
+@keyframes cursor-bob {
+  50% {
+    inset: -10px;
+  }
+}
+
+/* ---------- Pointer micro-interactions (see game/interactions.js) ---------- */
+[data-magnet] {
+  translate: var(--tx, 0) var(--ty, 0);
+  transition-property: translate, transform, filter, background-color, color, border-bottom-width, box-shadow;
+  transition-duration: 0.35s;
+  transition-timing-function: var(--ease-out);
+}
+
+[data-glow] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-glow]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+[data-glow]:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
