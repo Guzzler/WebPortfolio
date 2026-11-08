@@ -23,6 +23,7 @@ import {
 import "./Home.css";
 
 const SECTION_IDS = ["top", "work", "impact", "games", "writing", "skills", "background", "contact"];
+const COMPACT_HERO = "(max-width: 760px), (max-width: 1024px) and (max-height: 500px)";
 const HEADLINE = "I build AI systems, and I care about who they reach.";
 const TITLE_CONTEXT = "Since my first open-source project in 2015 I've built tools for classrooms, public health and conservation, and I make small games on the side because they're the most fun way I know to practise design.";
 
@@ -138,10 +139,18 @@ const Home = () => {
   const { unlocked, unlock, openPanel } = useAchievements();
   const { active, seen } = useSectionSpy();
   const [touring, setTouring] = useState(false);
+  const [compactHero, setCompactHero] = useState(() => window.matchMedia(COMPACT_HERO).matches);
   const startRef = useRef(null);
   const resumeRef = useRef(null);
   const posts = getAllPosts().slice(0, 3);
   const count = Object.keys(unlocked).length;
+
+  useEffect(() => {
+    const media = window.matchMedia(COMPACT_HERO);
+    const update = () => setCompactHero(media.matches);
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   useLayoutEffect(() => {
     if (touring || !resumeRef.current) return;
@@ -177,6 +186,19 @@ const Home = () => {
   };
 
   const tourInert = touring ? "" : undefined;
+  const startButton = (
+    <button ref={startRef} type="button" className="press-start" data-magnet onClick={() => setTouring(true)}>
+      <span className="press-start-caret" aria-hidden="true">▶</span>
+      Press start
+      <span className="press-start-sub">1-minute tour</span>
+    </button>
+  );
+  const player = (
+    <div className="title-player" key="player">
+      <PlayerCard />
+      {compactHero ? startButton : null}
+    </div>
+  );
 
   return (
     <div className={`home${touring ? " is-touring" : ""}`}>
@@ -192,66 +214,62 @@ const Home = () => {
           aria-labelledby="headline"
         >
           <TileTrail />
-          <div className="title-copy">
-            <h1 id="headline" className="headline">
-              {HEADLINE.split(" ").map((word, i) => (
-                <React.Fragment key={i}>
-                  <span className="headline-word" style={{ "--i": i }}>
-                    {word}
-                  </span>{" "}
-                </React.Fragment>
-              ))}
-            </h1>
-            <p className="title-intro">
-              I'm Sharang Pai, an engineer at{" "}
-              <ExternalLink href="https://lumalabs.ai" event="Luma AI Hero">
-                Luma AI
-              </ExternalLink>
-              , where I lead Evaluations Engineering and work on Luma Agents.
-              <span className="title-context-wide"> {TITLE_CONTEXT}</span>
-            </p>
-
-            <div className="title-actions">
-              <button ref={startRef} type="button" className="press-start" data-magnet onClick={() => setTouring(true)}>
-                <span className="press-start-caret" aria-hidden="true">
-                  ▶
-                </span>
-                Press start
-                <span className="press-start-sub">1-minute tour</span>
-              </button>
-              <a
-                className="btn-line"
-                data-magnet
-                href={`mailto:${profile.email}`}
-                onClick={() => onEmail("hero")}
-              >
-                <Icon name="mail" size={16} />
-                Email me
-              </a>
-            </div>
-
-            <p className="title-context">{TITLE_CONTEXT}</p>
-
-            <ul className="title-links" aria-label="Elsewhere">
-              <li>
-                <ExternalLink href={profile.links.github} event="GitHub">
-                  <Icon name="github" size={16} /> GitHub
+          {[
+            compactHero ? player : null,
+            <div className="title-copy" key="intro">
+              <h1 id="headline" className="headline">
+                {HEADLINE.split(" ").map((word, i) => (
+                  <React.Fragment key={i}>
+                    <span className="headline-word" style={{ "--i": i }}>
+                      {word}
+                    </span>{" "}
+                  </React.Fragment>
+                ))}
+              </h1>
+              <p className="title-intro">
+                I'm Sharang Pai, an engineer at{" "}
+                <ExternalLink href="https://lumalabs.ai" event="Luma AI Hero">
+                  Luma AI
                 </ExternalLink>
-              </li>
-              <li>
-                <ExternalLink href={profile.links.linkedin} event="LinkedIn">
-                  <Icon name="linkedin" size={16} /> LinkedIn
-                </ExternalLink>
-              </li>
-              <li>
-                <ExternalLink href={profile.links.itch} event="itch.io">
-                  <Icon name="gamepad" size={17} /> itch.io
-                </ExternalLink>
-              </li>
-            </ul>
-          </div>
+                , where I lead Evaluations Engineering and work on Luma Agents.
+                {compactHero ? null : <> {TITLE_CONTEXT}</>}
+              </p>
 
-          <PlayerCard />
+              {compactHero ? <p className="title-context">{TITLE_CONTEXT}</p> : null}
+
+              <div className="title-actions">
+                {compactHero ? null : startButton}
+                <a
+                  className="btn-line"
+                  data-magnet
+                  href={`mailto:${profile.email}`}
+                  onClick={() => onEmail("hero")}
+                >
+                  <Icon name="mail" size={16} />
+                  Email me
+                </a>
+              </div>
+
+              <ul className="title-links" aria-label="Elsewhere">
+                <li>
+                  <ExternalLink href={profile.links.github} event="GitHub">
+                    <Icon name="github" size={16} /> GitHub
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={profile.links.linkedin} event="LinkedIn">
+                    <Icon name="linkedin" size={16} /> LinkedIn
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={profile.links.itch} event="itch.io">
+                    <Icon name="gamepad" size={17} /> itch.io
+                  </ExternalLink>
+                </li>
+              </ul>
+            </div>,
+            compactHero ? null : player,
+          ]}
         </section>
 
         <Zone
