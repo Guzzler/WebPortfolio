@@ -1542,6 +1542,10 @@
     animation: none;
   }
 
+  .title-player .player-frame {
+    margin-inline: auto;
+  }
+
   .player-card figcaption {
     margin-top: 14px;
     padding-left: 0;
