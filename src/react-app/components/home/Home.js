@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SiteTopBar from "../common/SiteTopBar";
 import Icon, { PixelIcon } from "../common/Icon";
@@ -23,7 +23,9 @@ import {
 import "./Home.css";
 
 const SECTION_IDS = ["top", "work", "impact", "games", "writing", "skills", "background", "contact"];
+const COMPACT_HERO = "(max-width: 760px), (max-width: 1024px) and (max-height: 500px)";
 const HEADLINE = "I build AI systems, and I care about who they reach.";
+const TITLE_CONTEXT = "Since my first open-source project in 2015 I've built tools for classrooms, public health and conservation, and I make small games on the side because they're the most fun way I know to practise design.";
 
 const formatDate = (iso) => {
   const [y, m, d] = iso.split("-").map(Number);
@@ -43,25 +45,32 @@ const useSectionSpy = () => {
   useEffect(() => {
     const els = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
 
-    const activeObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
-    );
+    let activeObserver;
+    const observeActive = () => {
+      if (activeObserver) activeObserver.disconnect();
+      // Percentage root margins are resolved against width, even vertically.
+      const line = Math.round(window.innerHeight * 0.42);
+      activeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
+        },
+        { rootMargin: `-${line}px 0px -${window.innerHeight - line - 1}px 0px` }
+      );
+      els.forEach((el) => activeObserver.observe(el));
+    };
     const seenObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) setSeen((s) => (s[e.target.id] ? s : { ...s, [e.target.id]: true }));
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0 }
     );
-    els.forEach((el) => {
-      activeObserver.observe(el);
-      seenObserver.observe(el);
-    });
+    observeActive();
+    els.forEach((el) => seenObserver.observe(el));
+    window.addEventListener("resize", observeActive);
     return () => {
+      window.removeEventListener("resize", observeActive);
       activeObserver.disconnect();
       seenObserver.disconnect();
     };
@@ -80,7 +89,7 @@ const Zone = ({ id, level, title, lede, seen, children }) => (
       <span className="zone-level" aria-hidden="true">
         {level}
       </span>
-      <h2 id={`${id}-title`} className="zone-title">
+      <h2 id={`${id}-title`} className="zone-title" tabIndex={-1}>
         {title}
       </h2>
     </div>
@@ -130,8 +139,36 @@ const Home = () => {
   const { unlocked, unlock, openPanel } = useAchievements();
   const { active, seen } = useSectionSpy();
   const [touring, setTouring] = useState(false);
+  const [compactHero, setCompactHero] = useState(() => window.matchMedia(COMPACT_HERO).matches);
+  const startRef = useRef(null);
+  const resumeRef = useRef(null);
   const posts = getAllPosts().slice(0, 3);
   const count = Object.keys(unlocked).length;
+
+  useEffect(() => {
+    const media = window.matchMedia(COMPACT_HERO);
+    const update = () => setCompactHero(media.matches);
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (touring || !resumeRef.current) return;
+    const target = resumeRef.current;
+    resumeRef.current = null;
+    const { top, bottom } = target.getBoundingClientRect();
+    if (top < document.querySelector(".hud").offsetHeight || bottom > window.innerHeight) {
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+    target.focus({ preventScroll: true });
+  }, [touring]);
+
+  const closeTour = (target) => {
+    resumeRef.current = target === "#top"
+      ? startRef.current
+      : document.querySelector(`${target} h2`);
+    setTouring(false);
+  };
 
   useEffect(() => {
     document.title = "Sharang Pai | AI engineer at Luma AI";
@@ -148,80 +185,91 @@ const Home = () => {
     unlock("hello");
   };
 
+  const tourInert = touring ? "" : undefined;
+  const startButton = (
+    <button ref={startRef} type="button" className="press-start" data-magnet onClick={() => setTouring(true)}>
+      <span className="press-start-caret" aria-hidden="true">▶</span>
+      Press start
+      <span className="press-start-sub">1-minute tour</span>
+    </button>
+  );
+  const player = (
+    <div className="title-player" key="player">
+      <PlayerCard />
+      {compactHero ? startButton : null}
+    </div>
+  );
+
   return (
-    <div className="home">
-      <a className="skip-link" href="#work">
+    <div className={`home${touring ? " is-touring" : ""}`}>
+      <a className="skip-link" href="#work" inert={tourInert}>
         Skip to content
       </a>
-      <SiteTopBar active={active} variant="game" />
+      <SiteTopBar active={active} variant="game" inert={tourInert} />
 
-      <main>
+      <main inert={tourInert}>
         <section
           id="top"
           className="title-screen"
           aria-labelledby="headline"
         >
           <TileTrail />
-          <div className="title-copy">
-            <h1 id="headline" className="headline">
-              {HEADLINE.split(" ").map((word, i) => (
-                <React.Fragment key={i}>
-                  <span className="headline-word" style={{ "--i": i }}>
-                    {word}
-                  </span>{" "}
-                </React.Fragment>
-              ))}
-            </h1>
-            <p className="title-intro">
-              I'm Sharang Pai, an engineer at{" "}
-              <ExternalLink href="https://lumalabs.ai" event="Luma AI Hero">
-                Luma AI
-              </ExternalLink>
-              , where I lead Evaluations Engineering and work on Luma Agents. Since my first
-              open-source project in 2015 I've built tools for classrooms, public health and
-              conservation, and I make small games on the side because they're the most fun
-              way I know to practise design.
-            </p>
-
-            <div className="title-actions">
-              <button type="button" className="press-start" data-magnet onClick={() => setTouring(true)}>
-                <span className="press-start-caret" aria-hidden="true">
-                  ▶
-                </span>
-                Press start
-                <span className="press-start-sub">1-minute tour</span>
-              </button>
-              <a
-                className="btn-line"
-                data-magnet
-                href={`mailto:${profile.email}`}
-                onClick={() => onEmail("hero")}
-              >
-                <Icon name="mail" size={16} />
-                Email me
-              </a>
-            </div>
-
-            <ul className="title-links" aria-label="Elsewhere">
-              <li>
-                <ExternalLink href={profile.links.github} event="GitHub">
-                  <Icon name="github" size={16} /> GitHub
+          {[
+            compactHero ? player : null,
+            <div className="title-copy" key="intro">
+              <h1 id="headline" className="headline">
+                {HEADLINE.split(" ").map((word, i) => (
+                  <React.Fragment key={i}>
+                    <span className="headline-word" style={{ "--i": i }}>
+                      {word}
+                    </span>{" "}
+                  </React.Fragment>
+                ))}
+              </h1>
+              <p className="title-intro">
+                I'm Sharang Pai, an engineer at{" "}
+                <ExternalLink href="https://lumalabs.ai" event="Luma AI Hero">
+                  Luma AI
                 </ExternalLink>
-              </li>
-              <li>
-                <ExternalLink href={profile.links.linkedin} event="LinkedIn">
-                  <Icon name="linkedin" size={16} /> LinkedIn
-                </ExternalLink>
-              </li>
-              <li>
-                <ExternalLink href={profile.links.itch} event="itch.io">
-                  <Icon name="gamepad" size={17} /> itch.io
-                </ExternalLink>
-              </li>
-            </ul>
-          </div>
+                , where I lead Evaluations Engineering and work on Luma Agents.
+                {compactHero ? null : <> {TITLE_CONTEXT}</>}
+              </p>
 
-          <PlayerCard />
+              {compactHero ? <p className="title-context">{TITLE_CONTEXT}</p> : null}
+
+              <div className="title-actions">
+                {compactHero ? null : startButton}
+                <a
+                  className="btn-line"
+                  data-magnet
+                  href={`mailto:${profile.email}`}
+                  onClick={() => onEmail("hero")}
+                >
+                  <Icon name="mail" size={16} />
+                  Email me
+                </a>
+              </div>
+
+              <ul className="title-links" aria-label="Elsewhere">
+                <li>
+                  <ExternalLink href={profile.links.github} event="GitHub">
+                    <Icon name="github" size={16} /> GitHub
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={profile.links.linkedin} event="LinkedIn">
+                    <Icon name="linkedin" size={16} /> LinkedIn
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={profile.links.itch} event="itch.io">
+                    <Icon name="gamepad" size={17} /> itch.io
+                  </ExternalLink>
+                </li>
+              </ul>
+            </div>,
+            compactHero ? null : player,
+          ]}
         </section>
 
         <Zone
@@ -342,7 +390,7 @@ const Home = () => {
           level="1-3"
           title="Games"
           seen={seen.games}
-          lede="I co-create and program small games, mostly for game jams and mostly in Unity. They're where I practise feel, feedback and pacing. Pick one to play it here."
+          lede="I co-create and program small games, mostly for game jams and mostly in Unity. They're where I practise feel, feedback and pacing. Pick a cartridge to play."
         >
           <Arcade />
           <ExternalLink href={profile.links.itch} event="itch.io all" className="more-link">
@@ -384,7 +432,7 @@ const Home = () => {
           level="1-5"
           title="Skills"
           seen={seen.skills}
-          lede="What I reach for when building. Hover anything for a closer look."
+          lede="What I reach for when building. Select a language or technology for a closer look."
         >
           <Toolkit />
         </Zone>
@@ -420,12 +468,12 @@ const Home = () => {
         </Zone>
       </main>
 
-      <footer id="contact" className="credits">
+      <footer id="contact" className="credits" inert={tourInert}>
         <div className="credits-inner">
           <p className="credits-kicker" aria-hidden="true">
             Thanks for playing
           </p>
-          <h2 className="credits-title">Let's build something that matters.</h2>
+          <h2 className="credits-title" tabIndex={-1}>Let's build something that matters.</h2>
           <p className="credits-copy">
             If something here resonated, or you're working on technology for the public good,
             I'd like to hear about it.
@@ -465,7 +513,7 @@ const Home = () => {
         </div>
       </footer>
 
-      {touring ? <Tour onClose={() => setTouring(false)} /> : null}
+      {touring ? <Tour onClose={closeTour} /> : null}
     </div>
   );
 };

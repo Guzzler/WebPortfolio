@@ -226,7 +226,53 @@
 }
 
 @media (max-width: 520px) {
-  .hud-link:not([data-nav="writing"]) {
-    display: none;
+  :root {
+    --hud-h: 94px;
+  }
+
+  .hud-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 48px 44px;
+    gap: 0 8px;
+  }
+
+  .hud-home {
+    justify-self: start;
+    min-height: 44px;
+  }
+
+  .hud-name {
+    display: inline;
+  }
+
+  .hud-tools {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hud-trophies,
+  .hud-theme {
+    height: 44px;
+  }
+
+  .hud-theme {
+    width: 44px;
+  }
+
+  .hud-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+    box-shadow: inset 0 1px var(--rule);
+  }
+
+  .hud-link {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    padding: 0;
   }
 }

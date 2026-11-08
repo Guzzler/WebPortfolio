@@ -19,7 +19,7 @@ export const experience = [
     role: "Member of Technical Staff, Product Engineering",
     dates: "Feb 2026 – Present",
     summary:
-      "I lead the Evaluations Engineering team, building multimodal evaluation pipelines, automated benchmarking, and the agentic harness infrastructure behind the Uni-1.1 launch, which helped put Luma at #3 among image generation labs on LMArena. I also contribute to Luma Agents, an agentic orchestration framework for creative studio and production work.",
+      "I lead the Evaluations Engineering team, where we build multimodal evaluation pipelines, automate benchmarking, and develop agentic evaluation harnesses. For example, our evaluation infrastructure supported the Uni-1.1 launch, which helped put Luma at #3 among image generation labs on LMArena. I also contribute to Luma Agents, an agentic orchestration framework for creative studio and production work.",
   },
   {
     company: "Persona AI",

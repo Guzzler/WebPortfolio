@@ -13,7 +13,7 @@
 /* AI systems: tiles with a glyph that comes alive on hover */
 .ai-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -67,36 +67,57 @@
   gap: 8px;
 }
 
-.tag {
+.tag-list > li {
   position: relative;
+}
+
+.tag {
   padding: 4px 11px;
   border: 1px solid var(--rule);
   border-radius: 5px;
+  background: transparent;
   color: var(--ink-2);
   font-size: 0.9rem;
-  cursor: default;
-  outline: none;
+  cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease, transform 0.25s var(--ease-pop);
 }
 
 .tag:hover,
-.tag:focus-visible {
-  z-index: 3;
+.tag:focus-visible,
+.tag[aria-expanded="true"] {
   border-color: var(--ink);
   color: var(--ink);
   transform: translateY(-2px);
 }
 
+.tag[aria-expanded="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.tag-details {
+  display: grid;
+  gap: 3px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
 .tag-tip {
+  display: none;
   position: absolute;
   left: 50%;
+  z-index: 3;
   bottom: calc(100% + 9px);
   padding: 6px 10px;
   border-radius: 5px;
   white-space: nowrap;
-  opacity: 0;
-  transform: translate(-50%, 6px) scale(0.96);
-  transition: opacity 0.18s ease, transform 0.3s var(--ease-pop);
+  transform: translateX(-50%);
   pointer-events: none;
 }
 
@@ -111,10 +132,20 @@
   transform: translate(-50%, -4px) rotate(45deg);
 }
 
-.tag:hover .tag-tip,
-.tag:focus-visible .tag-tip {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
+@media (hover: hover) and (min-width: 901px) {
+  .tag:not([aria-expanded="true"]):is(:hover, :focus-visible) + .tag-tip {
+    display: block;
+  }
+
+  .tag:not([aria-expanded="true"]):is(:hover, :focus-visible) + .tag-tip.is-used {
+    display: flex;
+  }
+}
+
+@media (pointer: coarse) {
+  .tag {
+    min-height: 44px;
+  }
 }
 
 /* A tiny terminal: dark in both themes */
@@ -122,10 +153,6 @@
   background: #141c18;
   color: #f0be45;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-.tag-tip.is-code code {
-  border-right-color: #f0be45;
 }
 
 .tag-tip.is-code code {
@@ -137,8 +164,7 @@
   border-right: 2px solid var(--gold);
 }
 
-.tag:hover .tag-tip.is-code code,
-.tag:focus-visible .tag-tip.is-code code {
+.tag:is(:hover, :focus-visible) + .tag-tip.is-code code {
   animation:
     type-in calc(var(--n) * 38ms) steps(var(--n)) 0.12s forwards,
     caret 0.8s steps(1) infinite;
@@ -157,7 +183,6 @@
 }
 
 .tag-tip.is-used {
-  display: flex;
   flex-direction: column;
   width: max-content;
   max-width: 230px;
